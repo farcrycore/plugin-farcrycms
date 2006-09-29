@@ -22,7 +22,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="News Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="News Rule" extends="rules" 
 	hint="News rule publishes news content items in date order, with 
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 
@@ -171,7 +171,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		<cfif NOT trim(len(stObj.metadata)) EQ 0>
 			<!--- show by categories --->
 			<cfswitch expression="#application.dbtype#">
-				<cfcase value="mysql,mysql5">
+				<cfcase value="mysql">
 					<cfif stObj.bMatchAllKeywords>
 						<!--- must match all categories --->
 						<cfquery datasource="#arguments.dsn#" name="qGetNews" maxrows="#maximumRows#">

@@ -19,7 +19,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="Handpicked Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Handpicked Rule" extends="rules" 
 	hint="Hand-pick and display individual content items with a specified displayTeaser* handler. 
 		Restricted to those content types with metadata bScheduled=true.">
 

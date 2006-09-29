@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="Event Rule" extends="farcry.farcry_core.packages.rules.rules" hint="Method for displaying dmEvent objects">
+<cfcomponent displayname="Event Rule" extends="rules" hint="Method for displaying dmEvent objects">
 
 <cfproperty name="intro" type="string" hint="Intro text for the event listing" required="no" default="">
 <cfproperty name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayteaser">
@@ -152,7 +152,7 @@
 		<cfif NOT trim(len(stObj.metadata)) EQ 0>
 			<!--- show by categories --->
 			<cfswitch expression="#application.dbtype#">
-				<cfcase value="mysql,mysql5">
+				<cfcase value="mysql">
 					<cfif stObj.bMatchAllKeywords>
 						<!--- must match all categories --->
 						<cfquery datasource="#arguments.dsn#" name="qGetEvents" maxrows="#maximumRows#">

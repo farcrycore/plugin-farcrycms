@@ -18,7 +18,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="Text Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Text Rule" extends="rules" 
 	hint="Publishing rule for rendering a block of user definable text/markup in the container.">
 
 <!--- rule object properties --->

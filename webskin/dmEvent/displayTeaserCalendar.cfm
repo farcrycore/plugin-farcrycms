@@ -1,25 +1,24 @@
-<cfsetting enablecfoutputonly="yes">
 <!--- 
 || LEGAL ||
 $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /home/cvsuser/cvs/agora/webskin/dmEvent/displayTeaserCalendar.cfm,v 1.6 2006/05/16 02:41:22 daniela Exp $
-$Author: daniela $
-$Date: 2006/05/16 02:41:22 $
-$Name: HEAD $
-$Revision: 1.6 $
+$Header: /cvs/farcry/farcry_mollio/webskin/dmEvent/displayTeaserCalendar.cfm,v 1.1 2006/04/04 06:03:54 gstewart Exp $
+$Author: gstewart $
+$Date: 2006/04/04 06:03:54 $
+$Name:  $
+$Revision: 1.1 $
 
 || DESCRIPTION || 
-$Description: dmEvent -- calendar listing$
-$TODO: $
-
+$Description: Calendar Template
 || DEVELOPER ||
-$Developer: Brendan Sisson (brendan@daemon.com.au) $
+$Developer: Gavin Stewart (gavin@daemon.com.au)$
 --->
 <!--- @@displayname: Calendar --->
-<!--- @@author: Brendan Sisson --->
+<!--- @@author: Gavin Stewart (gavin@daemon.com.au)--->
+
+ <cfsetting enablecfoutputonly="yes">
 
 <cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
 
@@ -66,21 +65,22 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 		</th>
 		</form>
 		</tr>
-	</thead>
-
-	<cfset week_day = start_day>
-	<cfset display_day = 1>
-	<cfset week=1>
-	<tbody>
 		<tr>
 			<cfloop from="1" to="7" index="d">
 				<th class="thalt">#left(dayofweekasstring(d),3)#</th>
 			</cfloop>
 		</tr>
+	</thead>
+
+	<cfset week_day = start_day>
+	<cfset display_day = 1>
+	<cfset week=1>
+
+	<tbody>
 		<!--- loop through calendar month --->
 		<cfloop condition = "#display_day# LTE #total_days_in_month#">
 			<!--- check if first or last week --->
-			<tr valign="top">
+			<tr>
 				<!--- loop through week --->
 				<cfloop condition = "#week_day# LTE 7">
 					<cfloop condition = "#start_day# NEQ 1">
@@ -101,8 +101,7 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 								<cfloop collection="#request.aInvocations[1].stEvents#" item="eventItem">
 									<cfif dateFormat(request.aInvocations[1].stEvents[eventItem].eventDate) eq currentDate>
 										<em><span class="title"><a href="#application.url.conjurer#?objectid=#request.aInvocations[1].stEvents[eventItem].objectid#">#request.aInvocations[1].stEvents[eventItem].title#</a></span>
-										<span class="loc">#request.aInvocations[1].stEvents[eventItem].location#</span></em>	
-										<br />							
+										<span class="loc">#request.aInvocations[1].stEvents[eventItem].location#</span></em>								
 										<cfset eventDisplayed = 1>
 									</cfif>
 								</cfloop>

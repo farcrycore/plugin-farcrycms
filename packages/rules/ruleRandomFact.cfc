@@ -21,7 +21,7 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
-<cfcomponent displayname="Random Fact Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Random Fact Rule" extends="rules" 
 	hint="Publishing rule to randomly show a number of fact content items from 
 		a pool of fact items.  The pool is comprised of those content items that 
 		match the nominated categories.">
@@ -123,7 +123,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		<cfif NOT trim(len(stObj.metadata)) EQ 0>
 			<!--- show by categories --->
 			<cfswitch expression="#application.dbtype#">
-				<cfcase value="mysql,mysql5">
+				<cfcase value="mysql">
 					<cfif stObj.bMatchAllKeywords>
 						<!--- must match all categories --->
 						<cfquery datasource="#arguments.dsn#" name="qGetFacts">
