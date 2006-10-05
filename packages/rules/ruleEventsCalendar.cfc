@@ -21,7 +21,7 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 --->
-<cfcomponent displayname="Event Calendar Rule" extends="rules" 
+<cfcomponent displayname="Event Calendar Rule" extends="farcry.farcry_core.packages.rules.rules" 
 	hint="Publishing rule for showing Event content items in a month calendar view format.">
 
 <cfproperty name="intro" type="string" hint="Intro text for the event listing" required="no" default="">

@@ -22,7 +22,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="News Rule" extends="rules" 
+<cfcomponent displayname="News Rule" extends="farcry.farcry_core.packages.rules.rules" 
 	hint="News rule publishes news content items in date order, with 
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 

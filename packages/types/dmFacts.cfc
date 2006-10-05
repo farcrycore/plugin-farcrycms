@@ -22,7 +22,7 @@ $in: $
 $out:$
 --->
 
-<cfcomponent extends="types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="1" bFriendly="1">
+<cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="1" bFriendly="1">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->

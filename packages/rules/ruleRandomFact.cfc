@@ -21,7 +21,7 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
-<cfcomponent displayname="Random Fact Rule" extends="rules" 
+<cfcomponent displayname="Random Fact Rule" extends="farcry.farcry_core.packages.rules.rules" 
 	hint="Publishing rule to randomly show a number of fact content items from 
 		a pool of fact items.  The pool is comprised of those content items that 
 		match the nominated categories.">
