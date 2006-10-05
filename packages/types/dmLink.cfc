@@ -22,7 +22,7 @@ $in: $
 $out:$
 --->
 
-<cfcomponent extends="types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1">
+<cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->

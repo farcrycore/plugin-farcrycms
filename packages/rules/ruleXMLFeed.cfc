@@ -18,7 +18,7 @@ $TODO: add application scope cacheing to query$
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 <!--- <cfsetting enablecfoutputonly="Yes"> --->
-<cfcomponent displayname="XML Feed Publishing Rule" extends="rules" hint="Displays an XML feed within a container">
+<cfcomponent displayname="XML Feed Publishing Rule" extends="farcry.farcry_core.packages.rules.rules" hint="Displays an XML feed within a container">
 
 <!--- rule object properties --->
 <cfproperty name="feedName" type="string" hint="A useful name for this feed" required="No" default="">
