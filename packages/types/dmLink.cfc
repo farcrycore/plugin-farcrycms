@@ -1,6 +1,6 @@
 <!--- 
 || LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
+$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
@@ -13,42 +13,35 @@ $Revision: 1.11.2.1 $
 || DESCRIPTION || 
 $Description: dmLink type $
 
-
 || DEVELOPER ||
-$Developer: Brendan Sisson (brendan@daemon.com.au) $
-
-|| ATTRIBUTES ||
-$in: $
-$out:$
+$Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
 <cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
-<cfproperty name="title" type="nstring" hint="Meaningful reference title for link" required="no" default=""> 
-<cfproperty name="teaser" type="longchar" hint="A brief description of the link" required="no" default="">  
-<cfproperty name="link" type="string" hint="Url of link" required="no" default=""> 
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default=""> 
-<cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft">
-<cfproperty name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="displaypage">
+<cfproperty ftseq="1" ftFieldset="Link Information" name="title" type="string" hint="Meaningful reference title for link" required="no" default="" ftlabel="Title" blabel="true" /> 
+<cfproperty ftseq="2" ftfieldset="Link Information" name="teaser" type="longchar" hint="A brief description of the link" required="no" default="" ftlabel="Teaser" />
+<cfproperty ftseq="3" ftfieldset="Link Information" name="link" type="string" hint="Url of link" required="no" default="" ftlabel="Link" fttype="url" /> 
+<cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="" fttype="webskin" ftprefix="displayPage" />
 
-<!--- Object Methods --->
+<!--- system property --->
+<cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 
-<cffunction name="edit" access="public">
+<!--- todo: remove comment log and replace with central log --->
+<cfproperty ftseq="20" ftfieldset="Miscellaneous" name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" ftdisplayonly="true" ftlabel="Comments" /> 
+
+<cffunction name="display" access="public" output="false" returntype="void" hint="Redirect user to the link location by default.">
 	<cfargument name="objectid" required="yes" type="UUID">
 	
-	<!--- getData for object edit --->
-	<cfset stObj = this.getData(arguments.objectid)>
-	<cfinclude template="_dmLink/edit.cfm">
-</cffunction>
+	<cfset var stObj = getData(arguments.objectid) />
+	<cfif len(stObj.link)>
+		<cflocation url="#stObj.link#" addtoken="No" />
+	<cfelse>
+		<cfthrow type="types.dmlink" message="No link available." detail="dmLink requires a valid URL for the link property in order to redirect." />
+	</cfif>
 
-<cffunction name="display" access="public" output="true">
-	<cfargument name="objectid" required="yes" type="UUID">
-	
-	<!--- getData for object edit --->
-	<cfset stObj = this.getData(arguments.objectid)>
-	<cfinclude template="_dmLink/display.cfm">
 </cffunction>
 
 </cfcomponent>
