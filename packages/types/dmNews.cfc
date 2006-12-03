@@ -1,23 +1,22 @@
 <!--- 
 || LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
+$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/types/dmNews.cfc,v 1.20.2.1 2005/12/02 05:13:46 guy Exp $
-$Author: guy $
-$Date: 2005/12/02 05:13:46 $
-$Name: milestone_3-0-1 $
-$Revision: 1.20.2.1 $
+$Header: $
+$Author: $
+$Date: $
+$Name: $
+$Revision: $
 
 || DESCRIPTION || 
 $Description: dmNews Type $
-TODO: working on potential versioning/generic admin replacement 20050602GB
 
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
-
 --->
+
 <cfcomponent extends="farcry.farcry_core.packages.types.versions" displayname="News" hint="Dynamic news data" bSchedule="1" bFriendly="1">
 <!------------------------------------------------------------------------
 type properties
@@ -35,7 +34,7 @@ type properties
 <cfproperty ftseq="22" ftfieldset="Story Details" name="teaserImage" type="UUID" hint="Teaser image to display." required="no" default="" fttype="uuid" ftjoin="dmimage" ftlabel="Teaser Image" />
 <cfproperty ftseq="23" ftfieldset="Story Details" name="Teaser" type="longchar" hint="Teaser text." required="no" default="" ftlabel="Story teaser" />
 
-<cfproperty ftseq="30" ftfieldset="Categorisation" name="newscategory" type="string" hint="News categorisation." required="no" default="" fttype="category" ftalias="dmnews" ftlabel="News Category" />
+<cfproperty ftseq="30" ftfieldset="Categorisation" name="catNews" type="string" hint="News categorisation." required="no" default="" fttype="category" ftalias="dmnews" ftlabel="News Category" />
 
 <!--- system attribute --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft">

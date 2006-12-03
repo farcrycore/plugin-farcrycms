@@ -1,21 +1,20 @@
 <!--- 
 || LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
+$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/types/dmEvent.cfc,v 1.11.2.1 2005/12/02 05:13:46 guy Exp $
-$Author: guy $
-$Date: 2005/12/02 05:13:46 $
-$Name: milestone_3-0-1 $
-$Revision: 1.11.2.1 $
+$Header: $
+$Author: $
+$Date: $
+$Name: $
+$Revision: $
 
 || DESCRIPTION || 
 $Description: dmEvent Type $
 
 || DEVELOPER ||
-$Developer: Brendan Sisson (brendan@daemon.com.au) $
-
+$Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 <cfcomponent extends="farcry.farcry_core.packages.types.versions" displayname="Events" hint="Dynamic events data" bSchedule="1" bFriendly="1">
 <!------------------------------------------------------------------------
@@ -34,6 +33,8 @@ type properties
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft">
 <cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="">
 <cfproperty name="teaserImage" type="string" hint="UUID of image to display in teaser" required="no" default="">
+
+<cfproperty ftseq="30" ftfieldset="Categorisation" name="catEvent" type="string" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmevent" ftlabel="Event Category" />
 
 <!------------------------------------------------------------------------
 object methods 
