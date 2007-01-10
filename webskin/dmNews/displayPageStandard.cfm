@@ -1,4 +1,4 @@
-<cfsetting enablecfoutputonly="yes">
+<cfsetting enablecfoutputonly="true" />
 <!--- 
 || LEGAL ||
 $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
@@ -25,7 +25,7 @@ $Developer: Daniela Milton (daniela@daemon.com.au) $
 
 <!--- include standard header --->
 <cfmodule 
-	template="/farcry/#application.applicationname#/webskin/includes/agoraHeader.cfm"
+	template="/farcry/#application.applicationname#/webskin/includes/dmHeader.cfm"
 	pageTitle="#stObj.title#"
 	layoutClass="type-b">
 
@@ -39,7 +39,6 @@ $Developer: Daniela Milton (daniela@daemon.com.au) $
 </cfoutput>
 
 <!--- include standard footers --->
-<cfinclude template="/farcry/#application.applicationname#/webskin/includes/agoraBottomNav.cfm">
-<cfinclude template="/farcry/#application.applicationname#/webskin/includes/agoraFooter.cfm">
+<cfinclude template="/farcry/#application.applicationname#/webskin/includes/dmFooter.cfm">
 
-<cfsetting enablecfoutputonly="no">
+<cfsetting enablecfoutputonly="false" />

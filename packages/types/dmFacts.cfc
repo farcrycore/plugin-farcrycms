@@ -20,23 +20,17 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
-<cfproperty name="title" type="nstring" hint="Meaningful reference title" required="no" default=""> 
-<cfproperty name="link" type="string" hint="Link to a page internal or external" required="no" default=""> 
-<cfproperty name="body" type="longchar" hint="Content of the fact" required="No" default=""> 
-<cfproperty name="imageID" type="string" hint="UUID of image to display in fact" required="no" default="">
-<cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft">
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="">
-<cfproperty name="displayMethod" type="string" hint="Display method to render." required="yes" default="display">
+<cfproperty ftseq="10" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="title" type="nstring" hint="Meaningful reference title" required="no" default="" ftLabel="Title" />
+<cfproperty ftseq="11" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="link" type="string" hint="Link to a page internal or external" required="no" default="" ftLabel="Link" />
+<cfproperty ftseq="12" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="body" type="longchar" hint="Content of the fact" required="No" default="" ftLabel="Fact Content" ftType="richtext" />
+<cfproperty ftseq="13" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="imageID" type="uuid" hint="UUID of image to display in fact" required="no" default="" fttype="uuid" ftjoin="dmimage" ftlabel="Fact Image" />
+<cfproperty ftseq="14" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayTeaser" ftlabel="Content Template" />
 
-<cfproperty ftseq="30" ftfieldset="Categorisation" name="catFacts" type="string" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmfacts" ftlabel="Fact Category" />
+<cfproperty ftseq="30" ftfieldset="Categorisation" ftWizzardStep="Fact Category" name="catFacts" type="string" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmfacts" ftlabel="Fact Category" />
+
+<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
+<cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 
 <!--- Object Methods --->
-<cffunction name="edit" access="public">
-    <cfargument name="objectid" required="yes" type="UUID">
-    
-    <!--- getData for object edit --->
-    <cfset stObj = this.getData(arguments.objectid)>
-    <cfinclude template="_dmFacts/edit.cfm">
-</cffunction>
-    
+
 </cfcomponent>
