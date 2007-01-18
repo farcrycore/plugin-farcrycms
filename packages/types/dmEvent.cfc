@@ -25,7 +25,7 @@ type properties
 <cfproperty ftseq="12" ftfieldset="Event Details" ftWizzardStep="General Details" name="Location" type="nstring" hint="Location of event" required="no" default="" ftLabel="Location" />
 <cfproperty ftseq="13" ftfieldset="Event Details" ftWizzardStep="General Details" name="Teaser" type="longchar" hint="Teaser text." required="no" default="" ftLabel="Teaser Text" />
 <cfproperty ftseq="14" ftfieldset="Event Details" ftWizzardStep="General Details" name="teaserImage" type="uuid" hint="UUID of image to display in teaser" required="no" default="" fttype="uuid" ftjoin="dmimage" ftlabel="Teaser Image" />
-<cfproperty ftseq="15" ftfieldset="Event Details" ftWizzardStep="General Details" name="Body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content" />
+<cfproperty ftseq="15" ftfieldset="Event Details" ftWizzardStep="General Details" name="Body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content" ftTemplateTypeList="dmImage,dmFile,dmFlash" />
 <cfproperty ftseq="16" ftfieldset="Event Display" ftWizzardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
 <cfproperty ftseq="21" ftfieldset="Event Dates" ftWizzardStep="Event Dates" name="publishDate" type="date" hint="The date that a event object is sent live and appears on the public website" required="no" default=""ftDefaultType="Evaluate" ftDefault="now()" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="Publish Date" />
