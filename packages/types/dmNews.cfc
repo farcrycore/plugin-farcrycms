@@ -28,7 +28,7 @@ type properties
 <cfproperty ftseq="5" ftfieldset="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
 <cfproperty ftseq="10" ftfieldset="Related Content" name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" />
-<cfproperty ftseq="11" ftfieldset="Related Content" name="aRelatedIDs" type="array" hint="Holds object pointers to related content.  Can be of mixed types." required="no" default="" ftJoin="dmNavigation,dmHTML" ftlabel="Related Content" />
+<cfproperty ftseq="11" ftfieldset="Related Content" name="aRelatedIDs" type="array" hint="Holds object pointers to related content.  Can be of mixed types." required="no" default="" ftJoin="dmFile,dmNavigation,dmHTML" ftlabel="Related Content" />
 
 <cfproperty ftseq="21" ftfieldset="Story Details" name="Body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content" ftTemplateTypeList="dmImage,dmfile,dmflash,dmNavigation,dmHTML" />
 <cfproperty ftseq="22" ftfieldset="Story Details" name="teaserImage" type="UUID" hint="Teaser image to display." required="no" default="" fttype="uuid" ftjoin="dmimage" ftlabel="Teaser Image" />
