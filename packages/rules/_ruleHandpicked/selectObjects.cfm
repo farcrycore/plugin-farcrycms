@@ -32,7 +32,7 @@ $Developer: Guy Phanvongsa (guy@daemon.com.au) $
 <cfparam name="formSubmitted" default="no">
 
 <!--- get the min/max date for items --->
-<cfquery name="q" datasource="#application.dsn#">
+<cfquery name="q" datasource="#application.dsn#" result="stResult">
 SELECT	min(datetimecreated) as mindate, max(datetimecreated) as maxdate
 FROM 	#application.dbowner##form.dmType#
 </cfquery>
@@ -241,9 +241,9 @@ function doSubmit(objForm){
 		</label>
 
 		<label for="labelStartDate"><b>#application.adminBundle[session.dmProfile.locale].dateRange#:</b>
-			#oForm.renderDateSelect(startYear=year(output.startDate),endyear=year(output.endDate),selectedDate=output.startDate,elementNamePrefix='min',bDisplayMonthAsString=1)#<br />
+			#oForm.renderDateSelect(startYear=year(variables.mindate),endyear=year(variables.maxdate),selectedDate=output.startDate,elementNamePrefix='min',bDisplayMonthAsString=1)#<br />
 			<b>#application.adminBundle[session.dmProfile.locale].toLabel#</b>
-			#oForm.renderDateSelect(startYear=year(output.startDate),endyear=year(output.endDate),selectedDate=output.endDate,elementNamePrefix='max',bDisplayMonthAsString=1)#<br />
+			#oForm.renderDateSelect(startYear=year(variables.mindate),endyear=year(variables.maxdate),selectedDate=output.endDate,elementNamePrefix='max',bDisplayMonthAsString=1)#<br />
 		</label>
 
 		<label><b>#application.adminBundle[session.dmProfile.locale].orderBy#</b>
