@@ -58,20 +58,20 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		<nj:listTemplates typename="dmHTML" prefix="displayTeaser" r_qMethods="qDisplayTypes">
 		<nj:listTemplates typename="dmInclude" prefix="displayTeaser" r_qMethods="qIncludeDisplayTypes"> 
 		<nj:listTemplates typename="dmLink" prefix="displayTeaser" r_qMethods="qLinkDisplayTypes"> 
-	
+
 		<!--- Join the two result sets --->
 		<cfquery dbtype="query" name="qGetAllTemplates">
 		SELECT * FROM qDisplayTypes UNION ALL
 		SELECT * FROM qLinkDisplayTypes UNION ALL
 		SELECT * FROM qIncludeDisplayTypes
 		</cfquery> 
-	
 		<!--- Now we filter so we only get those that occur in both directories --->
 		<cfquery dbtype="query" name="qGetUniqueTemplates">
-		SELECT COUNT(methodName) AS methodCount,methodname,displayname FROM qGetAllTemplates
-		GROUP BY methodname,displayname
+		SELECT COUNT(methodName) AS methodCount,methodname,MIN(displayname) as displayname FROM qGetAllTemplates
+		GROUP BY methodname
 		HAVING methodCount = 3
 		</cfquery> 
+
 <cfoutput>
 		<form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em">
 		<fieldset><cfif qGetUniqueTemplates.recordCount><cfif StructKeyExists(stLocal,"successmessage")>
