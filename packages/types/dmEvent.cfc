@@ -35,7 +35,7 @@ type properties
 
 <cfproperty ftseq="30" ftfieldset="Related Content" ftWizzardStep="Related Content" name="aObjectIDs" type="array" hint="Mixed type children objects that sit underneath this object" required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" />
 
-<cfproperty ftseq="40" ftfieldset="Categorisation" name="catEvent" type="string" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmevent" ftlabel="Event Category" />
+<cfproperty ftseq="40" ftfieldset="Categorisation" ftWizzardStep="Categorisation" name="catEvent" type="string" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmevent" ftlabel="Event Category" />
 
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 <cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
