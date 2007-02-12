@@ -43,7 +43,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		<cfset var stLocal = StructNew()> 
 		<cfset var stObj = this.getData(arguments.objectid)> 
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/fourq/tags/" prefix="q4">
+		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
 		<cfimport taglib="/farcry/farcry_core/tags/navajo/" prefix="nj">
 		
 		<cfif isDefined("form.updateRuleChildLinks")>
