@@ -34,7 +34,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 
 <cfimport taglib="/farcry/farcry_core/tags/farcry" prefix="tags">
 <cfimport taglib="/farcry/farcry_core/tags/navajo" prefix="nj">
-<cfimport taglib="/farcry/fourq/tags" prefix="q4">
+<cfimport taglib="/farcry/farcry_core/fourq/tags" prefix="q4">
 
 <cfoutput>
 	<link type="text/css" rel="stylesheet" href="#application.url.farcry#/css/admin.css"> 

@@ -27,7 +27,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 <cfproperty name="maxRecords" type="numeric" hint="The maximum number of records to return to the user" required="no" default="20">
 
 <!--- pseudo contructor --->
-<cfimport prefix="q4" taglib="/farcry/fourq/tags">
+<cfimport prefix="q4" taglib="/farcry/farcry_core/fourq/tags">
 <!--- /pseudo contructor --->
 	
 	<cffunction access="public" name="update" output="true" hint="Edit handler for the rule." >

@@ -15,7 +15,7 @@
 		<cfset var stObj = this.getData(arguments.objectid)> 
 
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/fourq/tags/" prefix="q4">
+		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
         <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">				
         <cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
         

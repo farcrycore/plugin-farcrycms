@@ -26,7 +26,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 <cfproperty name="text" type="longchar" hint="Text to display.  Can be any combination of content and HTML markup." required="yes" default="">
 
 <!--- import tag library --->
-<cfimport prefix="q4" taglib="/farcry/fourq/tags">
+<cfimport prefix="q4" taglib="/farcry/farcry_core/fourq/tags">
 
 <cffunction name="update" output="true">
 	<cfargument name="objectID" required="Yes" type="uuid" default="">
