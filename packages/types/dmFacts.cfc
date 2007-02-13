@@ -1,40 +1,36 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
+<!--- 
+|| LEGAL ||
+$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
+$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+|| VERSION CONTROL ||
+$Header: $
+$Author: $
+$Date: $
+$Name: $
+$Revision: $
 
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
+|| DESCRIPTION || 
+$Description: dmFacts Type $
 
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
+|| DEVELOPER ||
+$Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-
-<!--- @@displayname: Fact Content Type --->
-<!--- @@Description: Records facts, testimonials and the like. --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Fact" hint="Facts are little snippets of information; factoids, quotes, testimonials, brand messages and more. Create a library of facts and have them publish randomly on your site tokeep things interesting." bSchedule="true" bObjectBroker="true">
+<cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
-<cfproperty ftseq="1" ftfieldset="Fact Details" name="title" type="string" hint="Meaningful reference title" required="no" default="" ftLabel="Title" ftvalidation="required" />
+<cfproperty ftseq="10" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="title" type="nstring" hint="Meaningful reference title" required="no" default="" ftLabel="Title" />
+<cfproperty ftseq="11" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="link" type="string" hint="Link to a page internal or external" required="no" default="" ftLabel="Link" />
+<cfproperty ftseq="12" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="body" type="longchar" hint="Content of the fact" required="No" default="" ftLabel="Fact Content" ftType="richtext" />
+<cfproperty ftseq="13" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="imageID" type="uuid" hint="UUID of image to display in fact" required="no" default="" fttype="uuid" ftjoin="dmimage" ftlabel="Fact Image" />
+<cfproperty ftseq="14" ftfieldset="Fact Details" ftWizzardStep="Fact Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayTeaser" ftlabel="Content Template" />
 
+<cfproperty ftseq="30" ftfieldset="Categorisation" ftWizzardStep="Fact Category" name="catFacts" type="string" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmfacts" ftlabel="Fact Category" />
 
-<cfproperty ftseq="3" ftfieldset="Fact Details" name="link" type="string" hint="Link to a page internal or external" required="no" default="" fttype="url" ftLabel="Link" />
-<cfproperty ftseq="4" ftfieldset="Fact Details" name="body" type="longchar" hint="Content of the factoid." required="No" default="" ftLabel="Content" ftType="longchar" />
-<cfproperty ftseq="5" ftfieldset="Fact Details" name="imageID" type="uuid" hint="Image to display with factoid." required="no" default="" fttype="uuid" ftjoin="dmImage" ftlabel="Image" />
-
-<cfproperty ftseq="10" ftfieldset="Fact Details" name="displayMethod" type="string" hint="Display method to render." required="yes" ftDefault="displayTeaserStandard" fttype="webskin" ftprefix="display" ftlabel="Display Method" />
-
-<cfproperty ftseq="30" ftfieldset="Categorisation" name="catFacts" type="longchar" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmFacts" ftlabel="Category" />
-
-<!--- system properties --->
+<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
+
+<!--- Object Methods --->
 
 </cfcomponent>
