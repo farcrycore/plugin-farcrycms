@@ -17,7 +17,7 @@ $Description: dmNews Type $
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
-<cfcomponent extends="farcry.farcry_core.packages.types.versions" displayname="News" hint="Dynamic news data" bSchedule="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.versions" displayname="News" hint="Dynamic news data" bSchedule="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	

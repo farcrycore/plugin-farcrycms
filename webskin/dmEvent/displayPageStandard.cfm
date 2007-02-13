@@ -21,8 +21,8 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 <!--- @@displayname: Standard Page --->
 <!--- @@author: Brendan Sisson --->
 
-<cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/farcry_core/tags/container" prefix="con">
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/container" prefix="con">
 
 <cfmodule 
 	template="/farcry/#application.applicationname#/webskin/includes/dmHeader.cfm"

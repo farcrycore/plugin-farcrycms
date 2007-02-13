@@ -4,7 +4,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/ruleXMLFeed.cfc,v 1.13 2005/07/19 03:59:21 pottery Exp $
+$Header: /cvs/farcry/core/packages/rules/ruleXMLFeed.cfc,v 1.13 2005/07/19 03:59:21 pottery Exp $
 $Author: pottery $
 $Date: 2005/07/19 03:59:21 $
 $Name: milestone_3-0-1 $
@@ -18,7 +18,7 @@ $TODO: add application scope cacheing to query$
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 <!--- <cfsetting enablecfoutputonly="Yes"> --->
-<cfcomponent displayname="XML Feed Publishing Rule" extends="farcry.farcry_core.packages.rules.rules" hint="Displays an XML feed within a container">
+<cfcomponent displayname="XML Feed Publishing Rule" extends="farcry.core.packages.rules.rules" hint="Displays an XML feed within a container">
 
 <!--- rule object properties --->
 <cfproperty name="feedName" type="string" hint="A useful name for this feed" required="No" default="">
@@ -27,7 +27,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 <cfproperty name="maxRecords" type="numeric" hint="The maximum number of records to return to the user" required="no" default="20">
 
 <!--- pseudo contructor --->
-<cfimport prefix="q4" taglib="/farcry/farcry_core/fourq/tags">
+<cfimport prefix="q4" taglib="/farcry/core/packages/fourq/tags">
 <!--- /pseudo contructor --->
 	
 	<cffunction access="public" name="update" output="true" hint="Edit handler for the rule." >

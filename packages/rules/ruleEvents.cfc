@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="Event Rule" extends="farcry.farcry_core.packages.rules.rules" hint="Method for displaying dmEvent objects">
+<cfcomponent displayname="Event Rule" extends="farcry.core.packages.rules.rules" hint="Method for displaying dmEvent objects">
 
 <cfproperty name="intro" type="string" hint="Intro text for the event listing" required="no" default="">
 <cfproperty name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayteaser">
@@ -23,9 +23,9 @@
 		<cfparam name="bRestrictByCategory" default="0">
 		<cfparam name="lSelectedCategoryID" default="">
 
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">
-		<cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/display/" prefix="display">
+		<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
 
 		<cfif isDefined("form.updateRuleNews")>
 			<cfif bRestrictByCategory EQ 0>

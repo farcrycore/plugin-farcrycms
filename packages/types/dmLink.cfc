@@ -18,7 +18,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
 
-<cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->

@@ -4,7 +4,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/_ruleHandpicked/listobjects.cfm,v 1.5 2004/07/30 08:34:40 phastings Exp $
+$Header: /cvs/farcry/core/packages/rules/_ruleHandpicked/listobjects.cfm,v 1.5 2004/07/30 08:34:40 phastings Exp $
 $Author: phastings $
 $Date: 2004/07/30 08:34:40 $
 $Name: milestone_3-0-1 $
@@ -32,9 +32,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 </cffunction>
 
 
-<cfimport taglib="/farcry/farcry_core/tags/farcry" prefix="tags">
-<cfimport taglib="/farcry/farcry_core/tags/navajo" prefix="nj">
-<cfimport taglib="/farcry/farcry_core/fourq/tags" prefix="q4">
+<cfimport taglib="/farcry/core/tags/farcry" prefix="tags">
+<cfimport taglib="/farcry/core/tags/navajo" prefix="nj">
+<cfimport taglib="/farcry/core/packages/fourq/tags" prefix="q4">
 
 <cfoutput>
 	<link type="text/css" rel="stylesheet" href="#application.url.farcry#/css/admin.css"> 

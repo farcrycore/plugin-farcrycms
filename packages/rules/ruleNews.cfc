@@ -22,7 +22,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="News Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="News Rule" extends="farcry.core.packages.rules.rules" 
 	hint="News rule publishes news content items in date order, with 
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 
@@ -45,9 +45,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		<cfset var stLocal = StructNew()> 		
 		<cfset var stObj = this.getData(arguments.objectid)>
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">
-		<cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/display/" prefix="display">
+		<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
 		
 		<cfparam name="form.bArchive" default="0">
 		<cfparam name="form.bMatchAllKeywords" default="0">

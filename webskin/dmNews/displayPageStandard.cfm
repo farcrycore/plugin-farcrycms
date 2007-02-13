@@ -20,8 +20,8 @@ $Developer: Daniela Milton (daniela@daemon.com.au) $
 --->
 <!--- @@displayname: Standard Page --->
 
-<cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/farcry_core/tags/container" prefix="con">
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/container" prefix="con">
 
 <!--- include standard header --->
 <cfmodule 

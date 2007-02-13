@@ -16,7 +16,7 @@ $Description: dmEvent Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent extends="farcry.farcry_core.packages.types.versions" displayname="Events" hint="Dynamic events data" bSchedule="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.versions" displayname="Events" hint="Dynamic events data" bSchedule="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	

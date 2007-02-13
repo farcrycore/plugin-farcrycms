@@ -1,5 +1,5 @@
-<cfimport taglib="/farcry/farcry_core/tags/admin/" prefix="admin">
-<cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+<cfimport taglib="/farcry/core/tags/admin/" prefix="admin">
+<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
 
 <!--- set up page header --->
 <admin:header title="Event Admin" writingDir="#session.writingDir#" userLanguage="#session.userLanguage#" onload="setupPanes('container1');">

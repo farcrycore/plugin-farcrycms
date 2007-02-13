@@ -16,7 +16,7 @@ $Description: dmFacts Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent extends="farcry.farcry_core.packages.types.types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->

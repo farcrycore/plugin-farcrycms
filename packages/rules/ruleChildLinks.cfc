@@ -28,7 +28,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 --->
 
-<cfcomponent displayname="Child Links Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Child Links Rule" extends="farcry.core.packages.rules.rules" 
 	hint="List teaser displays for the current navigation folders children.  
 		Children content types are restricted to dmHTML, dmLink and dmInclude. 
 		This publishing rule is commonly used on section landing pages to 
@@ -43,8 +43,8 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		<cfset var stLocal = StructNew()> 
 		<cfset var stObj = this.getData(arguments.objectid)> 
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-		<cfimport taglib="/farcry/farcry_core/tags/navajo/" prefix="nj">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+		<cfimport taglib="/farcry/core/tags/navajo/" prefix="nj">
 		
 		<cfif isDefined("form.updateRuleChildLinks")>
 			<cfset stObj.displayMethod = form.displayMethod>
@@ -58,6 +58,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		<nj:listTemplates typename="dmHTML" prefix="displayTeaser" r_qMethods="qDisplayTypes">
 		<nj:listTemplates typename="dmInclude" prefix="displayTeaser" r_qMethods="qIncludeDisplayTypes"> 
 		<nj:listTemplates typename="dmLink" prefix="displayTeaser" r_qMethods="qLinkDisplayTypes"> 
+		
 
 		<!--- Join the two result sets --->
 		<cfquery dbtype="query" name="qGetAllTemplates">

@@ -21,7 +21,7 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 --->
-<cfcomponent displayname="Event Calendar Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Event Calendar Rule" extends="farcry.core.packages.rules.rules" 
 	hint="Publishing rule for showing Event content items in a month calendar view format.">
 
 <cfproperty name="intro" type="string" hint="Intro text for the event listing" required="no" default="">
@@ -37,9 +37,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		<cfset var stLocal = StructNew()> 
 		<cfset var stObj = this.getData(arguments.objectid)> 
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">				
-		<cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/display/" prefix="display">				
+		<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
 		
 		<cfparam name="form.bMatchAllKeywords" default="0">
 		<cfparam name="bRestrictByCategory" default="0">

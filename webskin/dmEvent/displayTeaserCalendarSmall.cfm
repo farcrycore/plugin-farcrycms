@@ -21,7 +21,7 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 <!--- @@displayname: Small Calendar --->
 <!--- @@author: Brendan Sisson --->
 
-<cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
 
 <!--- work out position in aInvocations --->
 <cfloop from="1" to="#arrayLen(request.aInvocations)#" index="num">

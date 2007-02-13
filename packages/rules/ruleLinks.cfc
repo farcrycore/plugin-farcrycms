@@ -1,4 +1,4 @@
-<cfcomponent displayname="External Links Rule" extends="farcry.farcry_core.packages.rules.rules" hint="Method for displaying dmLink objects">
+<cfcomponent displayname="External Links Rule" extends="farcry.core.packages.rules.rules" hint="Method for displaying dmLink objects">
 
 <cfproperty name="intro" type="string" hint="Intro text for the link listing" required="no" default="">
 <cfproperty name="displayMethod" type="string" hint="Display method to render this link rule with." required="yes" default="displayteaser">
@@ -15,9 +15,9 @@
 		<cfset var stObj = this.getData(arguments.objectid)> 
 
 <cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">				
-        <cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/display/" prefix="display">				
+        <cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
         
 		<cfparam name="form.bArchive" default="0">
 		<cfparam name="form.bMatchAllKeywords" default="0">

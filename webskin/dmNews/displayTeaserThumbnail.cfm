@@ -3,7 +3,7 @@ dmNews
 featured article display method 
 --------------------------------------------------------------------->
 <!--- @@displayname: news article with thumbnail --->
-<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
+<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
 <cfoutput>
 	
 	
