@@ -5,7 +5,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/_ruleHandpicked/selectObjects_20050712.cfm,v 1.1 2005/07/25 03:33:36 guy Exp $
+$Header: /cvs/farcry/core/packages/rules/_ruleHandpicked/selectObjects_20050712.cfm,v 1.1 2005/07/25 03:33:36 guy Exp $
 $Author: guy $
 $Date: 2005/07/25 03:33:36 $
 $Name: milestone_3-0-1 $
@@ -21,7 +21,7 @@ $Developer: Guy Phanvongsa (paul@daemon.com.au) $
 
 <cfprocessingDirective pageencoding="utf-8">
 
-<cfimport taglib="/farcry/farcry_core/tags/farcry" prefix="tags">
+<cfimport taglib="/farcry/core/tags/farcry" prefix="tags">
 <cfoutput>
 <link type="text/css" rel="stylesheet" href="#application.url.farcry#/css/admin.css"> 
 </cfoutput>
@@ -164,7 +164,7 @@ if (em.style.color != rowcolor)
 else
 	em.style.color="black";
 }	
-<cfinclude template="/farcry/farcry_core/admin/includes/wddx.js">
+<cfinclude template="/farcry/core/admin/includes/wddx.js">
 </script>
 </cfoutput>
 <cfset thisstep.isComplete = 0>

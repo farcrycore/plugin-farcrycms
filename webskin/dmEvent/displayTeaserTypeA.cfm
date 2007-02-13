@@ -20,8 +20,8 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 
  <cfsetting enablecfoutputonly="yes">
 
-<cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/farcry_core/tags/widgets" prefix="widge">
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/widgets" prefix="widge">
 
 <cfoutput>
 <h4><span class="date">#dateformat(stobj.startDate, "dd mmm yyy")#</span>#stObj.Title#</h4>

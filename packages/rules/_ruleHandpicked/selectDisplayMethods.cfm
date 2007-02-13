@@ -4,7 +4,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/_ruleHandpicked/selectDisplayMethods.cfm,v 1.15.2.2 2005/12/28 05:55:36 paul Exp $
+$Header: /cvs/farcry/core/packages/rules/_ruleHandpicked/selectDisplayMethods.cfm,v 1.15.2.2 2005/12/28 05:55:36 paul Exp $
 $Author: paul $
 $Date: 2005/12/28 05:55:36 $
 $Name: milestone_3-0-1 $
@@ -18,9 +18,9 @@ $Developer: Paul Harrison (harrisonp@cbs.curtin.edu.au) $
 --->
 <cfsetting enablecfoutputonly="true">
 <cfprocessingDirective pageencoding="utf-8">
-<cfimport taglib="/farcry/farcry_core/tags/widgets" prefix="widgets">
-<cfimport taglib="/farcry/farcry_core/tags/navajo" prefix="nj">
-<cfinclude template="/farcry/farcry_core/admin/includes/cfFunctionWrappers.cfm">
+<cfimport taglib="/farcry/core/tags/widgets" prefix="widgets">
+<cfimport taglib="/farcry/core/tags/navajo" prefix="nj">
+<cfinclude template="/farcry/core/admin/includes/cfFunctionWrappers.cfm">
 
 <cffunction name="generateSelectHTML">
 	<cfargument name="objectid" required="yes">
@@ -245,7 +245,7 @@ function doSubmit(objForm){
 	serializeData(aWDDX,document.forms.editform.wddx);
 	return true;
 }
-<cfinclude template="/farcry/farcry_core/admin/includes/wddx.js">	
+<cfinclude template="/farcry/core/admin/includes/wddx.js">	
 </script>
 
 <form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em" onsubmit="return doSubmit(document.editform);">

@@ -20,7 +20,7 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 
  <cfsetting enablecfoutputonly="yes">
 
-<cfimport taglib="/farcry/farcry_core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
 
 <cfset earliestyear = year(now())>
 

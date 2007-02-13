@@ -4,7 +4,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/ruleHandpicked.cfc,v 1.26 2005/09/09 05:24:08 guy Exp $
+$Header: /cvs/farcry/core/packages/rules/ruleHandpicked.cfc,v 1.26 2005/09/09 05:24:08 guy Exp $
 $Author: guy $
 $Date: 2005/09/09 05:24:08 $
 $Name: milestone_3-0-1 $
@@ -19,7 +19,7 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="Handpicked Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Handpicked Rule" extends="farcry.core.packages.rules.rules" 
 	hint="Hand-pick and display individual content items with a specified displayTeaser* handler. 
 		Restricted to those content types with metadata bScheduled=true.">
 
@@ -68,9 +68,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		<cfset var stObj = this.getData(arguments.objectid)>
 
 <cfsetting enablecfoutputonly="false">
-        <cfimport taglib="/farcry/farcry_core/tags/widgets" prefix="widgets">
-		<cfimport taglib="/farcry/farcry_core/tags/navajo" prefix="nj">
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/widgets" prefix="widgets">
+		<cfimport taglib="/farcry/core/tags/navajo" prefix="nj">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
 		<!--- Default Vals --->
 		<cfparam name="URL.handpickaction" default="list">
 		<cfparam name="URL.killplp" default="0">

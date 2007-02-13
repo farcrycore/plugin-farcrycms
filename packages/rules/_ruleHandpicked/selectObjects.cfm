@@ -5,7 +5,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/_ruleHandpicked/selectObjects.cfm,v 1.30.2.3 2006/01/29 08:09:28 geoff Exp $
+$Header: /cvs/farcry/core/packages/rules/_ruleHandpicked/selectObjects.cfm,v 1.30.2.3 2006/01/29 08:09:28 geoff Exp $
 $Author: geoff $
 $Date: 2006/01/29 08:09:28 $
 $Name: milestone_3-0-1 $
@@ -20,7 +20,7 @@ $Developer: Guy Phanvongsa (guy@daemon.com.au) $
 --->
 <cfsetting enablecfoutputonly="true">
 <cfprocessingDirective pageencoding="utf-8">
-<cfimport taglib="/farcry/farcry_core/tags/widgets" prefix="widgets">
+<cfimport taglib="/farcry/core/tags/widgets" prefix="widgets">
 
 <cfparam name="output.orderby" default="label">
 <cfparam name="output.orderdir" default="asc">
@@ -221,7 +221,7 @@ function doSubmit(objForm){
 		objForm.plpAction.value = 'none';
 	objForm.submit();
 }
-<cfinclude template="/farcry/farcry_core/admin/includes/wddx.js">
+<cfinclude template="/farcry/core/admin/includes/wddx.js">
 </script>
 <form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em" onsubmit="doSubmit(document.editform);">
 	<fieldset><h3>#application.adminBundle[session.dmProfile.locale].selectObjects#</h3>

@@ -4,7 +4,7 @@ $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$ 
 
 || VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_core/packages/rules/ruleRandomFact.cfc,v 1.20.2.2 2006/02/17 05:49:22 daniela Exp $
+$Header: /cvs/farcry/core/packages/rules/ruleRandomFact.cfc,v 1.20.2.2 2006/02/17 05:49:22 daniela Exp $
 $Author: daniela $
 $Date: 2006/02/17 05:49:22 $
 $Name: milestone_3-0-1 $
@@ -21,7 +21,7 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
-<cfcomponent displayname="Random Fact Rule" extends="farcry.farcry_core.packages.rules.rules" 
+<cfcomponent displayname="Random Fact Rule" extends="farcry.core.packages.rules.rules" 
 	hint="Publishing rule to randomly show a number of fact content items from 
 		a pool of fact items.  The pool is comprised of those content items that 
 		match the nominated categories.">
@@ -39,9 +39,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		<cfset var stObj = this.getData(arguments.objectid)> 
 		
 <cfsetting enablecfoutputonly="Yes">		
-		<cfimport taglib="/farcry/farcry_core/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/farcry_core/tags/display/" prefix="display">				
-        <cfimport taglib="/farcry/farcry_core/tags/widgets/" prefix="widgets">
+		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
+        <cfimport taglib="/farcry/core/tags/display/" prefix="display">				
+        <cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
 
 		<cfparam name="form.bMatchAllKeywords" default="0">
 		<cfparam name="lSelectedCategoryID" default="">
