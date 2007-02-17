@@ -1,16 +1,14 @@
 <cfimport taglib="/farcry/core/tags/admin/" prefix="admin">
-<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
-
-<cfset editobjectURL = "#application.url.farcry#/conjuror/invocation.cfm?objectid=##recordset.objectID[recordset.currentrow]##&typename=dmfacts">
+<cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
 <!--- set up page header --->
-<admin:header title="Fact Admin" writingDir="#session.writingDir#" userLanguage="#session.userLanguage#" onload="setupPanes('container1');">
+<admin:header title="Fact Admin" writingDir="#session.writingDir#" userLanguage="#session.userLanguage#" />
 
-<widgets:typeadmin 
+<ft:objectadmin 
 	typename="dmFacts"
 	title="#application.adminBundle[session.dmProfile.locale].factsAdministration#"
 	permissionset="fact"
-	bdebug="0">
-</widgets:typeadmin>
+	plugin="farcrycms"
+	module="/dmfacts.cfm" />
 
-<admin:footer>
+<admin:footer />
