@@ -8,6 +8,10 @@
 	typename="dmNews"
 	permissionset="news"
 	title="#application.adminBundle[session.dmProfile.locale].newsAdministration#"
+	columnList="title,catnews,publishdate,datetimelastUpdated"
+	sortableColumns="title,publishdate,datetimelastUpdated"
+	lFilterFields="title,source"
+	sqlorderby="publishdate desc"
 	plugin="farcrycms"
 	module="/dmnews.cfm" />
 

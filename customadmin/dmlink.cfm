@@ -8,6 +8,10 @@
 	typename="dmLink"
 	title="#application.adminBundle[session.dmProfile.locale].linksAdministration#"
 	permissionset="link"
+	columnList="title,link,catlink,datetimelastUpdated"
+	sortableColumns="title,link,datetimelastUpdated"
+	lFilterFields="title,link"
+	sqlorderby="datetimelastUpdated desc"
 	plugin="farcrycms"
 	module="/dmlink.cfm" />
 
