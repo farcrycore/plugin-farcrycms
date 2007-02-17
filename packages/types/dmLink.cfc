@@ -1,6 +1,6 @@
 <!--- 
 || LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
+$Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
 || VERSION CONTROL ||
@@ -16,24 +16,20 @@ $Description: dmLink Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-
-
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="1" bUseInTree="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="true" bUseInTree="true" bFriendly="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
-<cfproperty ftseq="1" ftFieldset="Link Information" name="title" type="string" hint="Meaningful reference title for link" required="no" default="" ftlabel="Title" blabel="true" />
+<cfproperty ftseq="1" ftFieldset="Link Information" name="title" type="string" hint="Meaningful reference title for link" required="no" default="" ftlabel="Title" blabel="true" ftvalidation="required" />
 <cfproperty ftseq="2" ftfieldset="Link Information" name="teaser" type="longchar" hint="A brief description of the link" required="no" default="" ftlabel="Teaser" />
-<cfproperty ftseq="3" ftfieldset="Link Information" name="link" type="string" hint="Url of link" required="no" default="" ftlabel="Link" fttype="url" />
-<cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="" fttype="webskin" ftprefix="displayPage" />
+<cfproperty ftseq="3" ftfieldset="Link Information" name="link" type="string" hint="Url of link" required="no" default="" ftlabel="Link" fttype="url" ftvalidation="required" />
+<cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
 <cfproperty ftseq="30" ftfieldset="Categorisation" name="catLink" type="string" hint="Link categorisation." required="no" default="" fttype="category" ftalias="dmlink" ftlabel="Link Category" />
 
-<!--- system property --->
+<!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
-
-<!--- todo: remove comment log and replace with central log --->
-<cfproperty ftseq="20" ftfieldset="Miscellaneous" name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" ftdisplayonly="true" ftlabel="Comments" /> 
+<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" /> 
 
 <cffunction name="display" access="public" output="false" returntype="void" hint="Redirect user to the link location by default.">
 	<cfargument name="objectid" required="yes" type="UUID">
