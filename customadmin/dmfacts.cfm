@@ -8,6 +8,10 @@
 	typename="dmFacts"
 	title="#application.adminBundle[session.dmProfile.locale].factsAdministration#"
 	permissionset="fact"
+	columnList="title,link,catfacts,datetimelastUpdated"
+	sortableColumns="title,link,datetimelastUpdated"
+	lFilterFields="title,link"
+	sqlorderby="datetimelastUpdated desc"
 	plugin="farcrycms"
 	module="/dmfacts.cfm" />
 
