@@ -13,6 +13,6 @@
 	lFilterFields="title"
 	sqlorderby="startDate desc"
 	plugin="farcrycms"
-	module="/dmevent.cfm" />
+	module="/dmEvent.cfm" />
 
 <admin:footer />

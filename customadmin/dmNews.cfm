@@ -13,7 +13,7 @@
 	lFilterFields="title,source"
 	sqlorderby="publishdate desc"
 	plugin="farcrycms"
-	module="/dmnews.cfm" />
+	module="/dmNews.cfm" />
 
 <!--- setup footer --->
 <admin:footer />
