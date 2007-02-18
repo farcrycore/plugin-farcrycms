@@ -13,6 +13,6 @@
 	lFilterFields="title,link"
 	sqlorderby="datetimelastUpdated desc"
 	plugin="farcrycms"
-	module="/dmlink.cfm" />
+	module="/dmLink.cfm" />
 
 <admin:footer />
