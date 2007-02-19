@@ -30,6 +30,7 @@ type properties
 <cfproperty ftseq="12" ftfieldset="Publishing Details" ftwizardStep="General Details" name="expiryDate" type="date" hint="The date that a news object is removed from the web site" required="no" default="" ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true" ftlabel="Expiry Date" />
 
 <cfproperty ftseq="21" ftfieldset="News Story" ftwizardStep="News Body" name="Body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content"
+  ftImageArrayField="aObjectIDs" ftImageTypename="dmImage" ftImageField="StandardImage"
   ftTemplateTypeList="dmImage,dmfile,dmflash,dmNavigation,dmHTML"
   ftTemplateWebskinPrefixList="insertHTML" />
 
