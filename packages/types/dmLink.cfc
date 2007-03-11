@@ -23,7 +23,7 @@ type properties
 <cfproperty ftseq="1" ftFieldset="Link Information" name="title" type="string" hint="Meaningful reference title for link" required="no" default="" ftlabel="Title" blabel="true" ftvalidation="required" />
 <cfproperty ftseq="2" ftfieldset="Link Information" name="teaser" type="longchar" hint="A brief description of the link" required="no" default="" ftlabel="Teaser" />
 <cfproperty ftseq="3" ftfieldset="Link Information" name="link" type="string" hint="Url of link" required="no" default="" ftlabel="Link" fttype="url" ftvalidation="required" />
-<cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
+<cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
 <cfproperty ftseq="30" ftfieldset="Categorisation" name="catLink" type="string" hint="Link categorisation." required="no" default="" fttype="category" ftalias="dmlink" ftlabel="Link Category" />
 
