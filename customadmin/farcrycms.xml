@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <webtop>
 	<section id="content" permission="MainNavContentTab" label="application.adminBundle[session.dmProfile.locale].content" labelType="evaluate">
-		<subsection id="farcrycmssubsection" sidebar="content/sidebar.cfm" content="inc/content_overview.html" label="application.adminBundle[session.dmProfile.locale].dynamicContent" labelType="evaluate">
-			<menu id="farcrycmsmenu" label="application.adminBundle[session.dmProfile.locale].contenttype" labelType="evaluate">
-				<menuitem id="listdmnews" label="application.adminBundle[session.dmProfile.locale].news" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmNews.cfm" />
-				<menuitem id="listdmevent" label="application.adminBundle[session.dmProfile.locale].events" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmEvent.cfm" />
-				<menuitem id="listdmlink" label="application.adminBundle[session.dmProfile.locale].links" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmLink.cfm" />
-				<menuitem id="listdmfact" label="application.adminBundle[session.dmProfile.locale].facts" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmFacts.cfm" />
+		<subsection id="farcrycmssubsection" sequence="5" sidebar="content/sidebar.cfm" content="inc/content_overview.html" label="application.adminBundle[session.dmProfile.locale].dynamicContent" labelType="evaluate">
+			<menu id="farcrycmsmenu" sequence="10" label="application.adminBundle[session.dmProfile.locale].contenttype" labelType="evaluate">
+				<menuitem id="listdmnews" sequence="10" label="application.adminBundle[session.dmProfile.locale].news" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmNews.cfm" />
+				<menuitem id="listdmevent" sequence="20" label="application.adminBundle[session.dmProfile.locale].events" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmEvent.cfm" />
+				<menuitem id="listdmlink" sequence="30" label="application.adminBundle[session.dmProfile.locale].links" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmLink.cfm" />
+				<menuitem id="listdmfact" sequence="40" label="application.adminBundle[session.dmProfile.locale].facts" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmFacts.cfm" />
 			</menu>
 		</subsection>
 	</section>
