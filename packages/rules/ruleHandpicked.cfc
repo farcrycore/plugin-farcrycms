@@ -84,7 +84,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 
 			<widgets:plp 
 				owner="#session.dmSec.authentication.userlogin#_#stObj.objectID#"
-				stepDir="/farcry/farcry_lib/farcrycms/packages/rules/_ruleHandpicked"
+				stepDir="/farcry/plugins/farcrycms/packages/rules/_ruleHandpicked"
 				cancelLocation="#arguments.cancelLocation#"
 				iTimeout="15"
 				stInput="#stObj#"
