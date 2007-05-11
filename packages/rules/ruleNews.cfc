@@ -27,16 +27,26 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 
 		c) time is before the expriy date, and; d) it matches the nominated 
-		categories.">
+		categories." bObjectBroker="true" lObjectBrokerWebskins="execute">
 
+	<cfproperty ftSeq="1" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserBullets" ftType="webskin" ftprefix="displayTeaser" ftLabel="Display Method" />
+	<cfproperty ftSeq="4" ftFieldset="General" name="intro" type="string" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Intro Text" />
+	<cfproperty ftSeq="5" ftFieldset="General" name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Suffix Text" />
+	<cfproperty ftSeq="7" ftFieldset="General" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="5" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
+	<cfproperty ftSeq="10" ftFieldset="General" name="bArchive" type="boolean" hint="Display News as an archive (ie. paginated display)." required="true" default="false" ftType="boolean" ftLabel="Display as an Archive?" />
+	<cfproperty ftSeq="12" ftFieldset="General" name="numPages" type="numeric" hint="The number of pages of news articles to display at most (when bArchive is flagged as true)." required="true" default="1" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="How many pages would you like in the archive at most?" />
+	<cfproperty ftSeq="20" ftFieldset="Categorisation" name="bMatchAllKeywords" type="boolean" hint="Does the content need to match ALL selected keywords?" required="false" default="false" ftType="boolean" ftLabel="Does the content need to match ALL the selected Keywords?" />
+  <cfproperty ftseq="25" ftfieldset="Categorisation" name="metadata" type="string" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="root" ftlabel="Selected Categories" />
+
+<!---
 <cfproperty name="intro" type="string" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="no" default="">
 <cfproperty name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="yes" default="displayteaserbullets">
+<cfproperty name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="no" default="">
 <cfproperty name="numItems" hint="The number of items to display per page." type="numeric" required="true" default="5">
-<cfproperty name="numPages" hint="The number of pages of news articles to display at most (when bArchive is flagged as true)." type="numeric" required="true" default="1">
 <cfproperty name="bArchive" hint="Display News as an archive (ie. paginated display)." type="boolean" required="true" default="0">
+<cfproperty name="numPages" hint="The number of pages of news articles to display at most (when bArchive is flagged as true)." type="numeric" required="true" default="1">
 <cfproperty name="bMatchAllKeywords" hint="Does the content need to match ALL selected keywords?" type="boolean" required="false" default="0">
 <cfproperty name="metadata" type="string" hint="A list of categories that the news content must match in order to be shown." required="false" default="">
-<cfproperty name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="no" default="">
 
 	<cffunction access="public" name="update" output="true">
 		<cfargument name="objectID" required="Yes" type="uuid" default="">
@@ -128,7 +138,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 			stProps=structNew();
 			stProps.objectid = createUUID();
 			stProps.label = '';
-			stProps.displayMethod = 'displayteaserbullet';
+			stProps.displayMethod = 'displayTeaserBullets';
 			stProps.numPages = 1;
 			stProps.numItems = 5;
 			stProps.bArchive = 0;
@@ -137,6 +147,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		</cfscript>
 		<cfreturn stProps>
 	</cffunction>
+--->
 
 	<cffunction access="public" name="execute" output="true">
 		<cfargument name="objectID" required="Yes" type="uuid" default="">
