@@ -124,7 +124,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		</cfif>
 		
 		<cfif qGetChildren.recordcount GT 0>
-			<!--- loop over children --->	`
+			<!--- loop over children --->
 			<cfloop query="qGetChildren">
 			
 				<!--- get child nav details --->
