@@ -1,14 +1,7 @@
 <!--- 
 || LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
+$Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au $
 $License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
-
-|| VERSION CONTROL ||
-$Header: $
-$Author: $
-$Date: $
-$Name: $
-$Revision: $
 
 || DESCRIPTION || 
 $Description: dmNews Type $
@@ -16,7 +9,6 @@ $Description: dmNews Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="News" hint="Dynamic news data" bSchedule="1" bFriendly="1" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
