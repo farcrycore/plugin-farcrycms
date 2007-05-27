@@ -21,81 +21,15 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 --->
-<cfcomponent displayname="Event Calendar Rule" extends="farcry.core.packages.rules.rules" 
+<cfcomponent displayname="Events: Calendar Rule" extends="farcry.core.packages.rules.rules" 
 	hint="Publishing rule for showing Event content items in a month calendar view format.">
 
-<cfproperty name="intro" type="string" hint="Intro text for the event listing" required="no" default="">
-<cfproperty name="months" type="numeric" hint="Number of months to show" required="yes" default="1">
-<cfproperty name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayteaserCalendar">
-<cfproperty name="bMatchAllKeywords" hint="Doest the content need to match ALL selected keywords" type="boolean" required="false" default="0">
-<cfproperty name="metadata" type="string" hint="A list of category ObjectIDs that the news content is to be drawn from" required="false" default="">
+<cfproperty ftSeq="1" ftFieldSet="Introduction" name="intro" type="string" hint="Intro text for the event listing" required="no" default="" ftType="longchar" ftLimit="255">
+<cfproperty ftSeq="2" ftFieldSet="Introduction" name="months" type="numeric" hint="Number of months to show" required="yes" default="1">
+<cfproperty ftSeq="3" ftFieldSet="Introduction" name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayteaserCalendar" ftType="webskin" ftTypename="ruleEventsCalendar">
+<cfproperty ftSeq="11" ftFieldSet="Categories" name="bMatchAllKeywords" hint="Doest the content need to match ALL selected keywords" type="boolean" required="false" default="0">
+<cfproperty ftSeq="12" ftFieldSet="Categories" name="metadata" type="string" hint="A list of category ObjectIDs that the news content is to be drawn from" required="false" default="" ftType="category">
 
-	<cffunction access="public" name="update" output="true">
-		<cfargument name="objectID" required="Yes" type="uuid" default="">
-		<cfargument name="label" required="no" type="string" default="">
-
-		<cfset var stLocal = StructNew()> 
-		<cfset var stObj = this.getData(arguments.objectid)> 
-<cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/core/tags/display/" prefix="display">				
-		<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
-		
-		<cfparam name="form.bMatchAllKeywords" default="0">
-		<cfparam name="bRestrictByCategory" default="0">
-		<cfparam name="lSelectedCategoryID" default="">
-
-		<cfif isDefined("form.updateRuleNews")>
-			<cfif bRestrictByCategory EQ 0>
-				<cfset lSelectedCategoryID = "">
-			</cfif>
-			<cfset stObj.displayMethod = form.displayMethod>
-			<cfset stObj.intro = form.intro>
-			<cfset stObj.Months = form.months>
-			<cfset stObj.bMatchAllKeywords = form.bMatchAllKeywords>
-			<cfset stObj.metadata = lSelectedCategoryID> <!--- must add metadata tree --->
-			<q4:contentobjectdata typename="#application.rules.ruleEventsCalendar.rulePath#" stProperties="#stObj#" objectID="#stObj.objectID#">
-			<!--- Now assign the metadata --->
-			<cfset stLocal.successMessage = "#application.adminBundle[session.dmProfile.locale].updateSuccessful#">
-		<cfelse>
-			<cfset lSelectedCategoryID = stObj.metadata>
-			<cfif stObj.metadata NEQ "">
-				<cfset bRestrictByCategory = 1>
-			</cfif>
-		</cfif>
-<cfoutput>
-<form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em">
-<fieldset><cfif StructKeyExists(stLocal,"successmessage")>
-	<p id="fading1" class="fade"><span class="success">#stLocal.successmessage#</span></p></cfif>
-
-	<widgets:displayMethodSelector typeName="dmEvent" prefix="displayTeaser">
-	
-	<label for="intro"><b>#application.adminBundle[session.dmProfile.locale].introlabel#</b>
-		<textarea id="intro" name="intro">#stObj.intro#</textarea><br />
-	</label>
-
-	<label for="months"><b>#application.adminBundle[session.dmProfile.locale].monthsToDisplayLabel#</b>
-		<input type="text" id="months" name="months" value="#stObj.months#" size="3" maxlength="3"><br />
-	</label>
-	
-	<label for="bRestrictByCategory"><b>#application.adminBundle[session.dmProfile.locale].restrictByCategories#</b>
-		<input type="checkbox" id="bRestrictByCategory" name="bRestrictByCategory" value="1"<cfif bRestrictByCategory EQ 1> checked="checked"</cfif> onclick="fShowHide('tglCategory',this.checked);"><br />
-	</label>
-	<span id="tglCategory" style="display:<cfif bRestrictByCategory>block<cfelse>none</cfif>;">
-	<label for="bMatchAllKeywords"><b>#application.adminBundle[session.dmProfile.locale].contentNeedToMatchKeywords#</b>
-		<input type="checkbox" id="bMatchAllKeywords" name="bMatchAllKeywords" value="1" <cfif stObj.bMatchAllKeywords>checked="checked"</cfif>><br />
-	</label>
-	<widgets:categoryAssociation typeName="dmEvents" lSelectedCategoryID="#stObj.metaData#">
-	</span>
-</fieldset>
-
-<div class="f-submit-wrap">
-	<input type="Submit" name="updateRuleNews" value="#application.adminBundle[session.dmProfile.locale].go#" class="f-submit" />		
-</div>
-	<input type="hidden" name="ruleID" value="#stObj.objectID#">
-</form></cfoutput>			
-<cfsetting enablecfoutputonly="true">
-	</cffunction> 
 	
 	<cffunction name="getDefaultProperties" returntype="struct" access="public">
 		<cfscript>
@@ -247,9 +181,11 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 			<cfset tmp = arrayAppend(request.aInvocations,stObj.intro)>
 		</cfif>
 		<cfif qGetEvents.recordcount>
-		<cfset stInvoke = structNew()>
+		<cfset stParam = structNew()>
+		<cfset stParam.aEvents = arrayNew(1) />
+		<cfset stParam.qEvents = qGetEvents />
 				
-		<cfloop query="qGetEvents">
+		<!--- <cfloop query="qGetEvents">
 			<cfset tmpObjectId = qGetEvents.objectId>
 			<cfset tmpTitle = qGetEvents.title>
 			<cfset tmpLocation = qGetEvents.location>
@@ -259,34 +195,38 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 			<!--- if expiry date loop through each day of event --->
 			<cfif year(qGetEvents.endDate) neq 2050>
 				<cfloop from="0" to="#dateDiff('d',qGetEvents.startDate,qGetEvents.endDate)#" index="day">
-					<cfset tmp = createUUID()>
-					<cfset stInvoke.stEvents[tmp] = structNew()>
-					<cfset stInvoke.stEvents[tmp].eventDate =  dateadd("d",day,tmpStartDate)>
-					<cfset stInvoke.stEvents[tmp].objectid = tmpObjectId>
-					<cfset stInvoke.stEvents[tmp].title = tmpTitle>
-					<cfset stInvoke.stEvents[tmp].location = tmpLocation>
-					<cfset stInvoke.stEvents[tmp].startDate = tmpStartDate>
-					<cfset stInvoke.stEvents[tmp].endDate = tmpEndDate>
+					<cfset stEvent = structNew() />
+					<cfset stEvent.eventDate =  dateadd("d",day,tmpStartDate)>
+					<cfset stEvent.objectid = tmpObjectId>
+					<cfset stEvent.title = tmpTitle>
+					<cfset stEvent.location = tmpLocation>
+					<cfset stEvent.startDate = tmpStartDate>
+					<cfset stEvent.endDate = tmpEndDate>
+					<cfset arrayAppend(stParam.aEvents, stEvent) />
 				</cfloop>
 			<cfelse>
 				<!--- no expiry so just use start date --->
-				<cfset tmp = createUUID()>
-				<cfset stInvoke.stEvents[tmp] = structNew()>
-				<cfset stInvoke.stEvents[tmp].eventDate =  tmpStartDate>
-				<cfset stInvoke.stEvents[tmp].objectid = tmpObjectId>
-				<cfset stInvoke.stEvents[tmp].title = tmpTitle>
-				<cfset stInvoke.stEvents[tmp].location = tmpLocation>
-				<cfset stInvoke.stEvents[tmp].startDate = tmpStartDate>
-				<cfset stInvoke.stEvents[tmp].endDate = tmpEndDate>
+				<cfset stEvent = structNew() />
+				<cfset stEvent.eventDate =  tmpStartDate>
+				<cfset stEvent.objectid = tmpObjectId>
+				<cfset stEvent.title = tmpTitle>
+				<cfset stEvent.location = tmpLocation>
+				<cfset stEvent.startDate = tmpStartDate>
+				<cfset stEvent.endDate = tmpEndDate>
+				<cfset arrayAppend(stParam.aEvents, stEvent) />
 			</cfif>
 		</cfloop>
-		<cfscript>
+		 --->
+		<cfset html = getView(objectid=stobj.objectid, template="#stObj.displayMethod#", stparam="#stParam#") />
+		<cfset arrayAppend(request.aInvocations,html) />
+		
+		<!--- <cfscript>
 			stInvoke.objectID = qGetEvents.objectID;
-			stInvoke.typename = application.types.dmEvent.typePath;
+			stInvoke.typename = application.stcoapi.ruleEventsCalendar.packagepath;
 			stInvoke.method = stObj.displayMethod;
 			stInvoke.months = stObj.months;
 			arrayAppend(request.aInvocations,stInvoke);
-		</cfscript>
+		</cfscript> --->
 		</cfif>					
 	</cffunction> 
 

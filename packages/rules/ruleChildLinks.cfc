@@ -28,7 +28,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 --->
 
-<cfcomponent displayname="Child Links Rule" extends="farcry.core.packages.rules.rules" 
+<cfcomponent displayname="Utility: Child Links Rule" extends="farcry.core.packages.rules.rules" 
 	hint="List teaser displays for the current navigation folders children.  
 		Children content types are restricted to dmHTML, dmLink and dmInclude. 
 		This publishing rule is commonly used on section landing pages to 
