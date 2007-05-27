@@ -22,14 +22,14 @@ $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent displayname="News Rule" extends="farcry.core.packages.rules.rules" 
+<cfcomponent displayname="News: Listing Rule" extends="farcry.core.packages.rules.rules" 
 	hint="News rule publishes news content items in date order, with 
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 
 		c) time is before the expriy date, and; d) it matches the nominated 
-		categories." bObjectBroker="true" lObjectBrokerWebskins="execute">
+		categories." bObjectBroker="true">
 
-	<cfproperty ftSeq="1" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserBullets" ftType="webskin" ftprefix="displayTeaser" ftLabel="Display Method" />
+	<cfproperty ftSeq="1" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserBullets" ftType="webskin" fttypename="dmNews" ftprefix="displayTeaser" ftLabel="Display Method" />
 	<cfproperty ftSeq="4" ftFieldset="General" name="intro" type="string" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Intro Text" />
 	<cfproperty ftSeq="5" ftFieldset="General" name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Suffix Text" />
 	<cfproperty ftSeq="7" ftFieldset="General" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="5" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
@@ -38,116 +38,6 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 	<cfproperty ftSeq="20" ftFieldset="Categorisation" name="bMatchAllKeywords" type="boolean" hint="Does the content need to match ALL selected keywords?" required="false" default="false" ftType="boolean" ftLabel="Does the content need to match ALL the selected Keywords?" />
   <cfproperty ftseq="25" ftfieldset="Categorisation" name="metadata" type="string" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="root" ftlabel="Selected Categories" />
 
-<!---
-<cfproperty name="intro" type="string" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="no" default="">
-<cfproperty name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="yes" default="displayteaserbullets">
-<cfproperty name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="no" default="">
-<cfproperty name="numItems" hint="The number of items to display per page." type="numeric" required="true" default="5">
-<cfproperty name="bArchive" hint="Display News as an archive (ie. paginated display)." type="boolean" required="true" default="0">
-<cfproperty name="numPages" hint="The number of pages of news articles to display at most (when bArchive is flagged as true)." type="numeric" required="true" default="1">
-<cfproperty name="bMatchAllKeywords" hint="Does the content need to match ALL selected keywords?" type="boolean" required="false" default="0">
-<cfproperty name="metadata" type="string" hint="A list of categories that the news content must match in order to be shown." required="false" default="">
-
-	<cffunction access="public" name="update" output="true">
-		<cfargument name="objectID" required="Yes" type="uuid" default="">
-		<cfargument name="label" required="no" type="string" default="">
-
-		<cfset var stLocal = StructNew()> 		
-		<cfset var stObj = this.getData(arguments.objectid)>
-<cfsetting enablecfoutputonly="true">
-		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/core/tags/display/" prefix="display">
-		<cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
-		
-		<cfparam name="form.bArchive" default="0">
-		<cfparam name="form.bMatchAllKeywords" default="0">
-		<cfparam name="lSelectedCategoryID" default="">
-		<cfparam name="bRestrictByCategory" default="0">
-		
-		<cfif isDefined("form.updateRuleNews")>
-			<cfif bRestrictByCategory EQ 0>
-				<cfset lSelectedCategoryID = "">
-			</cfif>
-			<cfset stObj.displayMethod = form.displayMethod>
-			<cfset stObj.intro = form.intro>
-			<cfset stObj.suffix = form.suffix>
-			<cfset stObj.numItems = form.numItems>
-			<cfset stObj.numPages = form.numPages>
-			<cfset stObj.bArchive = form.bArchive>
-			<cfset stObj.bMatchAllKeywords = form.bMatchAllKeywords>
-			<cfset stObj.metadata = lSelectedCategoryID>
-
-			<q4:contentobjectdata typename="#application.rules.ruleNews.rulePath#" stProperties="#stObj#" objectID="#stObj.objectID#">
-			<!--- Now assign the metadata --->
-			<cfset stLocal.successMessage = "#application.adminBundle[session.dmProfile.locale].updateSuccessful#">
-		<cfelse>
-			<cfset lSelectedCategoryID = stObj.metadata>
-			<cfif stObj.metadata NEQ "">
-				<cfset bRestrictByCategory = 1>
-			</cfif>
-		</cfif>
-<cfoutput>
-<form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em">
-<fieldset><cfif StructKeyExists(stLocal,"successmessage")>
-	<p id="fading1" class="fade"><span class="success">#stLocal.successmessage#</span></p></cfif>
-	
-	<widgets:displayMethodSelector typeName="dmNews" prefix="displayTeaser">
-
-	<label for="intro"><b>#application.adminBundle[session.dmProfile.locale].introText#</b>
-		<textarea id="intro" name="intro">#stObj.intro#</textarea><br />
-	</label>
-	<label for="suffix"><b><!---#application.adminBundle[session.dmProfile.locale].suffix# --->Suffix</b>
-		<textarea id="suffix" name="suffix">#stObj.suffix#</textarea><br />
-	</label>
-
-	<label for="numItems"><b>## #application.adminBundle[session.dmProfile.locale].itemsPerPage#</b>
-		<input type="text" id="numItems" name="numItems" value="#stObj.numItems#" size="3" maxlength="3"><br />
-	</label>
-
-	<label for="bArchive"><b>#application.adminBundle[session.dmProfile.locale].displayAsArchive#</b>
-		<input type="checkbox" id="bArchive" name="bArchive" value="1"<cfif stObj.bArchive> checked="checked"</cfif>><br />
-	</label>
-
-	<label for="numPages"><b>#application.adminBundle[session.dmProfile.locale].maxArchivePages#</b>
-		<input type="text" id="numPages" name="numPages" value="#stObj.numPages#" size="3" maxlength="3"><br />
-	</label>
-
-	<label for="bRestrictByCategory"><b>#application.adminBundle[session.dmProfile.locale].restrictByCategories#</b>
-		<input type="checkbox" id="bRestrictByCategory" name="bRestrictByCategory" value="1"<cfif bRestrictByCategory EQ 1> checked="checked"</cfif> onclick="fShowHide('tglCategory',this.checked);"><br />
-	</label>
-
-	<span id="tglCategory" style="display:<cfif bRestrictByCategory>block<cfelse>none</cfif>;">
-	<label for="bMatchAllKeywords"><b>#application.adminBundle[session.dmProfile.locale].contentNeedToMatchKeywords#</b>
-		<input type="checkbox" id="bMatchAllKeywords" name="bMatchAllKeywords" value="1" <cfif stObj.bMatchAllKeywords>checked="checked"</cfif>><br />
-	</label>
-	<widgets:categoryAssociation typeName="dmNews" lSelectedCategoryID="#stObj.metaData#">
-	</span>
-	
-<div class="f-submit-wrap">
-	<input type="Submit" name="updateRuleNews" value="#application.adminBundle[session.dmProfile.locale].go#" class="f-submit" />		
-</div>
-<input type="hidden" name="ruleID" value="#stObj.objectID#">
-</fieldset>
-</form></cfoutput>
-<cfsetting enablecfoutputonly="true">
-	</cffunction>
-
-	<cffunction name="getDefaultProperties" returntype="struct" access="public">
-		<cfset var stProps = structNew()>
-		<cfscript>
-			stProps=structNew();
-			stProps.objectid = createUUID();
-			stProps.label = '';
-			stProps.displayMethod = 'displayTeaserBullets';
-			stProps.numPages = 1;
-			stProps.numItems = 5;
-			stProps.bArchive = 0;
-			stProps.bMatchAllKeywords = 0;
-			stProps.metadata = '';
-		</cfscript>
-		<cfreturn stProps>
-	</cffunction>
---->
 
 	<cffunction access="public" name="execute" output="true">
 		<cfargument name="objectID" required="Yes" type="uuid" default="">

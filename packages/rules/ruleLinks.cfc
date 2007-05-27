@@ -1,4 +1,4 @@
-<cfcomponent displayname="External Links Rule" extends="farcry.core.packages.rules.rules" hint="Method for displaying dmLink objects">
+<cfcomponent displayname="Links: Link Listing Rule" extends="farcry.core.packages.rules.rules" hint="Method for displaying dmLink objects">
 
 <cfproperty name="intro" type="string" hint="Intro text for the link listing" required="no" default="">
 <cfproperty name="displayMethod" type="string" hint="Display method to render this link rule with." required="yes" default="displayteaser">
