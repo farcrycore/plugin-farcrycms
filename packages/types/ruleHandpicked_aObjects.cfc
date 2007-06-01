@@ -10,7 +10,7 @@
 	
 		<cfset var qWebskins = queryNew("init") />
 		<cfset var rqWebskins = queryNew("init") />
-		<cfset var st = createObject("component", application.stcoapi["ruleMyHandpicked_aObjects"].packagePath).getData(objectid=arguments.objectid) />
+		<cfset var st = createObject("component", application.stcoapi["ruleHandpicked_aObjects"].packagePath).getData(objectid=arguments.objectid) />
 		<cfset var handpickedTypename = application.coapi.COAPIADMIN.findType(objectid=st.data) />
 		<cfset var stHandpickedObject = createObject("component", application.stcoapi["#handpickedTypename#"].packagePath).getData(objectid=st.data) />
 		

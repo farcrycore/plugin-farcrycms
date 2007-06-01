@@ -9,8 +9,8 @@
 <wiz:processwizard excludeAction="Cancel">
 
 	<!--- Save any Types submitted (including any new ones) --->
-	<wiz:processWizardObjects typename="ruleMyHandpicked" />
-	<wiz:processWizardObjects typename="ruleMyHandpicked_aObjects" />
+	<wiz:processWizardObjects typename="ruleHandpicked" />
+	<wiz:processWizardObjects typename="ruleHandpicked_aObjects" />
 </wiz:processwizard>
 
 <wiz:processwizard action="Save" Savewizard="true" Exit="true" /><!--- Save wizard Data to Database and remove wizard --->
