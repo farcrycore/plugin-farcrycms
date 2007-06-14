@@ -28,7 +28,7 @@ type properties
 <cfproperty ftseq="4" ftfieldset="Event Overview" ftwizardStep="General Details" name="Location" type="string" hint="Location of event" required="no" default="" fttype="longchar" ftLabel="Location" />
 <cfproperty ftseq="5" ftfieldset="Event Overview" ftwizardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
-<cfproperty ftseq="11" ftfieldset="Categorisation" ftwizardStep="General Details" name="catEvent" type="string" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmevent" ftlabel="Event Category" />
+<cfproperty ftseq="11" ftfieldset="Categorisation" ftwizardStep="General Details" name="catEvent" type="longchar" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmevent" ftlabel="Event Category" />
 
 <cfproperty ftseq="21" ftfieldset="Publishing Details" ftwizardStep="General Details" name="publishDate" type="date" hint="The date that a event object is sent live and appears on the public website" required="no" default=""ftDefaultType="Evaluate" ftDefault="now()" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="Publish Date" />
 <cfproperty ftseq="22" ftfieldset="Publishing Details" ftwizardStep="General Details" name="expiryDate" type="date" hint="The date that a event object is removed from the web site" required="no" default=""ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true" ftlabel="Expiry Date" />

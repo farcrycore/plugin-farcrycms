@@ -36,7 +36,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 	<cfproperty ftSeq="10" ftFieldset="General" name="bArchive" type="boolean" hint="Display News as an archive (ie. paginated display)." required="true" default="false" ftType="boolean" ftLabel="Display with pagination?" />
 	<cfproperty ftSeq="12" ftFieldset="General" name="numPages" type="numeric" hint="The number of pages of news articles to display at most (when bArchive is flagged as true)." required="true" default="1" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="How many pages would you like in the archive at most?" />
 	<cfproperty ftSeq="20" ftFieldset="Categorisation" name="bMatchAllKeywords" type="boolean" hint="Does the content need to match ALL selected keywords?" required="false" default="false" ftType="boolean" ftLabel="Does the content need to match ALL the selected Keywords?" />
-  <cfproperty ftseq="25" ftfieldset="Categorisation" name="metadata" type="string" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="root" ftlabel="Selected Categories" />
+  <cfproperty ftseq="25" ftfieldset="Categorisation" name="metadata" type="longchar" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="root" ftlabel="Selected Categories" />
 
 
 	<cffunction access="public" name="execute" output="true">
