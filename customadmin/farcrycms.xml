@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <webtop>
-	<section id="content" permission="MainNavContentTab" label="application.adminBundle[session.dmProfile.locale].content" labelType="evaluate">
+	<section mergeType="merge" id="content">
 		<subsection id="farcrycmssubsection" sequence="5" sidebar="content/sidebar.cfm" content="inc/content_overview.html" label="application.adminBundle[session.dmProfile.locale].dynamicContent" labelType="evaluate">
 			<menu id="farcrycmsmenu" sequence="10" label="application.adminBundle[session.dmProfile.locale].contenttype" labelType="evaluate">
 				<menuitem id="listdmnews" sequence="10" label="application.adminBundle[session.dmProfile.locale].news" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmNews.cfm" />
