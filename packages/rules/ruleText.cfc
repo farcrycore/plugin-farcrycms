@@ -72,7 +72,14 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 	
 	<cfset var stObj = getData(arguments.objectid) /> 
 	<cfset var blurb = stObj.text />
-
+	
+	<!--- 
+		If there is a title, make sure to display it
+	 --->
+	<cfif len(trim(stObj.title))>
+		<cfset arrayAppend(request.aInvocations,stObj.title) />
+	</cfif>
+	
 	<cfif len(trim(blurb))>
 		<cfset arrayAppend(request.aInvocations,blurb) />
 	</cfif>
