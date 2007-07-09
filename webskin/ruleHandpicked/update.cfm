@@ -6,14 +6,25 @@
 
 <!--- PROCESS WIZARD SUBMISSION --->
 <!--- Always save wizard WDDX data --->
+
+
 <wiz:processwizard excludeAction="Cancel">
 
 	<!--- Save any Types submitted (including any new ones) --->
 	<wiz:processWizardObjects typename="ruleHandpicked" />
-	<wiz:processWizardObjects typename="ruleHandpicked_aObjects" />
+	<ft:processFormObjects typename="ruleHandpicked_aObjects" />
+	
 </wiz:processwizard>
 
-<wiz:processwizard action="Save" Savewizard="true" Exit="true" /><!--- Save wizard Data to Database and remove wizard --->
+
+<!--- Save Wizard Data manually to avoid overriding the extended array table data --->
+<wiz:processWizard action="Save" RemoveWizard="true" Exit="true">
+	<cfset stProperties = stWizard.data[stobj.objectid] />
+	<cfset structDelete(stProperties, "aObjects") />
+	<cfset stResult = setData(stProperties=stProperties)>
+	
+</wiz:processWizard>
+
 <wiz:processwizard action="Cancel" Removewizard="true" Exit="true" /><!--- remove wizard --->
 
 
@@ -41,14 +52,14 @@
 				</cfoutput>
 					
 				<cfloop from="1" to="#arrayLen(stWizard.data[stobj.objectid].aObjects)#" index="i">
-					
+
 					<cfset oType = createObject("component", application.stcoapi["#stWizard.data[stobj.objectid].aObjects[i].typename#"].packagePath) />
 					<cfset teaserHTML = oType.getView(objectid=stWizard.data[stobj.objectid].aObjects[i].data, template="librarySelected", alternateHTML="") />
 					<cfif not len(teaserHTML)>
 						<cfset st = oType.getData(objectid=stWizard.data[stobj.objectid].aObjects[i].data) />
 						<cfset teaserHTML = st.label />
 					</cfif>
-					<wiz:object objectid="#stWizard.data[stobj.objectid].aObjects[i].objectid#" wizardID="#stWizard.ObjectID#" lfields="webskin" r_stFields="stFields" />
+					<ft:object objectid="#stWizard.data[stobj.objectid].aObjects[i].objectid#" lfields="webskin" r_stFields="stFields" />
 					
 					
 					<cfoutput>
