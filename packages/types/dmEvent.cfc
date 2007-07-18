@@ -41,7 +41,7 @@ type properties
 			fthelpsection="Teaser images can only be selected from the pool of associated media images. You must add to the media library before selecting." />
 <cfproperty ftseq="42" ftfieldset="Event Teaser" ftwizardStep="Event Details" name="teaser" type="longchar" hint="Teaser text." required="no" default="" ftLabel="Teaser Text" />
 
-<cfproperty ftseq="51" ftfieldset="Related Content" ftwizardStep="Event Details" name="aObjectIDs" type="array" hint="Mixed type children objects that sit underneath this object" required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" />
+<cfproperty ftseq="51" ftfieldset="Related Content" ftwizardStep="Event Details" name="aObjectIDs" type="array" hint="Mixed type children objects that sit underneath this object" required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true" />
 
 <!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
