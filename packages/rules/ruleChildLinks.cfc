@@ -136,7 +136,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 				<cfif len(stCurrentNav.externalLink)>
 					<!--- get sim link details --->
 					<cftry>
-						<cfset stCurrentNav = oNav.getData(objectid=qGetChildren.objectID) />
+						<cfset stCurrentNav = oNav.getData(objectid=stCurrentNav.externalLink) />
 						<!--- <q4:contentobjectget objectid="#stCurrentNav.externalLink#" r_stobject="stCurrentNav"> --->
 						<cfcatch></cfcatch>
 					</cftry>
