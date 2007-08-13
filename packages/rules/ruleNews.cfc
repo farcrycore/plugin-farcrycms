@@ -29,7 +29,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 		c) time is before the expriy date, and; d) it matches the nominated 
 		categories." bObjectBroker="true">
 
-	<cfproperty ftSeq="1" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserBullets" ftType="webskin" fttypename="dmNews" ftprefix="displayTeaser" ftLabel="Display Method" />
+	<cfproperty ftSeq="1" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserStandard" ftType="webskin" fttypename="dmNews" ftprefix="displayTeaser" ftLabel="Display Method" />
 	<cfproperty ftSeq="4" ftFieldset="General" name="intro" type="string" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Intro Text" />
 	<cfproperty ftSeq="5" ftFieldset="General" name="suffix" type="string" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftType="string" ftLabel="Suffix Text" />
 	<cfproperty ftSeq="7" ftFieldset="General" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="5" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
