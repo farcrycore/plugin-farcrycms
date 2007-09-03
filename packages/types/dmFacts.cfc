@@ -1,22 +1,9 @@
-<!--- 
-|| LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au $
-$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
-
-|| VERSION CONTROL ||
-$Header: $
-$Author: $
-$Date: $
-$Name: $
-$Revision: $
-
-|| DESCRIPTION || 
-$Description: dmFacts Type $
-
-|| DEVELOPER ||
-$Developer: Geoff Bowers (modius@daemon.com.au) $
---->
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Facts" hint="A fact snippet that belongs to a fact collection." bSchedule="true" bObjectBroker="true">
+<!--- @@Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au --->
+<!--- @@License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php --->
+<!--- @@displayname: Fact Content Type --->
+<!--- @@Description: Records facts, testimonials and the like. --->
+<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Fact" hint="Records facts, testimonials and the like." bSchedule="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
