@@ -1,25 +1,11 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- 
-|| LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
-$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
+<!--- @@Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au --->
+<!--- @@License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php --->
+<!--- @@displayname: Standard News Display --->
+<!--- @@Description: Full page display for News content. --->
+<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
 
-|| VERSION CONTROL ||
-$Header: /home/cvsuser/cvs/agora/webskin/dmNews/displayPageStandard.cfm,v 1.1 2006/02/15 00:15:51 daniela Exp $
-$Author: daniela $
-$Date: 2006/02/15 00:15:51 $
-$Name: HEAD $
-$Revision: 1.1 $
-
-|| DESCRIPTION || 
-$Description: dmNews -- standard listing $
-$TODO: $
-
-|| DEVELOPER ||
-$Developer: Daniela Milton (daniela@daemon.com.au) $
---->
-<!--- @@displayname: Standard Page --->
-
+<!--- import tag libraries --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
 <cfimport taglib="/farcry/core/tags/container" prefix="con">
 
@@ -36,6 +22,7 @@ $Developer: Daniela Milton (daniela@daemon.com.au) $
 	</div>
 	<h1>#stObj.Title#</h1>
 	#stObj.Body#
+</div>
 </cfoutput>
 
 <!--- include standard footers --->
