@@ -1,21 +1,8 @@
-<!--- 
-|| LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au $
-$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
-
-|| VERSION CONTROL ||
-$Header: $
-$Author: $
-$Date: $
-$Name: $
-$Revision: $
-
-|| DESCRIPTION || 
-$Description: dmLink Type $
-
-|| DEVELOPER ||
-$Developer: Geoff Bowers (modius@daemon.com.au) $
---->
+<!--- @@Copyright: Daemon Pty Limited 1995-2007, http://www.daemon.com.au --->
+<!--- @@License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php --->
+<!--- @@displayname: Link Content Type --->
+<!--- @@Description: Records links to external web assets. --->
+<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
 <cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="true" bUseInTree="true" bFriendly="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
