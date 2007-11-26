@@ -114,7 +114,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 		
 		
 		<!--- get the children of this object --->
-		<cfset qGetChildren = request.factory.oTree.getChildren(objectid=request.navid) />
+		<cfset qGetChildren = application.factory.oTree.getChildren(objectid=request.navid) />
 		
 		<!--- if the intro text exists - append to aInvocations to be output as HTML --->
 		<cfif len(stObj.intro) GT 0>
