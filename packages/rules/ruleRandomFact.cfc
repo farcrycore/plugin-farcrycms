@@ -21,98 +21,13 @@ $
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
 
-<cfcomponent displayname="Facts: Random Fact Rule" extends="farcry.core.packages.rules.rules" 
-	hint="Publishing rule to randomly show a number of fact content items from 
-		a pool of fact items.  The pool is comprised of those content items that 
-		match the nominated categories.">
-
-<cfproperty name="intro" type="string" hint="Intro text for random fact displays.  Can be any combination of content and HTML markup." required="no" default="">
-<cfproperty name="displayMethod" type="string" hint="Display method to render fact content items." required="yes" default="displayteaserbullets">
-<cfproperty name="numItems" hint="The number of fact items to display." type="numeric" required="true" default="1">
-<cfproperty name="metadata" type="string" hint="A list of categories that the fact content pool must match in order to be shown." required="false" default="">
-<cfproperty name="bMatchAllKeywords" hint="Does the content need to match ALL selected keywords?" type="boolean" required="false" default="0">
-
-	<cffunction access="public" name="update" output="true">
-		<cfargument name="objectID" required="Yes" type="uuid" default="">
-		<cfargument name="label" required="no" type="string" default="">
-		<cfset var stLocal = StructNew()>
-		<cfset var stObj = this.getData(arguments.objectid)> 
-		
-<cfsetting enablecfoutputonly="Yes">		
-		<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
-        <cfimport taglib="/farcry/core/tags/display/" prefix="display">				
-        <cfimport taglib="/farcry/core/tags/widgets/" prefix="widgets">
-
-		<cfparam name="form.bMatchAllKeywords" default="0">
-		<cfparam name="lSelectedCategoryID" default="">
-		<cfparam name="bRestrictByCategory" default="0">
-		
-		<cfif isDefined("form.updateRuleNews")>
-			<cfif bRestrictByCategory EQ 0>
-				<cfset lSelectedCategoryID = "">
-			</cfif>
-			<cfset stObj.displayMethod = form.displayMethod>
-			<cfset stObj.intro = form.intro>
-			<cfset stObj.numItems = form.numItems>
-			<cfset stObj.bMatchAllKeywords = form.bMatchAllKeywords>
-			<cfset stObj.metadata = lSelectedCategoryID>
-			<q4:contentobjectdata typename="#application.rules.ruleRandomFact.rulePath#" stProperties="#stObj#" objectID="#stObj.objectID#">
-			<!--- Now assign the metadata --->
-			<cfset stLocal.successMessage = "#application.adminBundle[session.dmProfile.locale].updateSuccessful#">
-		<cfelse>
-			<cfset lSelectedCategoryID = stObj.metadata>
-			<cfif stObj.metadata NEQ "">
-				<cfset bRestrictByCategory = 1>
-			</cfif>
-		</cfif>
-
-<cfoutput>
-<form name="editform" action="#cgi.script_name#?#cgi.query_string#" method="post" class="f-wrap-2" style="margin-top:-1.5em">
-<fieldset><cfif StructKeyExists(stLocal,"successmessage")>
-	<p id="fading1" class="fade"><span class="success">#stLocal.successmessage#</span></p></cfif>
-
-	<widgets:displayMethodSelector typeName="dmFacts" prefix="displayTeaser">
-
-	<label for="intro"><b>#application.adminBundle[session.dmProfile.locale].introText#</b>
-		<textarea id="intro" name="intro">#stObj.intro#</textarea><br />
-	</label>
-
-	<label for="numItems"><b>## #application.adminBundle[session.dmProfile.locale].itemsPerPage#</b>
-		<input type="text" id="numItems" name="numItems" value="#stObj.numItems#" size="3" maxlength="3"><br />
-	</label>
-
-	<label for="bRestrictByCategory"><b>#application.adminBundle[session.dmProfile.locale].restrictByCategories#</b>
-		<input type="checkbox" id="bRestrictByCategory" name="bRestrictByCategory" value="1"<cfif bRestrictByCategory EQ 1> checked="checked"</cfif> onclick="fShowHide('tglCategory',this.checked);"><br />
-	</label>
-
-	<span id="tglCategory" style="display:<cfif bRestrictByCategory>block<cfelse>none</cfif>;">
-	<label for="bMatchAllKeywords"><b>#application.adminBundle[session.dmProfile.locale].contentNeedToMatchKeywords#</b>
-		<input type="checkbox" id="bMatchAllKeywords" name="bMatchAllKeywords" value="1" <cfif stObj.bMatchAllKeywords>checked="checked"</cfif>><br />
-	</label>
-	<widgets:categoryAssociation typeName="dmFacts" lSelectedCategoryID="#stObj.metaData#">
-	</span>
-
-<div class="f-submit-wrap">
-	<input type="Submit" name="updateRuleNews" value="#application.adminBundle[session.dmProfile.locale].go#" class="f-submit" />		
-</div>
-	<input type="hidden" name="ruleID" value="#stObj.objectID#">
-</fieldset>
-</form></cfoutput>
-<cfsetting enablecfoutputonly="no">
-	</cffunction>
+<cfcomponent displayname="Facts: Random Fact Rule" extends="farcry.core.packages.rules.rules" hint="Publishing rule to randomly show a number of fact content items from a pool of fact items.  The pool is comprised of those content items that match the nominated categories.">
+	<cfproperty name="displayMethod" type="string" default="displayTeaser" hint="Display method to render fact content items" ftSeq="1" ftFieldset="" ftLabel="Display method" ftType="webskin" ftTypename="dmFact" ftPrefix="displayTeaser" />
+	<cfproperty name="intro" type="string" default="" hint="Intro test for random fact displays. Can be any combination of content and HTML markup." ftSeq="2" ftFieldset="" ftLabel="Intro" ftType="longchar" />
+	<cfproperty name="numItems" type="numeric" default="1" hint="The number of fact items to display" ftSeq="3" ftFieldset="" ftLabel="Items per page" ftType="integer" />
+	<cfproperty name="bMatchAllKeywords" type="boolean" default="0" hint="Does the content need to match ALL selected categories" ftSeq="4" ftFieldset="" ftLabel="Match all keywords" ftType="boolean" />
+	<cfproperty name="metadata" type="longchar" default="" hint="A list of category ObjectIDs that the content is to be drawn from" ftSeq="5" ftFieldset="" ftLabel="Categories" ftType="category" />
 	
-	<cffunction name="getDefaultProperties" returntype="struct" access="public">
-		<cfscript>
-			stProps=structNew();
-			stProps.objectid = createUUID();
-			stProps.label = '';
-			stProps.displayMethod = 'displayteaser';
-			stProps.numItems = 1;
-			stProps.metadata = '';
-		</cfscript>	
-		<cfreturn stProps>
-	</cffunction>  
-
 	<cffunction access="public" name="execute" output="true">
 		<cfargument name="objectID" required="Yes" type="uuid" default="">
 		<cfargument name="dsn" required="false" type="string" default="#application.dsn#">
