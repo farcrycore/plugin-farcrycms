@@ -1,5 +1,5 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@displayname: Links rule execute --->
+<!--- @@displayname: Execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin" />
 
