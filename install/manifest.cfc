@@ -9,18 +9,6 @@
 	<cfset this.lRequiredPlugins = "" />
 	<cfset addSupportedCore(majorVersion="5", minorVersion="0", patchVersion="0") />
 	
-	
-	<cffunction name="install">
-		
-		<cfset var result = "" />
-		
-		
-		
-		<cfreturn result />
-	</cffunction>
-	
-	
-	
 
 </cfcomponent>
 
