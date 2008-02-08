@@ -13,7 +13,7 @@ type properties
 <cfproperty ftseq="4" ftfieldset="Link Information" name="link" type="string" hint="Url of link" required="no" default="" ftlabel="Link" fttype="url" ftvalidation="required" />
 <cfproperty ftseq="5" ftfieldset="Link Information" name="displayMethod" type="string" hint="Display method to render this link object with." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
-<cfproperty ftseq="30" ftfieldset="Categorisation" name="catLink" type="longchar" hint="Link categorisation." required="no" default="" fttype="category" ftalias="dmlink" ftlabel="Link Category" />
+<cfproperty ftseq="30" ftfieldset="Categorisation" name="catLink" type="longchar" hint="Link categorisation." required="no" default="" fttype="category" ftalias="dmLink" ftlabel="Link Category" />
 
 <!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
@@ -26,7 +26,7 @@ type properties
 	<cfif len(stObj.link)>
 		<cflocation url="#stObj.link#" addtoken="No" />
 	<cfelse>
-		<cfthrow type="types.dmlink" message="No link available." detail="dmLink requires a valid URL for the link property in order to redirect." />
+		<cfthrow type="types.dmLink" message="No link available." detail="dmLink requires a valid URL for the link property in order to redirect." />
 	</cfif>
 
 </cffunction>
