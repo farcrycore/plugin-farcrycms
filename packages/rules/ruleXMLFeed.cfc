@@ -25,14 +25,6 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 	<cfproperty ftSeq="2" ftFieldset="" name="XMLFeedURL" type="string" default="" hint="The location of the feed (URL)" ftLabel="Feed URL" ftType="string" />
 	<cfproperty ftSeq="3" ftFieldset="" name="intro" type="string" default="" hint="An introduction to this feed" ftLabel="Introduction" ftType="longchar" />
 	<cfproperty ftSeq="4" ftFieldset="" name="maxRecords" type="numeric" default="20" hint="The maximum number of records to return to the user" ftLabel="Max. records" ftType="integer" />
-
-	<cffunction access="public" name="execute" output="false">
-		<cfargument name="objectID" required="Yes" type="uuid" default="">
-		<cfargument name="dsn" required="false" type="string" default="#application.dsn#">
-		<cfset var stObj = getData(arguments.objectid)> 
-		
-		<cfsetting enablecfoutputonly="No">
-	</cffunction> 
 	
 </cfcomponent>
 
