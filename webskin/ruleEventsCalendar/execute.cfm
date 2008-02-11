@@ -1,6 +1,8 @@
 <cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Events calendar rule execute --->
 
+<cfimport taglib="/farcry/core/tags/webskin" prefix="prefix" />
+
 <cfif application.dbtype eq "mysql">
 	<!--- create temp table for status --->
 	<cfquery datasource="#arguments.dsn#" name="temp">
