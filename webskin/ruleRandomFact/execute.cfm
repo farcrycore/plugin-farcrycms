@@ -1,5 +1,5 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@displayname: Execute --->
+<!--- @@displayname: Random Fact Rule execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin" />
 
