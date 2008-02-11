@@ -1,6 +1,8 @@
 <cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Display page child links --->
 
+<cfimport taglib="/farcry/core/tags/webskin" prefix="prefix" />
+
 <cfset var oNav = CreateObject("component", application.stcoapi.dmNavigation.packagepath) /> 
 
 
@@ -13,9 +15,7 @@
 
 <!--- if the intro text exists - append to aInvocations to be output as HTML --->
 <cfif len(stObj.intro) GT 0>
-	<cfscript>
-		arrayAppend(request.aInvocations,stObj.intro);
-	</cfscript>
+	<cfoutput>#stObj.intro#</cfoutput>
 </cfif>
 
 <cfif qGetChildren.recordcount GT 0>
@@ -62,18 +62,8 @@
 					</cfif>
 				</cfif>
 				
-				<cfset html =  o.getView(stobject=stObjTemp, template="#stObj.displayMethod#", alternateText="webskin does not exist") />
-				<cfset arrayAppend(request.aInvocations,html) />
-				<!--- 
-				<cfscript>
-					// populate the invoke structure for the container
-				 	stInvoke = structNew();
-					stInvoke.objectID = objID;
-					stInvoke.typename = application.types[stObjTemp.typename].typePath;
-					stInvoke.method = stObj.displayMethod; // nb. from rule
-					// append to aInvocations
-					arrayAppend(request.aInvocations,stInvoke);
-				</cfscript> --->
+				<skin:view stObject="#stObjTemp#" webskin="#stObj.displaymethod#" />
+
 				<cfbreak>
 			</cfif>
 		</cfloop>
