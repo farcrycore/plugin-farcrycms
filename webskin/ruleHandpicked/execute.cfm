@@ -1,5 +1,5 @@
 <cfsetting enablecfoutputonly="yes" />
-
+<!--- @@displayname: Handpicked rule execute --->
 
 <cfif arrayLen(stobj.aObjects)>
 	<cfloop from="1" to="#arrayLen(stobj.aObjects)#" index="i">
