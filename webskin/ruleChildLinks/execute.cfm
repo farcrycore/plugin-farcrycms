@@ -1,9 +1,9 @@
 <cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Display page child links --->
 
-<cfimport taglib="/farcry/core/tags/webskin" prefix="prefix" />
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
-<cfset var oNav = CreateObject("component", application.stcoapi.dmNavigation.packagepath) /> 
+<cfset oNav = CreateObject("component", application.stcoapi.dmNavigation.packagepath) /> 
 
 
 <!--- assumes existance of request.navid  --->
@@ -61,7 +61,7 @@
 						<cfset stObjTemp = o.getData(objectid=qHasDraft.objectid) />
 					</cfif>
 				</cfif>
-				
+				<!--- <cfdump var="#stObjTemp#" /><cfexit /> --->
 				<skin:view stObject="#stObjTemp#" webskin="#stObj.displaymethod#" />
 
 				<cfbreak>
