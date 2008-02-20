@@ -1,8 +1,7 @@
 <cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Display page child links --->
 
-<cfimport taglib="/farcry/core/tags/webskin" prefix="prefix" />
-<cfimport taglib="/farcry/core/tags/webskin/" prefix="skin" />
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
 <cfset oNav = CreateObject("component", application.stcoapi.dmNavigation.packagepath) /> 
 
