@@ -34,14 +34,14 @@ type properties
 <cfproperty ftseq="22" ftfieldset="Publishing Details" ftwizardStep="General Details" name="expiryDate" type="date" hint="The date that a event object is removed from the web site" required="no" default=""ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true" ftlabel="Expiry Date" />
 
 <!--- wiz: Event Details --->
-<cfproperty ftseq="31" ftfieldset="Event Description" ftwizardStep="Event Details" name="body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content" ftTemplateTypeList="dmImage,dmFile,dmFlash" />
-
-<cfproperty ftseq="41" ftfieldset="Event Teaser" ftwizardStep="Event Details" name="teaserImage" type="uuid" hint="UUID of image to display in teaser" required="no" default="" fttype="uuid" ftjoin="dmImage" ftlabel="Teaser Image"
+<cfproperty ftseq="31" ftfieldset="Event Teaser" ftwizardStep="Event Details" name="teaserImage" type="uuid" hint="UUID of image to display in teaser" required="no" default="" fttype="uuid" ftjoin="dmImage" ftlabel="Teaser Image"
 			fthelptitle="Teaser Requirements"
 			fthelpsection="Teaser images can only be selected from the pool of associated media images. You must add to the media library before selecting." />
-<cfproperty ftseq="42" ftfieldset="Event Teaser" ftwizardStep="Event Details" name="teaser" type="longchar" hint="Teaser text." required="no" default="" ftLabel="Teaser Text" />
+<cfproperty ftseq="32" ftfieldset="Event Teaser" ftwizardStep="Event Details" name="teaser" type="longchar" hint="Teaser text." required="no" default="" ftLabel="Teaser Text" />
 
-<cfproperty ftseq="51" ftfieldset="Related Content" ftwizardStep="Event Details" name="aObjectIDs" type="array" hint="Mixed type children objects that sit underneath this object" required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true" />
+<cfproperty ftseq="33" ftfieldset="Event Description" ftwizardStep="Event Details" name="body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content" ftTemplateTypeList="dmImage,dmFile,dmFlash" />
+
+<cfproperty ftseq="41" ftfieldset="Related Content" ftwizardStep="Event Details" name="aObjectIDs" type="array" hint="Mixed type children objects that sit underneath this object" required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true" />
 
 <!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
