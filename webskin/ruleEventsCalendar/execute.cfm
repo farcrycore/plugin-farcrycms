@@ -1,7 +1,7 @@
 <cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Events calendar rule execute --->
 
-<cfimport taglib="/farcry/core/tags/webskin" prefix="prefix" />
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
 <cfif application.dbtype eq "mysql">
 	<!--- create temp table for status --->
@@ -130,6 +130,8 @@
 		</cfdefaultcase>
 	</cfswitch>
 </cfif>
+
+
 
 <cfif len(trim(stObj.intro)) AND qGetEvents.recordCount>
 	#stObj.intro#
