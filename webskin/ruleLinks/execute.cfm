@@ -8,7 +8,7 @@
 	<cfquery datasource="#arguments.dsn#" name="qGetCount">
 		SELECT		objectID
 		FROM		#application.dbowner#dmLink
-		ORDER by	startDate ASC
+		ORDER BY datetimelastupdated DESC
 	</cfquery>
 	<cfset maximumRows = qGetCount.recordcount>
 <cfelse>
@@ -23,7 +23,7 @@
 			<cfif stObj.bMatchAllKeywords>
 				<!--- must match all categories --->
 				<cfquery datasource="#arguments.dsn#" name="qGetLinks" maxrows="#maximumRows#">
-					SELECT DISTINCT type.objectID, type.publishDate,type.startDate, type.label
+					SELECT DISTINCT type.objectID, type.label
 					    FROM dmLink type, refCategories refCat1
 					<!--- if more than one category make join for each --->
 					<cfif listLen(stObj.metadata) gt 1>
@@ -38,21 +38,19 @@
 							AND refCat#i#.objectId = type.objectId
 						</cfloop>
 						AND type.status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-						AND publishdate <= #now()#
-						AND expirydate >= #now()#
-					ORDER BY type.startDate ASC, type.label ASC
+						
+					ORDER BY datetimelastupdated DESC
 				</cfquery>
 			<cfelse>
 				<!--- doesn't need to match all categories --->
 				<cfquery datasource="#arguments.dsn#" name="qGetLinks" maxrows="#maximumRows#">
-					SELECT DISTINCT type.objectID, type.publishDate,type.startDate, type.label
+					SELECT DISTINCT type.objectID, type.label
 					FROM refCategories refCat, dmLink type
 					WHERE refCat.objectID = type.objectID
 						AND refCat.categoryID IN ('#ListChangeDelims(stObj.metadata,"','",",")#')
 						AND type.status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-						AND publishdate <= #now()#
-						AND expirydate >= #now()#
-					ORDER BY type.startDate ASC, type.label ASC
+						
+					ORDER BY datetimelastupdated DESC
 				</cfquery>
 			</cfif>
 		</cfcase>
@@ -61,7 +59,7 @@
 			<cfif stObj.bMatchAllKeywords>
 				<!--- must match all categories --->
 				<cfquery datasource="#arguments.dsn#" name="qGetLinks" maxrows="#maximumRows#">
-					SELECT DISTINCT type.objectID, type.publishDate,type.startDate, type.label
+					SELECT DISTINCT type.objectID, type.label
 					FROM refCategories refcat1
 					<!--- if more than one category make join for each --->
 					<cfif listLen(stObj.metadata) gt 1>
@@ -76,23 +74,21 @@
 							AND refCat#i#.categoryID = '#listGetAt(stObj.metadata,i)#'
 						</cfloop>
 						AND type.status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-						AND publishdate <= #now()#
-						AND expirydate >= #now()#
-					ORDER BY type.startDate ASC, type.label ASC
+						
+					ORDER BY datetimelastupdated DESC
 				</cfquery>
 			<cfelse>
 				<!--- doesn't need to match all categories --->
 				<cfquery datasource="#arguments.dsn#" name="qGetLinks" maxrows="#maximumRows#">
-					SELECT DISTINCT type.objectID, type.publishDate,type.startDate, type.label
+					SELECT DISTINCT type.objectID,type.label
 					FROM refObjects refObj
 					JOIN refCategories refCat ON refObj.objectID = refCat.objectID
 					JOIN dmLink type ON refObj.objectID = type.objectID
 					WHERE refObj.typename = 'dmLink'
 						AND refCat.categoryID IN ('#ListChangeDelims(stObj.metadata,"','",",")#')
 						AND type.status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-						AND publishdate <= #now()#
-						AND expirydate >= #now()#
-					ORDER BY type.startDate ASC, type.label ASC
+					
+					ORDER BY datetimelastupdated DESC
 				</cfquery>
 			</cfif>
 		</cfdefaultcase>
@@ -103,9 +99,8 @@
 		SELECT *
 		FROM #application.dbowner#dmLink links
 		WHERE status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')		
-			AND publishdate <= #now()#
-			AND expirydate >= #now()#
-		ORDER BY startDate ASC
+			
+		ORDER BY datetimelastupdated DESC
 	</cfquery>
 </cfif>
 
@@ -241,6 +236,8 @@
 	</cfif>
 	
 </cfif>
+
+<cfdump var="#qGetLinks#">
 
 <cfoutput>
 	#stObj.suffix#
