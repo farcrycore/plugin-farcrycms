@@ -237,8 +237,6 @@
 	
 </cfif>
 
-<cfdump var="#qGetLinks#">
-
 <cfoutput>
 	#stObj.suffix#
 </cfoutput>
