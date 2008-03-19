@@ -80,7 +80,7 @@
 			<cfelse>
 				<!--- doesn't need to match all categories --->
 				<cfquery datasource="#arguments.dsn#" name="qGetLinks" maxrows="#maximumRows#">
-					SELECT DISTINCT type.objectID,type.label
+					SELECT DISTINCT type.objectID,type.label,datetimelastupdated
 					FROM refObjects refObj
 					JOIN refCategories refCat ON refObj.objectID = refCat.objectID
 					JOIN dmLink type ON refObj.objectID = type.objectID
@@ -118,7 +118,7 @@
 <cfelse>
 
 	<cfparam name="url.pgno" default="1">
-
+	
 	<!--- Get Number of Pages --->
 	<cfset iNumberOfPages = Ceiling(qGetLinks.recordcount / stobj.numitems)>
 	
