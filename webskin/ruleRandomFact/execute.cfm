@@ -96,7 +96,7 @@
 <cfset lRandom = "">
 <cfset counter = 0>
 
-<cfloop condition="#counter# lte #stObj.numItems#">
+<cfloop condition="#qGetFacts.recordcount# and #counter# lte #stObj.numItems#">
 	<cfset random = randrange(1,qGetFacts.recordcount)>
 	<!--- check if first number in list --->
 	<cfif listlen(lRandom)>
