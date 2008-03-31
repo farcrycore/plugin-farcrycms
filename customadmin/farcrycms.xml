@@ -8,6 +8,9 @@
 				<menuitem id="listdmlink" sequence="30" label="application.adminBundle[session.dmProfile.locale].links" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmLink.cfm" />
 				<menuitem id="listdmfact" sequence="40" label="application.adminBundle[session.dmProfile.locale].facts" labelType="evaluate" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmFacts.cfm" />
 			</menu>
+			<menu id="farcryfeedbackmenu" sequence="20" label="Feedback">
+				<menuitem id="listfarfeedback" sequence="10" label="Feedback" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=farFeedback.cfm" />
+			</menu>
 		</subsection>
 	</section>
 </webtop>
