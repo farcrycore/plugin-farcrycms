@@ -9,8 +9,8 @@
 		This publishing rule is commonly used on section landing pages to 
 		build a summary for the pages in the section.">
 
-	<cfproperty ftSeq="1" ftFieldset="Rule Settings" name="intro" type="string" default="" hint="Optional introductory text to the child link listing; can be any relevant HTML code and content." ftLabel="Intro" ftType="string" />
-	<cfproperty ftSeq="2" ftFieldset="Rule Settings" name="displayMethod" type="string" default="displayTeaser" hint="Teaser display template for underlying pages." ftLabel="Display Template" ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
+	<cfproperty ftSeq="1" ftFieldset="General Details" name="intro" hint="Intro text to child link listing; can be any relevant HTML code and content." type="string" ftType="longchar" required="false" default="" ftLabel="Introduction" />
+	<cfproperty ftSeq="2" ftFieldset="General Details" name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaser" ftLabel="Display Method" ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
 	
 	
 </cfcomponent>

@@ -1,11 +1,14 @@
-<cfsetting enablecfoutputonly="yes" />
+<cfsetting enablecfoutputonly="true" />
 <!--- @@displayname: Handpicked rule execute --->
+
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
 <cfif arrayLen(stobj.aObjects)>
 	<cfloop from="1" to="#arrayLen(stobj.aObjects)#" index="i">
-		<cfset html = createObject("component", application.stcoapi["#stobj.aObjects[i].typename#"].packagePath).getView(objectid="#stobj.aObjects[i].data#", template="#stobj.aObjects[i].webskin#", alternateHTML="<p>WEBSKIN NOT AVAILABLE</p>") />
-		<cfoutput>#html#</cfoutput>
+		
+		<skin:view objectID="#stobj.aObjects[i].data#" typename="#stobj.aObjects[i].typename#" webskin="#stobj.aObjects[i].webskin#" alternateHTML="<p>WEBSKIN NOT AVAILABLE</p>" />
+
 	</cfloop>
 </cfif>
 
-<cfsetting enablecfoutputonly="no" />
+<cfsetting enablecfoutputonly="false" />
