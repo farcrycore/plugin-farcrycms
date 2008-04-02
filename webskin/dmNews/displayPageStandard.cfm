@@ -7,25 +7,22 @@
 
 <!--- import tag libraries --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/core/tags/container" prefix="con">
 
 <!--- include standard header --->
-<cfmodule 
-	template="/farcry/projects/#application.applicationname#/webskin/includes/dmHeader.cfm"
-	pageTitle="#stObj.title#"
-	layoutClass="type-b">
+<skin:view objectid="#stobj.objectid#" typename="#stobj.typename#" template="displayHeaderStandard" />
+
+
+<skin:breadcrumb separator=" / ">
 
 <cfoutput>
-<div id="content">
-	<div id="breadcrumb">
-		</cfoutput><skin:breadcrumb separator=" / " includeSelf=0 here="#stobj.title#"><cfoutput>
-	</div>
-	<h1>#stObj.Title#</h1>
-	#stObj.Body#
-</div>
+<h1>
+	<span class="date">#dateformat(stObj.publishDate, "dd mmm yyy")#</span>
+	#stObj.title#
+</h1>
+<div class="fc-richtext">#stObj.body#</div>
 </cfoutput>
 
 <!--- include standard footers --->
-<cfinclude template="/farcry/projects/#application.applicationname#/webskin/includes/dmFooter.cfm">
+<skin:view objectid="#stobj.objectid#" typename="#stobj.typename#" template="displayFooterStandard" />
 
 <cfsetting enablecfoutputonly="false" />

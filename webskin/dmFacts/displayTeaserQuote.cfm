@@ -7,6 +7,8 @@
 <cfoutput>
 	<h3>#stObj.title#</h3>
 	<div class="fc-richtext">#stobj.body#</div>
+	
+	<cfoutput><blockquote class="burmaQuoteSidebar"><div>#stobj.quote#</div><cite>#stobj.cite#</cite></blockquote></cfoutput>	
 </cfoutput>
 
 <cfsetting enablecfoutputonly="false" />

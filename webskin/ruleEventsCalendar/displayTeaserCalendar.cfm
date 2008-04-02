@@ -21,11 +21,13 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
  <cfsetting enablecfoutputonly="yes">
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/extjs" prefix="extjs">
 
 <cfparam name="arguments.stParam" default="#structNew()#" />
 
 <cfset earliestyear = year(now())>
 
+<skin:htmlHead id="calendarchangedateJS">
 <cfoutput>
 <script language="javascript">
 	function changedate(){
@@ -35,6 +37,8 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 	}
 </script>
 </cfoutput>
+</skin:htmlHead>
+
 <cfparam name="month" default="#Month(now())#">
 <cfparam name="year" default="#Year(now())#">
 
@@ -51,8 +55,9 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 <table class="table1 calendar">
 	<thead>
 		<tr>
-		<form name="calendarform">
+		
 		<th colspan="7">
+			<form name="calendarform" style="margin:0px;">
 			<select name="month" onchange="changedate()" size="1"> 
 			<cfloop from="1" to="12" index="m">
 				<option value="#m#" <cfif month is m> selected="selected"</cfif>>#monthasstring(m)#</option>
@@ -63,8 +68,9 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 					<option value="#y#" <cfif year is y> selected="selected"</cfif>>#y#</option>
 				</cfloop>
 			</select>
+			</form>
 		</th>
-		</form>
+		
 		</tr>
 		<tr>
 			<cfloop from="1" to="7" index="d">
@@ -108,9 +114,9 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 								
 								<cfloop query="qDayEvents">									
 									<cfset eventDisplayed = 1>
-									<em><span class="title"><a href="#application.url.conjurer#?objectid=#qDayEvents.objectid#">#qDayEvents.title#</a></span>
-									<span class="loc">#qDayEvents.location#</span></em>	
-								</cfloop>
+									<skin:view objectid="#qDayEvents.objectid#" typename="dmEvent" webskin="displayToolTip" r_html="eventTeaserHTML" />
+									<extjs:toolTip toolTip="#eventTeaserHTML#"><em><span class="title"><skin:buildLink objectid="#qDayEvents.objectid#">#qDayEvents.title#</skin:buildLink></span></em></extjs:toolTip>
+									</cfloop>
 								
 							</cfif>
 							</p>

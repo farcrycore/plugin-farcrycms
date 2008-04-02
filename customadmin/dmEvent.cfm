@@ -12,7 +12,7 @@
 	typename="dmEvent"
 	permissionset="event"
 	title="#application.adminBundle[session.dmProfile.locale].eventsAdministration#"
-	columnList="title,startDate,catevent,publishdate,datetimelastUpdated"
+	columnList="title,startDate,endDate,catevent,publishdate,datetimelastUpdated"
 	sortableColumns="title,startDate,publishdate,datetimelastUpdated"
 	lFilterFields="title"
 	stFilterMetaData="#stFilterMetaData#"

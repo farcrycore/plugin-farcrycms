@@ -11,13 +11,6 @@
 	
 	<cfoutput>
 	<h1>#stObj.title#</h1>
-	<p>
-		<strong>Where:</strong> #stObj.location#<br />
-		<strong>When:</strong> #dateformat(stobj.startDate)# #timeformat(stobj.startDate)#
-		<cfif showFarcryDate(stobj.endDate)> 
-			until #dateformat(stObj.endDate)# #timeformat(stObj.endDate)#
-		</cfif>
-	</p>
 	<div class="fc-richtext">#stObj.body#</div>
 	</cfoutput>
 	

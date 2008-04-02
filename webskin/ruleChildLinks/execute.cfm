@@ -23,8 +23,6 @@
 	<cfloop query="qGetChildren">
 	
 		<!--- get child nav details --->
-		
-		<!--- <q4:contentobjectget objectid="#qGetChildren.objectID#" r_stobject="stCurrentNav"> --->
 		<cfset stCurrentNav = oNav.getData(objectid=qGetChildren.objectID) />
 		
 		<!--- check for sim link --->
@@ -32,8 +30,8 @@
 			<!--- get sim link details --->
 			<cftry>
 				<cfset stCurrentNav = oNav.getData(objectid=stCurrentNav.externalLink) />
-				<!--- <q4:contentobjectget objectid="#stCurrentNav.externalLink#" r_stobject="stCurrentNav"> --->
-				<cfcatch></cfcatch>
+				
+				<cfcatch><!--- Ignore if the object doesnt exist ---></cfcatch>
 			</cftry>
 		</cfif>
 		
@@ -42,11 +40,11 @@
 		where parentid = '#stCurrentNav.objectid#'
 		order by seq
 		</cfquery>
+	
 		<!--- loop over child/sim link nav node --->	
 		<cfloop query="qNavPages">
 			<cfset o = createObject("component", application.stcoapi[qNavPages.typename].packagepath) />
-			<cfset stObjTemp = o.getData(objectid=qNavPages.data) />				
-			<!--- <q4:contentobjectget objectid="#stCurrentNav.aObjectIds[idIndex]#" r_stobject="stObjTemp"> --->
+			<cfset stObjTemp = o.getData(objectid=qNavPages.data) />
 			
 			<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
 			<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
@@ -61,8 +59,8 @@
 						<cfset stObjTemp = o.getData(objectid=qHasDraft.objectid) />
 					</cfif>
 				</cfif>
-				<!--- <cfdump var="#stObjTemp#" /><cfexit /> --->
-				<skin:view stObject="#stObjTemp#" webskin="#stObj.displaymethod#" />
+				
+				<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
 
 				<cfbreak>
 			</cfif>

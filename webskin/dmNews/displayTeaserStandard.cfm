@@ -1,43 +1,34 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- 
-|| LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
-$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
 
-|| VERSION CONTROL ||
-$Header: /cvs/farcry/farcry_mollio/webskin/dmNews/displayTeaserTypeA.cfm,v 1.1 2006/04/04 06:03:54 gstewart Exp $
-$Author: gstewart $
-$Date: 2006/04/04 06:03:54 $
-$Name:  $
-$Revision: 1.1 $
+<!--- @@displayname: Title and teaser and thumbnail --->
+<!--- @@author: Matthew Bryant (mbryant@daemon.com.au)--->
 
-|| DESCRIPTION || 
-$Description: teaser template
-|| DEVELOPER ||
-$Developer: Gavin Stewart (gavin@daemon.com.au)$
---->
-<!--- @@displayname: a.Headline and associate teaser and thumbnail --->
-<!--- @@author: Gavin Stewart (gavin@daemon.com.au)--->
 
+<!--- IMPORT TAG LIBRARIES --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/core/tags/widgets" prefix="widge">
+
+
 
 <cfoutput>
 <h4><span class="date">#dateformat(stObj.publishDate, "dd mmm yyy")#</span>#stObj.Title#</h4>
 <p>
 </cfoutput>
-	<cfif isdefined("stObj.teaserImage") and len(stObj.teaserImage)>
-	<cfoutput>
-	<span class="thumbnail">
-		<a href="/index.cfm?objectid=#stObj.objectid#"></cfoutput>
-	         <widge:imageDisplay objectid="#stObj.teaserImage#" alt="#stObj.title#" ImageSize="thumb" bFailToTitle="false">
-	         <cfoutput></a>
-	</span>
-	</cfoutput>
+
+	<cfif len(stobj.teaserImage)>
+		
+		<skin:view objectid="#stobj.teaserImage#" typename="dmImage" template="displayThumbnailImage" r_html="teaserImageHTML" />
+		
+		<cfoutput>
+			<span class="thumbnail">						
+			<skin:buildLink objectID="#stobj.objectid#" linktext="#teaserImageHTML#" />
+			</span>
+		</cfoutput>
+		
 	</cfif>
-	<cfoutput>
+	
+<cfoutput>
 	#stObj.Teaser#
-	</cfoutput><skin:buildLink objectid="#stObj.objectid#" class="morelink"><cfoutput>More<span>about:#stObj.Title#</span></cfoutput></skin:buildLink><cfoutput>
+	<skin:buildLink objectid="#stobj.objectID#" class="morelink">More<span>about:#stObj.Title#</span></skin:buildLink>
 </p>
 </cfoutput>
 

@@ -26,7 +26,7 @@ $Developer: Geoff Bowers (modius@daemon.com.au)$
 
 	<cfproperty ftSeq="1" ftFieldSet="Introduction" name="intro" type="string" hint="Intro text for the event listing" required="no" default="" ftType="longchar" ftLimit="255">
 	<cfproperty ftSeq="2" ftFieldSet="Introduction" name="months" type="numeric" hint="Number of months to show" required="yes" default="1">
-	<cfproperty ftSeq="3" ftFieldSet="Introduction" name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayteaserCalendar" ftType="webskin" ftTypename="ruleEventsCalendar">
+	<cfproperty ftSeq="3" ftFieldSet="Introduction" name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayTeaserCalendar" ftLabel="Display Method" ftType="webskin" ftPrefix="displayTeaserCalendar" ftTypename="ruleEventsCalendar">
 	<cfproperty ftSeq="11" ftFieldSet="Categories" name="bMatchAllKeywords" hint="Doest the content need to match ALL selected keywords" type="boolean" required="false" default="0">
 	<cfproperty ftSeq="12" ftFieldSet="Categories" name="metadata" type="longchar" hint="A list of category ObjectIDs that the news content is to be drawn from" required="false" default="" ftType="category">
 

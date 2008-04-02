@@ -1,3 +1,5 @@
+<cfsetting enablecfoutputonly="true">
+
 <!--- 
 || LEGAL ||
 $Copyright: Daemon Pty Limited 1995-2003, http://www.daemon.com.au $
@@ -18,19 +20,17 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 <!--- @@displayname: b.h3 level heading inside a "featurebox" --->
 <!--- @@author: Gavin Stewart (gavin@daemon.com.au)--->
 
- <cfsetting enablecfoutputonly="yes">
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/core/tags/widgets" prefix="widge">
+
 <cfoutput>
-<div class="featurebox">
 	<h3><a href="#stObj.link#" target="_new">#stObj.Title#</a></h3>
 	<cfif trim(len(stObj.teaser))>
-	<p>
-	#stObj.teaser#
-	<a href="#stObj.link#" target="_new" class="morelink">Go<span>about:#stObj.Title#</span></a>
-	</p>
-</cfif>
-</div>
+		<p>
+		#stObj.teaser#
+		<a href="#stObj.link#" target="_new" class="morelink">Go<span>about:#stObj.Title#</span></a>
+		</p>
+	</cfif>
 </cfoutput>
-<cfsetting enablecfoutputonly="no">
+
+<cfsetting enablecfoutputonly="false">
