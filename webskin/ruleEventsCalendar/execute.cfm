@@ -29,7 +29,7 @@
 </cfif>
 
 
-<cfif len(trim(stObj.intro)) AND qGetEvents.recordCount>
+<cfif len(trim(stObj.intro)) AND q.recordCount>
 	#stObj.intro#
 </cfif>
 
