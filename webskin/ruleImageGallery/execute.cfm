@@ -8,6 +8,7 @@
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin" />
 <cfimport taglib="/farcry/core/tags/formtools/" prefix="ft" />
 <cfimport taglib="/farcry/plugins/farcrygreybox/tags/" prefix="gb" />
+<cfimport taglib="/farcry/plugins/farcrycms/tags/" prefix="cms" />
 
 
 <!--- Array of images that is drawn from the image array and any categories selected. --->
@@ -43,14 +44,6 @@
 </cfif>
 
 
-<cfoutput>
-<style type="text/css">
-ul.gallery  {margin-bottom:20px;}
-ul.gallery li {border: 1px solid ##ccc;float:left; margin:5px 13px 5px 0px; padding:0px; display:block; background:white;height:150px;width:130px;text-align:center;}
-ul.gallery li img {margin:5px auto; padding:0px; display:block; border: none;align:center;}
-</style>
-</cfoutput>
-
 <cfif variables.qImagesToDisplay.recordCount>
 	<ft:pagination 
 		paginationID="#stobj.objectid#"
@@ -65,14 +58,17 @@ ul.gallery li img {margin:5px auto; padding:0px; display:block; border: none;ali
 		bShowPageDropdown="false"
 		>
 
-		<cfoutput><ul class="gallery"></cfoutput>		
+		<!--- Initialise list of image IDs --->
+		<cfset lImageIDs = "" />
 		
+		<!--- Loop through the page to get all the image ID s --->
 		<ft:paginateLoop r_stObject="st" bTypeAdmin="false">		
-			<skin:view objectid="#st.stobject.objectid#" typename="dmImage" webskin="displayGalleryThumbnail" r_html="galleryThumbnailHTML" />
-			<cfoutput><li>#galleryThumbnailHTML#</li></cfoutput>
+			<cfset lImageIDs = listAppend(lImageIDs, st.stobject.objectid) />
 		</ft:paginateLoop>
-		
-		<cfoutput></ul><br style="clear:left;" /></cfoutput>
+
+		<!--- Render the image gallery --->
+		<cms:imageGallery imageIDs="#lImageIDs#" />
+
 		
 	</ft:pagination> 
 		
