@@ -116,7 +116,7 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 									<cfset eventDisplayed = 1>
 									<skin:view objectid="#qDayEvents.objectid#" typename="dmEvent" webskin="displayToolTip" r_html="eventTeaserHTML" />
 									<extjs:toolTip toolTip="#eventTeaserHTML#"><em><span class="title"><skin:buildLink objectid="#qDayEvents.objectid#">#qDayEvents.title#</skin:buildLink></span></em></extjs:toolTip>
-									</cfloop>
+								</cfloop>
 								
 							</cfif>
 							</p>

@@ -22,6 +22,7 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 <!--- @@author: Brendan Sisson --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
+<cfimport taglib="/farcry/core/tags/extjs" prefix="extjs">
 
 <cfparam name="arguments.stParam" default="#structNew()#" />
 
@@ -95,16 +96,40 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 		
 						<!--- check if display day as event or empty --->
 						<cfsavecontent variable="tdClass">
-							<cfif currentdate eq dateformat(now()) OR eventDisplayed><cfoutput> class="</cfoutput></cfif>
-							<cfif currentdate eq dateformat(now())><cfoutput>caltoday</cfoutput></cfif>
-							<cfif eventDisplayed><cfoutput> calevent" title="#eventTitles#"</cfoutput></cfif>
-							<cfif currentdate eq dateformat(now()) OR eventDisplayed><cfoutput>"</cfoutput></cfif>
+							<cfif currentdate eq dateformat(now()) OR eventDisplayed>
+								<cfoutput> class="</cfoutput>
+							</cfif>
+							<cfif currentdate eq dateformat(now())>
+								<cfoutput>caltoday</cfoutput>
+							</cfif>
+							<cfif eventDisplayed>
+								<cfoutput> calevent"</cfoutput>
+							</cfif>
+							<cfif currentdate eq dateformat(now()) OR eventDisplayed>
+								<cfoutput>"</cfoutput>
+							</cfif>
 						</cfsavecontent>						
 						
 						<cfoutput><td #tdClass#></cfoutput>
 						
 						<!--- display date --->
-						<cfif eventDisplayed><cfoutput><a href="#application.url.conjurer#?objectid=#eventObjectid#" class="eventLink"></cfoutput></cfif><cfoutput>#display_day#</cfoutput><cfif eventDisplayed><cfoutput></a></cfoutput></cfif><cfoutput></td></cfoutput>
+						<cfif eventDisplayed>
+							<cfoutput><a href="#application.url.conjurer#?objectid=#eventObjectid#" class="eventLink"></cfoutput>
+						</cfif>
+						
+						<cfif len(eventTitles)>
+							<extjs:toolTip toolTip="#eventTitles#">
+								<cfoutput>#display_day#</cfoutput>
+							</extjs:toolTip>
+						<cfelse>
+							<cfoutput>#display_day#</cfoutput>
+						</cfif>
+						
+						<cfif eventDisplayed>
+							<cfoutput></a></cfoutput>
+						</cfif>
+						
+						<cfoutput></td></cfoutput>
 					<cfelse>
 						<cfloop condition="#end_day# NEQ 7">
 							<!--- date is in next month --->
