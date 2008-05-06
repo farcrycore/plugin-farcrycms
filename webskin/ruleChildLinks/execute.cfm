@@ -41,31 +41,34 @@
 		order by seq
 		</cfquery>
 	
-		<!--- loop over child/sim link nav node --->	
-		<cfloop query="qNavPages">
-			<cfset o = createObject("component", application.stcoapi[qNavPages.typename].packagepath) />
-			<cfset stObjTemp = o.getData(objectid=qNavPages.data) />
-			
-			<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
-			<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
-			
-				<!--- if in draft mode grab underlying draft page --->			
-				<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
-					<cfquery datasource="#application.dsn#" name="qHasDraft">
-						SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
-					</cfquery>
-					
-					<cfif qHasDraft.recordcount gt 0>
-						<cfset stObjTemp = o.getData(objectid=qHasDraft.objectid) />
-					</cfif>
-				</cfif>
+		<cfif qNavPages.recordCount>
+			<!--- loop over child/sim link nav node --->	
+			<cfloop query="qNavPages">
+				<cfset o = createObject("component", application.stcoapi[qNavPages.typename].packagepath) />
+				<cfset stObjTemp = o.getData(objectid=qNavPages.data) />
 				
-				<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
-
-				<cfbreak>
-			</cfif>
-		</cfloop>
-		
+				<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
+				<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
+				
+					<!--- if in draft mode grab underlying draft page --->			
+					<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
+						<cfquery datasource="#application.dsn#" name="qHasDraft">
+							SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
+						</cfquery>
+						
+						<cfif qHasDraft.recordcount gt 0>
+							<cfset stObjTemp = o.getData(objectid=qHasDraft.objectid) />
+						</cfif>
+					</cfif>
+					
+					<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
+	
+					<cfbreak>
+				</cfif>
+			</cfloop>
+		<cfelse>
+			<skin:view objectid="#stCurrentNav.objectid#" webskin="#stObj.displaymethod#" alternateHTML="#stObj.displaymethod#" />
+		</cfif>
 		
 	</cfloop>
 	

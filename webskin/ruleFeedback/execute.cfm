@@ -31,7 +31,7 @@
 		<cfoutput><p class="success">#stObj.success#</p></cfoutput>
 	</cfif>
 	
-	<ft:object typename="farFeedback" lFields="name,emailfrom,comment" stPropMetadata="#stPropMetadata#" IncludeFieldSet="false" />
+	<ft:object typename="farFeedback" lFields="name,emailfrom,comments" stPropMetadata="#stPropMetadata#" IncludeFieldSet="false" />
 	<cfoutput><br/></cfoutput>
 	
 	<ft:farcrybuttonpanel>
