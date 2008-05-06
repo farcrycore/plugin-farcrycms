@@ -67,7 +67,7 @@
 				</cfif>
 			</cfloop>
 		<cfelse>
-			<skin:view objectid="#stCurrentNav.objectid#" webskin="#stObj.displaymethod#" alternateHTML="#stObj.displaymethod#" />
+			<skin:view objectid="#stCurrentNav.objectid#" webskin="#stObj.displaymethod#" alternateHTML="" />
 		</cfif>
 		
 	</cfloop>
