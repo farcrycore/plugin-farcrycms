@@ -31,7 +31,7 @@ type properties
 			fthelpsection="Teaser images can only be selected from the pool of associated media images. You must add to the media library before selecting." />
 <cfproperty ftseq="32" ftfieldset="Story Teaser" ftwizardStep="News Body" name="Teaser" type="longchar" hint="Teaser text." required="no" default="" ftlabel="Story Teaser" />
 
-<cfproperty ftseq="41" ftfieldset="Related Content" ftwizardStep="News Body" name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true" />
+<cfproperty ftseq="41" ftfieldset="Related Content" ftwizardStep="News Body" name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true"  ftJoinAllowDuplicates="false" />
 <cfproperty ftseq="42" ftfieldset="Related Content" ftwizardStep="News Body" name="aRelatedIDs" type="array" hint="Holds object pointers to related content.  Can be of mixed types." required="no" default="" ftJoin="dmFile,dmNavigation,dmHTML" ftlabel="Related Content" />
 
 

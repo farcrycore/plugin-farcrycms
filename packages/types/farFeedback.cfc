@@ -3,7 +3,7 @@
 	<cfproperty ftSeq="2" ftFieldset="" name="emailfrom" type="string" default="" hint="The email of the person leaving feedback" ftLabel="From" ftType="email" ftValidation="required" />
 	<cfproperty ftSeq="3" ftFieldset="" name="emailto" type="string" default="" hint="The email that the feedback was sent to" ftLabel="To" ftType="string" ftValidation="required" />
 	<cfproperty ftSeq="4" ftFieldset="" name="name" type="string" default="" hint="The name of the person leaving feedback" ftLabel="Name" ftType="string" ftValidation="required" />
-	<cfproperty ftSeq="5" ftFieldset="" name="comment" type="longchar" default="" hint="" ftLabel="Comment" ftType="longchar" ftValidation="required" />
+	<cfproperty ftSeq="5" ftFieldset="" name="comments" type="longchar" default="" hint="" ftLabel="Comment" ftType="longchar" ftValidation="required" />
 	
 	<cffunction name="sendFeedback" access="public" returntype="boolean" description="Sends the relevant emails" output="false">
 		<cfargument name="objectid" type="uuid" required="false" hint="" />
