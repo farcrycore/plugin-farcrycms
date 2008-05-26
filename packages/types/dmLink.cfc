@@ -17,7 +17,6 @@ type properties
 
 <!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" /> 
 
 <cffunction name="display" access="public" output="false" returntype="void" hint="Redirect user to the link location by default.">
 	<cfargument name="objectid" required="yes" type="UUID">
