@@ -39,9 +39,6 @@ type properties
 <!--- system attribute --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 
-<!--- deprecated properties --->
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
-
 
 <!------------------------------------------------------------------------
 object methods 

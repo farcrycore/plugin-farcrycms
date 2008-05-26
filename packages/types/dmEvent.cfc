@@ -45,7 +45,6 @@ type properties
 
 <!--- system properties --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
 
 
 <!------------------------------------------------------------------------

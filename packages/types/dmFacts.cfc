@@ -19,7 +19,6 @@ type properties
 <cfproperty ftseq="30" ftfieldset="Categorisation" name="catFacts" type="longchar" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmFacts" ftlabel="Category" />
 
 <!--- system properties --->
-<cfproperty name="commentlog" type="longchar" hint="Workflow comment log." required="no" default="" />
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 
 </cfcomponent>
