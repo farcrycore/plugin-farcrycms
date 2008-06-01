@@ -9,7 +9,7 @@ $Description: dmNews Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent extends="farcry.core.packages.types.versions" displayname="News" hint="Dynamic news data" bSchedule="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.versions" displayname="News" hint="Report your up-to-the-minute happenings by creating News content. News can be published throughout your site using publishing rules." bSchedule="true" bFriendly="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
@@ -33,8 +33,6 @@ type properties
 
 <cfproperty ftseq="41" ftfieldset="Related Content" ftwizardStep="News Body" name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default="" ftJoin="dmImage,dmfile,dmflash" ftlabel="Media Library" bSyncStatus="true"  ftJoinAllowDuplicates="false" />
 <cfproperty ftseq="42" ftfieldset="Related Content" ftwizardStep="News Body" name="aRelatedIDs" type="array" hint="Holds object pointers to related content.  Can be of mixed types." required="no" default="" ftJoin="dmFile,dmNavigation,dmHTML" ftlabel="Related Content" />
-
-
 
 <!--- system attribute --->
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />

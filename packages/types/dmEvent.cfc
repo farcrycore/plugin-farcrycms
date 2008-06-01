@@ -16,7 +16,7 @@ $Description: dmEvent Type $
 || DEVELOPER ||
 $Developer: Geoff Bowers (modius@daemon.com.au) $
 --->
-<cfcomponent extends="farcry.core.packages.types.versions" displayname="Events" hint="Dynamic events data" bSchedule="1" bFriendly="1" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.versions" displayname="Events" hint="Calendar events happen at a given place and time. Events can be published in list and month calendar formats." bSchedule="true" bFriendly="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
@@ -50,6 +50,5 @@ type properties
 <!------------------------------------------------------------------------
 object methods 
 ------------------------------------------------------------------------->	
-
 
 </cfcomponent>
