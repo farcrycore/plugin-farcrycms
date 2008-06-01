@@ -3,7 +3,7 @@
 <!--- @@displayname: Fact Content Type --->
 <!--- @@Description: Records facts, testimonials and the like. --->
 <!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Fact" hint="Records facts, testimonials and the like." bSchedule="true" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Fact" hint="Facts are little snippets of information; factoids, quotes, testimonials, brand messages and more. Create a library of facts and have them publish randomly on your site tokeep things interesting." bSchedule="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->

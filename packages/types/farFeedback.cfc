@@ -1,4 +1,4 @@
-<cfcomponent displayname="Feedback" hint="Allows users to post feedback" extends="farcry.core.packages.types.types" output="false">
+<cfcomponent displayname="Feedback" hint="Site visitors can leave feedback through the feedback publishing rule. All feedback will be collected in this location." extends="farcry.core.packages.types.types" output="false">
 	<cfproperty ftSeq="1" ftFieldset="" name="subject" type="string" default="" hint="The subject of the email" ftLabel="Subject" ftType="string" ftValidation="required" />
 	<cfproperty ftSeq="2" ftFieldset="" name="emailfrom" type="string" default="" hint="The email of the person leaving feedback" ftLabel="From" ftType="email" ftValidation="required" />
 	<cfproperty ftSeq="3" ftFieldset="" name="emailto" type="string" default="" hint="The email that the feedback was sent to" ftLabel="To" ftType="string" ftValidation="required" />

@@ -3,7 +3,7 @@
 <!--- @@displayname: Link Content Type --->
 <!--- @@Description: Records links to external web assets. --->
 <!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="A way of linking to external pages" bSchedule="true" bUseInTree="true" bFriendly="true" bObjectBroker="true">
+<cfcomponent extends="farcry.core.packages.types.types" displayname="Link" hint="You can create a library of external links using link content.  Links can be categorised and published throughout the site as needed." bSchedule="true" bUseInTree="true" bFriendly="true" bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->
