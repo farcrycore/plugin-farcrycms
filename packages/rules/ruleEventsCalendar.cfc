@@ -1,26 +1,24 @@
-<!--- 
-|| LEGAL ||
-$Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au $
-$Community: FarCry CMS http://www.farcrycms.org $
-$License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php$
+<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@License:
+    This file is part of FarCry CMS Plugin.
 
-|| VERSION CONTROL ||
-$Header: $
-$Author: $
-$Date: $
-$Name:  $
-$Revision: $
+    FarCry CMS Plugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-|| DESCRIPTION || 
-$Description: 
-ruleEventsCalendar (FarCry Core)
-Publishing rule for showing Event content items in a month calendar view format.
-$
+    FarCry CMS Plugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
 
-|| DEVELOPER ||
-$Developer: Geoff Bowers (modius@daemon.com.au)$
-
+    You should have received a copy of the GNU Lesser General Public License
+    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
+<!--- @@Description: 
+ruleEventsCalendar (FarCry Core)
+Publishing rule for showing Event content items in a month calendar view format. --->
+<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
 <cfcomponent displayname="Events: Calendar Rule" extends="farcry.core.packages.rules.rules" 
 	hint="Publishing rule for showing Event content items in a month calendar view format.">
 
