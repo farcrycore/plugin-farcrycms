@@ -44,7 +44,7 @@
 		,maxRows="#maximumRows#"
 		,bMatchAll="#stobj.bMatchAllKeywords#"
 		,sqlWhere="publishdate <= #now()# and expirydate >= #now()#"
-		,sqlOrderBy="startDate ASC, label ASC"
+		,sqlOrderBy="startDate DESC, label ASC"
 		) />
 
 <cfelse>
@@ -55,7 +55,7 @@
 		WHERE status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
 		AND publishdate <= #now()#
 		AND expirydate >= #now()#
-		ORDER BY startDate ASC, label ASC
+		ORDER BY startDate DESC, label ASC
 	</cfquery>
 </cfif>
 
