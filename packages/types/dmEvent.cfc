@@ -32,7 +32,7 @@ type properties
 <cfproperty ftseq="2" ftfieldset="Event Overview" ftwizardStep="General Details" name="startDate" type="date" hint="The start date of the event" required="no" default=""ftDefaultType="Evaluate" ftDefault="now()" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="Start Date" />
 <cfproperty ftseq="3" ftfieldset="Event Overview" ftwizardStep="General Details" name="endDate" type="date" hint="The end date of the event" required="no" default=""ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="End Date" />
 <cfproperty ftseq="4" ftfieldset="Event Overview" ftwizardStep="General Details" name="Location" type="string" hint="Location of event" required="no" default="" fttype="longchar" ftLabel="Location" />
-<cfproperty ftseq="5" ftfieldset="Event Overview" ftwizardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
+<cfproperty ftseq="5" ftfieldset="Event Overview" ftwizardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 
 <cfproperty ftseq="11" ftfieldset="Categorisation" ftwizardStep="General Details" name="catEvent" type="longchar" hint="Event categorisation." required="no" default="" fttype="category" ftalias="dmEvent" ftlabel="Event Category" />
 
