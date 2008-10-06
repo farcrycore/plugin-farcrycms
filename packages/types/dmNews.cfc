@@ -28,7 +28,7 @@ type properties
 ------------------------------------------------------------------------->	
 <cfproperty ftseq="1" ftfieldset="General Details" ftwizardStep="General Details" name="title" type="string" hint="News title." required="no" default="" ftlabel="Title" ftvalidation="required" />
 <cfproperty ftseq="2" ftfieldset="General Details" ftwizardStep="General Details" name="source" type="string" hint="source of the information contained in the content" required="no" default="" ftlabel="Source" />
-<cfproperty ftseq="3" ftfieldset="General Details" ftwizardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="display" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
+<cfproperty ftseq="3" ftfieldset="General Details" ftwizardStep="General Details" name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard" fttype="webskin" ftprefix="displayPage" ftlabel="Content Template" />
 <cfproperty ftseq="4" ftfieldset="Categorisation" ftwizardStep="General Details" name="catNews" type="longchar" hint="News categorisation." required="no" default="" fttype="category" ftalias="dmNews" ftlabel="News Category" />
 
 <cfproperty ftseq="11" ftfieldset="Publishing Details" ftwizardStep="General Details" name="publishDate" type="date" hint="The date that a news object is sent live and appears on the public website" required="no" default="" ftDefaultType="Evaluate" ftDefault="now()" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="Publish Date" />

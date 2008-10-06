@@ -26,7 +26,7 @@
 		build a summary for the pages in the section.">
 
 	<cfproperty ftSeq="1" ftFieldset="General Details" name="intro" hint="Intro text to child link listing; can be any relevant HTML code and content." type="string" ftType="longchar" required="false" default="" ftLabel="Introduction" />
-	<cfproperty ftSeq="2" ftFieldset="General Details" name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaser" ftLabel="Display Method" ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
+	<cfproperty ftSeq="2" ftFieldset="General Details" name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaserStandard" ftLabel="Display Method" ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
 	
 	
 </cfcomponent>
