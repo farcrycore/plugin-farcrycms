@@ -28,7 +28,7 @@
 <ft:objectadmin 
 	typename="dmNews"
 	permissionset="news"
-	title="#application.adminBundle[session.dmProfile.locale].newsAdministration#"
+	title="#application.rb.getResource('newsAdministration', 'News Administration')#"
 	columnList="title,catnews,publishdate,datetimelastUpdated"
 	sortableColumns="title,publishdate,datetimelastUpdated"
 	lFilterFields="title,source"

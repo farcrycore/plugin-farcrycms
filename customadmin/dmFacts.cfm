@@ -29,7 +29,7 @@
 
 <ft:objectadmin 
 	typename="dmFacts"
-	title="#application.adminBundle[session.dmProfile.locale].factsAdministration#"
+	title="#application.rb.getResource('factsAdministration', 'Facts Administration')#"
 	permissionset="fact"
 	columnList="title,link,catfacts,datetimelastUpdated"
 	sortableColumns="title,link,datetimelastUpdated"

@@ -29,7 +29,7 @@
 <ft:objectadmin 
 	typename="dmEvent"
 	permissionset="event"
-	title="#application.adminBundle[session.dmProfile.locale].eventsAdministration#"
+	title="#application.rb.getResource('eventsAdministration', 'Events Administration')#"
 	columnList="title,startDate,endDate,catevent,publishdate,datetimelastUpdated"
 	sortableColumns="title,startDate,publishdate,datetimelastUpdated"
 	lFilterFields="title"
