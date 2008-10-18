@@ -28,7 +28,7 @@
 
 <ft:objectadmin 
 	typename="dmLink"
-	title="#application.adminBundle[session.dmProfile.locale].linksAdministration#"
+	title="#application.rb.getResource('linksAdministration', 'Links Administration')#"
 	permissionset="link"
 	columnList="title,link,catlink,datetimelastUpdated"
 	sortableColumns="title,link,datetimelastUpdated"
