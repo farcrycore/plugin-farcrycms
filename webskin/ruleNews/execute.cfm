@@ -3,17 +3,17 @@
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
-<cfset var i = 1>
-<cfset var temp = ''>
-<cfset var temp2 = ''>
-<cfset var temp3 = ''>
-<cfset var qGetNewsCount = ''>
-<cfset var maximumRows = 0>
-<cfset var qGetNews = ''>
-<cfset var stInvoke = structNew()>
-<cfset var iNumberOfPages = 1>
-<cfset var startrow = 1>
-<cfset var endrow = 1>
+<cfset i = 1>
+<cfset temp = ''>
+<cfset temp2 = ''>
+<cfset temp3 = ''>
+<cfset qGetNewsCount = ''>
+<cfset maximumRows = 0>
+<cfset qGetNews = ''>
+<cfset stInvoke = structNew()>
+<cfset iNumberOfPages = 1>
+<cfset startrow = 1>
+<cfset endrow = 1>
 
 <cfparam name="request.mode.lValidStatus" default="approved">
 
