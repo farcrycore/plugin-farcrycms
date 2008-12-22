@@ -21,7 +21,7 @@
 || DESCRIPTION || 
 $Description: 
 Hand-pick and display individual content items with a specified displayTeaser* handler. 
-Restricted to those content types with metadata bScheduled=true.
+Restricted to those content types listed in the ftJoin attribute of aObjects.
 $
 
 || DEVELOPER ||
