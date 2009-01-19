@@ -19,11 +19,26 @@
 <!--- @@displayname: Handpicked rule execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
+<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
 
 <cfif arrayLen(stobj.aObjects)>
 	<cfloop from="1" to="#arrayLen(stobj.aObjects)#" index="i">
-		
-		<skin:view objectID="#stobj.aObjects[i].data#" typename="#stobj.aObjects[i].typename#" webskin="#stobj.aObjects[i].webskin#" alternateHTML="<p>WEBSKIN NOT AVAILABLE</p>" />
+		<cfset viewObjectid = stobj.aObjects[i].data />
+		<cfif request.mode.showdraft>
+			<q4:contentobjectget objectid="#stobj.aObjects[i].data#" r_stobject="stObject">
+		 	<cfif structKeyExists(stObject,"status")>
+				<cfquery datasource="#application.dsn#" name="qHasDraft">
+					SELECT objectID,status from #application.dbowner##stObject.typename# where versionID = '#stObject.objectID#'
+				</cfquery>
+				<cfif qHasDraft.recordcount gt 0>
+					<q4:contentobjectget objectid="#qHasDraft.objectid#" r_stobject="stDraftObject">
+					<!--- pass draft objectid to view --->
+					<cfset viewObjectid = stDraftObject.objectid />
+				</cfif>
+			</cfif>
+		</cfif>
+
+		<skin:view objectID="#viewObjectid#" typename="#stobj.aObjects[i].typename#" webskin="#stobj.aObjects[i].webskin#" alternateHTML="<p>WEBSKIN NOT AVAILABLE</p>" />
 
 	</cfloop>
 </cfif>
