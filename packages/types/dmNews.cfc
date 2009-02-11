@@ -32,7 +32,7 @@ type properties
 <cfproperty ftseq="4" ftfieldset="Categorisation" ftwizardStep="General Details" name="catNews" type="longchar" hint="News categorisation." required="no" default="" fttype="category" ftalias="dmNews" ftlabel="News Category" />
 
 <cfproperty ftseq="11" ftfieldset="Publishing Details" ftwizardStep="General Details" name="publishDate" type="date" hint="The date that a news object is sent live and appears on the public website" required="no" default="" ftDefaultType="Evaluate" ftDefault="now()" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false" ftlabel="Publish Date" />
-<cfproperty ftseq="12" ftfieldset="Publishing Details" ftwizardStep="General Details" name="expiryDate" type="date" hint="The date that a news object is removed from the web site" required="no" default="" ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true" ftlabel="Expiry Date" />
+<cfproperty ftseq="12" ftfieldset="Publishing Details" ftwizardStep="General Details" name="expiryDate" type="date" hint="The date that a news object is removed from the web site" required="no" default="" ftDefaultType="Evaluate" ftDefault="DateAdd('yyyy', 200, now())" ftType="datetime" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true" ftlabel="Expiry Date" />
 
 <cfproperty ftseq="21" ftfieldset="News Story" ftwizardStep="News Body" name="Body" type="longchar" hint="Main body of content." required="no" default="" ftType="RichText" ftlabel="Body Content"
   ftImageArrayField="aObjectIDs" ftImageTypename="dmImage" ftImageField="StandardImage"
