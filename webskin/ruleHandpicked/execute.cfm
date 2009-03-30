@@ -26,7 +26,7 @@
 		<cfset viewObjectid = stobj.aObjects[i].data />
 		<cfif request.mode.showdraft>
 			<q4:contentobjectget objectid="#stobj.aObjects[i].data#" r_stobject="stObject">
-		 	<cfif structKeyExists(stObject,"status")>
+		 	<cfif structKeyExists(stObject,"status") AND structKeyExists(application.stcoapi[stObject.typename],"versionID")>
 				<cfquery datasource="#application.dsn#" name="qHasDraft">
 					SELECT objectID,status from #application.dbowner##stObject.typename# where versionID = '#stObject.objectID#'
 				</cfquery>
