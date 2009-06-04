@@ -68,21 +68,9 @@
 
 <cfif stObj.bArchive>
 	<!--- THIS MEANS PAGINATE --->
-	<ft:pagination 
-		paginationID="ruleNews"
-		qRecordSet="#q#"
-		typename="dmNews"
-		pageLinks="10"
-		recordsPerPage="#stobj.numitems#" 
-		Top="true" 
-		Bottom="false"
-		renderType="inline"> 
-	
-		<ft:paginateLoop r_stObject="stNews" >
-			<skin:view objectid="#stNews.objectid#" typename="dmNews" webskin="#stObj.displaymethod#" />
-		</ft:paginateLoop>
-		
-	</ft:pagination>
+	<skin:pagination query="#q#" typename="dmNews" paginationID="ruleNews" pageLinks="10" recordsPerPage="10">
+		<skin:view stObject="#stObject#" typename="dmNews" webskin="#stObj.displaymethod#" />
+	</skin:pagination>
 
 <cfelse>
 
