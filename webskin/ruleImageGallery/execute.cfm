@@ -23,8 +23,6 @@
 
 <!--- Import Tag Libraries --->
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin" />
-<cfimport taglib="/farcry/core/tags/formtools/" prefix="ft" />
-<cfimport taglib="/farcry/plugins/farcrygreybox/tags/" prefix="gb" />
 <cfimport taglib="/farcry/plugins/farcrycms/tags/" prefix="cms" />
 
 
@@ -62,7 +60,10 @@
 
 
 <cfif variables.qImagesToDisplay.recordCount>
-	<ft:pagination 
+	<!--- Initialise list of image IDs --->
+	<cfset lImageIDs = "" />
+	
+	<skin:pagination 
 		paginationID="#stobj.objectid#"
 		qRecordSet="#variables.qImagesToDisplay#"
 		typename="dmImage"
@@ -73,23 +74,16 @@
 		submissionType="url"
 		renderType="inline"
 		bShowPageDropdown="false"
-		>
-
-		<!--- Initialise list of image IDs --->
-		<cfset lImageIDs = "" />
+		r_stObject="st" bTypeAdmin="false">
 		
 		<!--- Loop through the page to get all the image ID s --->
-		<ft:paginateLoop r_stObject="st" bTypeAdmin="false">		
-			<cfset lImageIDs = listAppend(lImageIDs, st.stobject.objectid) />
-		</ft:paginateLoop>
-
-		<!--- Render the image gallery --->
-		<cms:imageGallery imageIDs="#lImageIDs#" />
-
+		<cfset lImageIDs = listAppend(lImageIDs, st.stobject.objectid) />
 		
-	</ft:pagination> 
-		
+	</skin:pagination> 
 	
+	<!--- Render the image gallery --->
+	<cms:imageGallery imageIDs="#lImageIDs#" />
+
 </cfif>
 
 

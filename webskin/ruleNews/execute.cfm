@@ -19,7 +19,6 @@
 <!--- @@displayname: ruleNews execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
-<cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
 
 <cfparam name="request.mode.lValidStatus" default="approved">

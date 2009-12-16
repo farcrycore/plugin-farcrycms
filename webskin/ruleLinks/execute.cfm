@@ -19,7 +19,6 @@
 <!--- @@displayname: ruleLinks execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
-<cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
 
 <cfparam name="request.mode.lValidStatus" default="approved">
@@ -66,7 +65,8 @@
 
 <cfif stObj.bArchive>
 	<!--- THIS MEANS PAGINATE --->
-	<ft:pagination 
+	
+	<skin:pagination 
 		paginationID="ruleLinks"
 		qRecordSet="#q#"
 		typename="dmLink"
@@ -74,13 +74,12 @@
 		recordsPerPage="#stobj.numitems#" 
 		Top="true" 
 		Bottom="false"
-		renderType="inline"> 
+		renderType="inline"
+		r_stObject="st"> 
 	
-		<ft:paginateLoop r_stObject="st" >
-			<skin:view objectid="#st.objectid#" typename="dmLink" webskin="#stObj.displaymethod#" />
-		</ft:paginateLoop>
+		<skin:view objectid="#st.objectid#" typename="dmLink" webskin="#stObj.displaymethod#" />
 		
-	</ft:pagination>
+	</skin:pagination>
 
 <cfelse>
 
