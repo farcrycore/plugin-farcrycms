@@ -19,7 +19,6 @@
 <!--- @@displayname: ruleNews execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
-<cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
 
 <cfparam name="request.mode.lValidStatus" default="approved">
@@ -67,7 +66,7 @@
 
 <cfif stObj.bArchive>
 	<!--- THIS MEANS PAGINATE --->
-	<ft:pagination 
+	<skin:pagination 
 		paginationID="ruleNews"
 		qRecordSet="#q#"
 		typename="dmEvent"
@@ -75,13 +74,12 @@
 		recordsPerPage="#stobj.numitems#" 
 		Top="true" 
 		Bottom="false"
-		renderType="inline"> 
+		renderType="inline"
+		r_stObject="stNews"> 
 	
-		<ft:paginateLoop r_stObject="stNews" >
-			<skin:view objectid="#stNews.objectid#" typename="dmEvent" webskin="#stObj.displaymethod#" />
-		</ft:paginateLoop>
+		<skin:view objectid="#stNews.objectid#" typename="dmEvent" webskin="#stObj.displaymethod#" />
 		
-	</ft:pagination>
+	</skin:pagination>
 
 <cfelse>
 
