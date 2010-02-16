@@ -61,26 +61,30 @@
 		<cfif qNavPages.recordCount>
 			<!--- loop over child/sim link nav node --->	
 			<cfloop query="qNavPages">
-				<cfset o = createObject("component", application.stcoapi[qNavPages.typename].packagepath) />
-				<cfset stObjTemp = o.getData(objectid=qNavPages.data) />
+				<cfset stObjTemp = application.fapi.getContentObject(objectid=qNavPages.data)>
 				
-				<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
-				<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
+				<cfif NOT structIsEmpty(stObjTemp)>
+					<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
+					<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
 				
-					<!--- if in draft mode grab underlying draft page --->			
-					<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
-						<cfquery datasource="#application.dsn#" name="qHasDraft">
-							SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
-						</cfquery>
+						<!--- if in draft mode grab underlying draft page --->			
+						<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
+							<cfquery datasource="#application.dsn#" name="qHasDraft">
+								SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
+							</cfquery>
 						
-						<cfif qHasDraft.recordcount gt 0>
-							<cfset stObjTemp = o.getData(objectid=qHasDraft.objectid) />
+							<cfif qHasDraft.recordcount gt 0>
+								<cfset stObjTemp = application.fapi.getContentObject(objectid=qHasDraft.objectid)>
+							</cfif>
 						</cfif>
-					</cfif>
 					
-					<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
+						<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
 	
-					<cfbreak>
+						<cfbreak>
+					</cfif>
+				<cfelse>
+					<!--- structure is blank; ie tree reference is borked --->
+					<skin:bubble title="site tree error" message="#qNavPages.data# not in tree" sticky="true" />
 				</cfif>
 			</cfloop>
 		<cfelse>
