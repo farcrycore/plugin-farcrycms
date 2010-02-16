@@ -46,7 +46,7 @@
 <cfoutput>
 	#stObj.Teaser#
 	<skin:buildLink objectid="#stobj.objectID#" class="morelink">More<span>about:#stObj.Title#</span></skin:buildLink>
-</p>
+</p><br clear="all">
 </cfoutput>
 
 <cfsetting enablecfoutputonly="false" />
