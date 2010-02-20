@@ -67,8 +67,8 @@
 
 <cfif stObj.bArchive>
 	<!--- THIS MEANS PAGINATE --->
-	<skin:pagination query="#q#" typename="dmNews" r_stObject="stObject" paginationID="ruleNews" recordsPerPage="#stObj.numItems#">
-		<skin:view objectID="#stObject.objectID#" typename="dmNews" webskin="#stObj.displaymethod#" />
+	<skin:pagination query="#q#" typename="dmNews" r_stObject="stNews" paginationID="ruleNews" recordsPerPage="#stObj.numItems#">
+		<skin:view objectID="#stNews.objectID#" typename="dmNews" webskin="#stObj.displaymethod#" />
 	</skin:pagination>
 <cfelse>
 
