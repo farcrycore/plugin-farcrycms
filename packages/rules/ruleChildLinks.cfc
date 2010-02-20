@@ -21,12 +21,18 @@
 <!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
 <cfcomponent displayname="Utility: Child Links Rule" extends="farcry.core.packages.rules.rules" 
 	hint="List teaser displays for the current navigation folders children.  
-		Children content types are restricted to dmHTML, dmLink and dmInclude. 
+		Children content types are restricted to HTML, Link and Include. 
 		This publishing rule is commonly used on section landing pages to 
 		build a summary for the pages in the section.">
 
-	<cfproperty ftSeq="1" ftFieldset="General Details" name="intro" hint="Intro text to child link listing; can be any relevant HTML code and content." type="string" ftType="longchar" required="false" default="" ftLabel="Introduction" />
-	<cfproperty ftSeq="2" ftFieldset="General Details" name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaserStandard" ftLabel="Display Method" ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
+<cfproperty 
+	name="intro" hint="Intro text to child link listing; can be any relevant HTML code and content." type="string" required="false" default="" 
+	ftSeq="1" ftFieldset="General Details" ftLabel="Introduction"
+	ftType="longchar" />
 	
+<cfproperty 
+	name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaserStandard" 
+	ftSeq="2" ftFieldset="General Details" ftLabel="Display Method" 
+	ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
 	
 </cfcomponent>
