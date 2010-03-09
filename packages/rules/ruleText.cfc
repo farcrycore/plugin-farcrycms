@@ -28,17 +28,5 @@
 			fthelpsection="The title for this rule is for administrative purposes only.  Please include a title in the HTML of the following field if you want a title displayed as part of the output for this rule." />
 <cfproperty ftseq="2" ftfieldset="Text Rule Content" name="text" type="longchar" hint="Text to display.  Can be any combination of content and HTML markup." required="yes" default="" fttype="longchar" ftlabel="Free Text" />
 	
-<cffunction name="execute" hint="Displays the text rule on the page." output="false" returntype="void" access="public">
-	<cfargument name="objectID" required="Yes" type="uuid" default="">
-	<cfargument name="dsn" required="false" type="string" default="#application.dsn#">
-	
-	<cfset var stObj = getData(arguments.objectid) /> 
-	<cfset var blurb = stObj.text />
-
-	<cfif len(trim(blurb))>
-		<cfset arrayAppend(request.aInvocations,blurb) />
-	</cfif>
-	
-</cffunction>
 </cfcomponent>
 
