@@ -65,7 +65,7 @@
 				
 				<cfif NOT structIsEmpty(stObjTemp)>
 					<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
-					<cfif StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) AND StructKeyExists(stObjTemp,"displayMethod")>
+					<cfif (StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) OR NOT StructKeyExists(stObjTemp,"status")) >
 				
 						<!--- if in draft mode grab underlying draft page --->			
 						<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
