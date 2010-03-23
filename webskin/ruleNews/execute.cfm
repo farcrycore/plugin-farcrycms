@@ -43,20 +43,13 @@
 		,typename="dmNews"
 		,maxRows="#maximumRows#"
 		,bMatchAll="#stobj.bMatchAllKeywords#"
-		,sqlWhere="publishdate <= #now()# and expirydate >= #now()#"
+		,sqlWhere="publishdate <= #now()# AND (expirydate >= #now()# OR expirydate is NULL)"
 		,sqlOrderBy="publishDate DESC"
 		) />
 
 <cfelse>
 	<!--- don't filter on categories --->
-	<cfquery datasource="#arguments.dsn#" name="q" maxrows="#maximumRows#">
-		SELECT objectid
-		FROM #application.dbowner#dmNews
-		WHERE status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-		AND publishdate <= #now()#
-		AND expirydate >= #now()#
-		ORDER BY publishDate DESC
-	</cfquery>
+	<cfset q=application.fapi.getContentObjects(typename="dmNews", publishdate_lte=now(), expirydate_gte=now(), orderby="publishdate DESC")>
 </cfif>
 
 

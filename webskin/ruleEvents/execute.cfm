@@ -16,7 +16,7 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<!--- @@displayname: ruleNews execute --->
+<!--- @@displayname: ruleEvents execute --->
 
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
@@ -42,20 +42,13 @@
 		,typename="dmEvent"
 		,maxRows="#maximumRows#"
 		,bMatchAll="#stobj.bMatchAllKeywords#"
-		,sqlWhere="publishdate <= #now()# and expirydate >= #now()#"
+		,sqlWhere="publishdate <= #now()# AND (expirydate >= #now()# OR expirydate is NULL)"
 		,sqlOrderBy="startDate DESC, label ASC"
 		) />
 
 <cfelse>
 	<!--- don't filter on categories --->
-	<cfquery datasource="#arguments.dsn#" name="q" maxrows="#maximumRows#">
-		SELECT objectid
-		FROM #application.dbowner#dmEvent
-		WHERE status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
-		AND publishdate <= #now()#
-		AND expirydate >= #now()#
-		ORDER BY startDate DESC, label ASC
-	</cfquery>
+	<cfset q=application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), orderby="startDate DESC, label ASC")>
 </cfif>
 
 
@@ -67,7 +60,7 @@
 <cfif stObj.bArchive>
 	<!--- THIS MEANS PAGINATE --->
 	<skin:pagination 
-		paginationID="ruleNews"
+		paginationID="ruleEvents"
 		qRecordSet="#q#"
 		typename="dmEvent"
 		pageLinks="10"
@@ -75,9 +68,9 @@
 		Top="true" 
 		Bottom="false"
 		renderType="inline"
-		r_stObject="stNews"> 
+		r_stObject="stEvent"> 
 	
-		<skin:view objectid="#stNews.objectid#" typename="dmEvent" webskin="#stObj.displaymethod#" />
+		<skin:view objectid="#stEvent.objectid#" typename="dmEvent" webskin="#stObj.displaymethod#" />
 		
 	</skin:pagination>
 
