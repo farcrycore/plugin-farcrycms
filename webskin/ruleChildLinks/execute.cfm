@@ -77,9 +77,9 @@
 								<cfset stObjTemp = application.fapi.getContentObject(objectid=qHasDraft.objectid)>
 							</cfif>
 						</cfif>
-					
-						<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" />
-	
+
+						<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" alternatehtml="<!-- #stObj.displaymethod# does not exist for #stObjTemp.typename# -->" />
+
 						<cfbreak>
 					</cfif>
 				<cfelse>
