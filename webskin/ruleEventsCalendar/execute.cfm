@@ -29,7 +29,7 @@
 		,typename="dmEvent"
 		,bMatchAll="#stobj.bMatchAllKeywords#"
 		,lFields="title, location, startDate, endDate"
-		,sqlWhere="publishdate <= #now()# and expirydate >= #now()#"
+		,sqlWhere="publishdate <= #now()# and (expirydate >= #now()# or expirydate is NULL)"
 		,sqlOrderBy="startDate ASC, label ASC"
 		) />
 
