@@ -40,7 +40,7 @@
 		FROM #application.dbowner#dmEvent
 		WHERE status IN ('#ListChangeDelims(request.mode.lValidStatus,"','",",")#')
 		AND publishdate <= #now()#
-		AND expirydate >= #now()#
+		AND (expirydate >= #now()# or expirydate is NULL)
 		ORDER BY startDate ASC, label ASC
 	</cfquery>
 </cfif>
