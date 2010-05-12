@@ -120,7 +120,7 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 						
 						<!--- display date --->
 						<cfif eventDisplayed>
-							<cfoutput><a href="#application.url.conjurer#?objectid=#eventObjectid#" class="eventLink"></cfoutput>
+							<cfoutput><a href="#application.fapi.getLink(objectid=eventObjectid)#" class="eventLink"></cfoutput>
 						</cfif>
 						
 						<cfif len(eventTitles)>
