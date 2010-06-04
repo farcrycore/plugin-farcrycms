@@ -41,8 +41,9 @@ $Developer: Geoff Bowers (modius@daemon.com.au) $
 	<cfproperty ftSeq="3" ftFieldset="General" name="suffix" type="longchar" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftLabel="Suffix Text" ftHint="This content will appear below the news listsing." />
 
 	<cfproperty ftSeq="10" ftFieldset="Results" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="5" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
-	
-	<cfproperty ftSeq="11" ftFieldset="Results" name="bArchive" type="boolean" hint="Displays with a paginated display." required="true" default="0" ftType="boolean" ftLabel="Paginate?" ftHint="Ticking this box will automatically add navigation and allow the client to view more news items.  Leaving the box unticked will only show the first group of news items." />
+	<cfproperty ftSeq="11" ftFieldset="Results" name="numPages" type="numeric" hint="The number of pages (default 10)" required="true" default="10" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## of pages" />
+
+	<cfproperty ftSeq="12" ftFieldset="Results" name="bArchive" type="boolean" hint="Displays with a paginated display." required="true" default="0" ftType="boolean" ftLabel="Paginate?" ftHint="Ticking this box will automatically add navigation and allow the client to view more news items.  Leaving the box unticked will only show the first group of news items." />
 	
 	<cfproperty ftseq="20" ftfieldset="Categorisation" name="metadata" type="longchar" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="dmnews" ftlabel="Selected News Categories" />
 	
