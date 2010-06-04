@@ -58,19 +58,13 @@
 	<cfoutput>#stObj.intro#</cfoutput>
 </cfif>
 
-<cfif stObj.bArchive>
+
 	<!--- THIS MEANS PAGINATE --->
-	<skin:pagination query="#q#" typename="dmNews" r_stObject="stNews" paginationID="ruleNews" recordsPerPage="#stObj.numItems#">
+	<skin:pagination query="#q#" typename="dmNews" r_stObject="stNews" paginationID="ruleNews" recordsPerPage="#stObj.numItems#" pageLinks="#stObj.numPages#">
 		<skin:view objectID="#stNews.objectID#" typename="dmNews" webskin="#stObj.displaymethod#" />
 	</skin:pagination>
-<cfelse>
 
-	<cfloop query="q">
-		<skin:view objectid="#q.objectid#" typename="dmNews" webskin="#stObj.displaymethod#" />
-	</cfloop>
-	
 
-</cfif>
 
 <cfif len(trim(stObj.suffix)) AND q.recordCount>
 	<cfoutput>#stObj.suffix#</cfoutput>
