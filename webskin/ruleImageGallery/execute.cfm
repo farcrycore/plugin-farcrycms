@@ -77,7 +77,7 @@
 		r_stObject="st" bTypeAdmin="false">
 		
 		<!--- Loop through the page to get all the image ID s --->
-		<cfset lImageIDs = listAppend(lImageIDs, st.stobject.objectid) />
+		<cfset lImageIDs = listAppend(lImageIDs, st.objectid) />
 		
 	</skin:pagination> 
 	
