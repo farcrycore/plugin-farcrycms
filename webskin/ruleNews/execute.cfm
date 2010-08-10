@@ -36,20 +36,12 @@
 </cfif>
 
 <!--- check if filtering by categories --->
-<cfif len(trim(stobj.metadata))>
-
-	<cfset oCat = createObject("component", "farcry.core.packages.types.category") />
-	<cfset q = oCat.getDataQuery(lCategoryIDs="#stObj.metadata#"
-		,typename="dmNews"
-		,maxRows="#maximumRows#"
-		,bMatchAll="#stobj.bMatchAllKeywords#"
-		,sqlWhere="publishdate <= #now()# AND (expirydate >= #now()# OR expirydate is NULL)"
-		,sqlOrderBy="publishDate DESC"
-		) />
-
-<cfelse>
-	<!--- don't filter on categories --->
-	<cfset q=application.fapi.getContentObjects(typename="dmNews", publishdate_lte=now(), expirydate_gte=now(), orderby="publishdate DESC")>
+<cfif not len(trim(stobj.metadata))><!--- don't filter on categories --->
+	<cfset q=application.fapi.getContentObjects(typename="dmNews", publishdate_lte=now(), expirydate_gte=now(), orderby="publishdate DESC",maxRows=maximumRows)>
+<cfelseif stobj.bMatchAllKeywords><!--- require all categories --->
+	<cfset q=application.fapi.getContentObjects(typename="dmNews", publishdate_lte=now(), expirydate_gte=now(), catNews_eq=stObj.metadata, orderby="publishdate DESC",maxRows=maximumRows)>
+<cfelse><!--- any categories --->
+	<cfset q=application.fapi.getContentObjects(typename="dmNews", publishdate_lte=now(), expirydate_gte=now(), catNews_in=stObj.metadata, orderby="publishdate DESC",maxRows=maximumRows)>
 </cfif>
 
 
