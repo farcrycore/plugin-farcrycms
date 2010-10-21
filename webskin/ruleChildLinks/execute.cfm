@@ -61,30 +61,33 @@
 		<cfif qNavPages.recordCount>
 			<!--- loop over child/sim link nav node --->	
 			<cfloop query="qNavPages">
-				<cfset stObjTemp = application.fapi.getContentObject(objectid=qNavPages.data)>
+				<cfset stNavTemp = application.fapi.getContentObject(qNavPages.parentID) />
+				<cfif StructKeyExists(stNavTemp,"status") AND ListContains(request.mode.lValidStatus, stNavTemp.status)>
+					<cfset stObjTemp = application.fapi.getContentObject(objectid=qNavPages.data) />
 				
-				<cfif NOT structIsEmpty(stObjTemp)>
-					<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
-					<cfif (StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) OR NOT StructKeyExists(stObjTemp,"status")) >
+					<cfif NOT structIsEmpty(stObjTemp)>
+						<!--- request.lValidStatus is approved, or draft, pending, approved in SHOWDRAFT mode --->
+						<cfif (StructKeyExists(stObjTemp,"status") AND ListContains(request.mode.lValidStatus, stObjTemp.status) OR NOT StructKeyExists(stObjTemp,"status")) >
 				
-						<!--- if in draft mode grab underlying draft page --->			
-						<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
-							<cfquery datasource="#application.dsn#" name="qHasDraft">
-								SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
-							</cfquery>
+							<!--- if in draft mode grab underlying draft page --->			
+							<cfif IsDefined("stObjTemp.versionID") AND request.mode.showdraft>
+								<cfquery datasource="#application.dsn#" name="qHasDraft">
+									SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
+								</cfquery>
 						
-							<cfif qHasDraft.recordcount gt 0>
-								<cfset stObjTemp = application.fapi.getContentObject(objectid=qHasDraft.objectid)>
+								<cfif qHasDraft.recordcount gt 0>
+									<cfset stObjTemp = application.fapi.getContentObject(objectid=qHasDraft.objectid) />
+								</cfif>
 							</cfif>
+
+							<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" alternatehtml="<!-- #stObj.displaymethod# does not exist for #stObjTemp.typename# -->" />
+
+							<cfbreak>
 						</cfif>
-
-						<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" alternatehtml="<!-- #stObj.displaymethod# does not exist for #stObjTemp.typename# -->" />
-
-						<cfbreak>
+					<cfelse>
+						<!--- structure is blank; ie tree reference is borked --->
+						<skin:bubble title="site tree error" message="#qNavPages.data# not in tree" sticky="true" />
 					</cfif>
-				<cfelse>
-					<!--- structure is blank; ie tree reference is borked --->
-					<skin:bubble title="site tree error" message="#qNavPages.data# not in tree" sticky="true" />
 				</cfif>
 			</cfloop>
 		<cfelse>
