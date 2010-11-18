@@ -1,12 +1,74 @@
-<!--- @@Copyright: Daemon Pty Limited 1995-2009, http://www.daemon.com.au --->
-<!--- @@displayname: AOC: Twitter Feed --->
-<!--- @@description: outputs n tweets for defined screen name --->
-<!--- @@author: modius@daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 1997-2010, http://www.daemon.com.au --->
+<!--- @@displayname: Twitter Feed Rule --->
+<!--- @@description: Display tweets for a nominated Twitter screen name. --->
 
-<cfcomponent displayname="Utility: Twitter Feed" extends="farcry.core.packages.rules.rules" output="false" hint="Adds a twitter feed to the page" bObjectBroker="true">
+<cfcomponent 
+	displayname="Utility: Twitter Feed" extends="farcry.core.packages.rules.rules" output="false" 
+	hint="Adds a twitter feed to the page" 
+	bObjectBroker="true">
 	
-	<cfproperty ftSeq="1" ftFieldset="Twitter Feed" name="title" type="string" ftType="string" default="" ftLabel="Title"  />
-	<cfproperty ftSeq="2" ftFieldset="Twitter Feed" name="screenname" type="string" ftType="string" default="" fthint="The twitter user to follow." ftLabel="Screen name"  />
-	<cfproperty ftSeq="3" ftFieldset="Twitter Feed" name="pagesize" type="numeric" ftType="integer" default="5" fthint="The number of status messages to include." ftLabel="Twits" />
+	<cfproperty 
+		name="title" type="string" default="" 
+		ftSeq="1" ftFieldset="Twitter Feed" ftLabel="Title" 
+		fthint="Title for the Twitter feed."
+		ftType="string" />
+		
+	<cfproperty 
+		name="screenname" type="string" default="" 
+		ftSeq="2" ftFieldset="Twitter Feed" ftLabel="Screen name" 
+		fthint="The screen name of the Twitter user to follow (without the @). For example, @modius would be modius."
+		ftType="string" />
+		
+	<cfproperty 
+		name="pagesize" type="numeric" default="5" 
+		ftSeq="3" ftFieldset="Twitter Feed" ftLabel="Tweets" 
+		fthint="The number of status messages to retrieve." 
+		ftType="integer" />
+
+	<cfproperty 
+		name="bajax" type="boolean" default="true" 
+		ftSeq="4" ftFieldset="Twitter Feed" ftLabel="AJAX Feed"
+		fthint="Select if you want the feed to be retrieved asynchronously." 
+		ftType="boolean" />
+
+	<!--- 
+	 // methods
+	--------------------------------------------------------------------------------------------------->
+	<cffunction name="getTweets" returntype="array" access="public" output="false" hint="Gets a bunch of tweets based on a nominated twitter screen name.">
+	
+		<cfargument name="screenname" type="string" required="true" />
+		<cfargument name="pagesize" type="numeric" required="false" default="1" />
+		
+		<cfset apiURL = "http://api.twitter.com/1/statuses/user_timeline/#arguments.screenname#.xml?count=#round(arguments.pagesize)#" />
+		<cfset var xmlTwitter = "" />
+		<cfset var aTwits = arrayNew(1) />
+		<cfset var aParsedTwits=arrayNew(1) />
+		<cfset var i = 0 />
+	
+		<!--- get twits --->
+		<cfhttp url="#apiURL#" result="xmlTwitter" />
+	
+		<cfif NOT isxml(xmlTwitter.filecontent)>
+			<cfreturn arrayNew(1) />
+		</cfif>
+
+		<cfset xmlTwitter = xmlparse(xmlTwitter.filecontent) />
+		<cfset aTwits = xmlSearch(xmlTwitter, "//status") />
+
+		<!--- parse the xml into a purty array --->
+		<cfloop from="1" to="#arrayLen(aTwits)#" index="i">
+
+			<cfset aParsedTwits[i] = structNew()>		
+			<cfset aParsedTwits[i].twit = aTwits[i].text.xmltext />
+			<cfset aParsedTwits[i].twitdate = "- " & aTwits[i].user.screen_name.xmlText & timeFormat(aTwits[i].created_at.xmltext, " h:mmtt ") & dateFormat(aTwits[i].created_at.xmltext, "d/mm") />
+			<cfset aParsedTwits[i].twitProfilePic = aTwits[i].user.profile_image_url.xmlText />
+
+			<!--- activate urls --->
+			<cfset aParsedTwits[i].twit = rereplace(rereplace(aParsedTwits[i].twit,"(https?://\w+([/\.][^ \./]+)+)","<a href='\1'>\1</a>","ALL"),"@([\w_]+)","<a href='http://twitter.com/\1'>@\1</a>","ALL") />
+		</cfloop>
+
+		<cfreturn aParsedTwits />
+
+	</cffunction>
 
 </cfcomponent>
