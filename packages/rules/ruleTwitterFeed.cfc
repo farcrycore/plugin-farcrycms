@@ -55,7 +55,7 @@
 		<cfargument name="screenname" type="string" required="true" />
 		<cfargument name="pagesize" type="numeric" required="false" default="1" />
 		
-		<cfset apiURL = "http://api.twitter.com/1/statuses/user_timeline/#arguments.screenname#.xml?count=#round(arguments.pagesize)#" />
+		<cfset var apiURL = "http://api.twitter.com/1/statuses/user_timeline/#arguments.screenname#.xml?count=#round(arguments.pagesize)#" />
 		<cfset var xmlTwitter = "" />
 		<cfset var aTwits = arrayNew(1) />
 		<cfset var aParsedTwits=arrayNew(1) />
