@@ -117,7 +117,7 @@ $Developer: Mat Bryant (m.bryant@daemon.com.au) $
 										value="Remove" 
 										text="remove" 
 										confirmText="Are you sure you want to remove this item? Doing so will only unlink this content item. The content will remain in the database." 
-										onClick="fcForm.detachLibraryItem('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#','#i#');" />
+										onClick="fcForm.detachLibraryItem('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#','#thisobject#');" />
 							 	</td>
 							</tr>
 						</table>
