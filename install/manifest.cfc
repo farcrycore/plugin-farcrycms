@@ -24,7 +24,10 @@
 	<cfset this.name = "FarCry CMS" />
 	<cfset this.description = "FarCry is more than an enterprise-class application. FarCry CMS is an ""out of the box"" open source solution, a fully extensible application framework, and a commercially supported services model." />
 	<cfset this.lRequiredPlugins = "" />
-	<cfset addSupportedCore(majorVersion="5", minorVersion="0", patchVersion="0") />
+    <cfset addSupportedCore(majorVersion="5", minorVersion="0", patchVersion="0") />
+    
+    <cfset addSupportedCore(majorVersion="6", minorVersion="2", patchVersion="0") />
+	<cfset addSupportedCore(majorVersion="6", minorVersion="2", patchVersion="1") />
 	
 
 </cfcomponent>
