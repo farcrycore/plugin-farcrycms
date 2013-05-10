@@ -59,20 +59,31 @@ type properties
 	ftTemplateWebskinPrefixList="insertHTML" />
 
 <cfproperty 
-	name="teaserImage" type="UUID" hint="Teaser image to display." required="no" default="" 
+	name="teaserImage" type="uuid" hint="Teaser image to display." required="no" default="" 
 	ftseq="31" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Teaser Image" 
 	fttype="uuid" ftjoin="dmImage" 
 	fthelptitle="Teaser Requirements"
 	fthelpsection="Teaser images can only be selected from the pool of associated media images. You must add to the media library before selecting." />
 
+<cfproperty name="imgMain" type="string" 
+	ftSeq="32" ftfieldset="Story Teaser" ftwizardStep="News Body" ftLabel="Main Image"
+	ftType="image" ftDestination="/images/dmNews/imgMain"
+	ftAllowUpload="true" ftSourceField="teaserImage:SourceImage"
+	ftAutoGenerateType="center" ftImageWidth="625" ftImageHeight="324" ftHint="This is main image on the page."
+	ftQuality="0.8" ftInterpolation="blackman">
+
+<cfproperty
+	name="youtubeURL" type="string" hint="URL for YouTube Video to be embed" required="false" default="" 
+	ftseq="33" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Video URL" />
+
 <cfproperty 
 	name="Teaser" type="longchar" hint="Teaser text." required="no" default="" 
-	ftseq="32" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Story Teaser" />
+	ftseq="34" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Story Teaser" />
 
 <cfproperty 
 	name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default=""
 	ftseq="41" ftfieldset="Related Content" ftwizardStep="News Body" ftlabel="Media Library" 
-	ftJoin="dmImage,dmfile,dmflash" bSyncStatus="true"  ftJoinAllowDuplicates="false" />
+	ftJoin="dmImage,dmfile" bSyncStatus="true"  ftJoinAllowDuplicates="false" />
 	
 <cfproperty 
 	name="aRelatedIDs" type="array" hint="Related content items." required="no" default="" 
