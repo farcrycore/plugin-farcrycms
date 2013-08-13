@@ -17,7 +17,7 @@
 --->
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="Image Gallery" 
 	hint="Create Image Gallery content."
-	bSchedule="true" bFriendly="true" fualias="Image Gallery"
+	bSchedule="true" bFriendly="true"
 	bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
