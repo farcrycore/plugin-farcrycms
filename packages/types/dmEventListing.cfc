@@ -15,7 +15,7 @@ type properties
 <cfproperty 
 	name="numEvents" type="integer" ftType="integer" ftLabel="Number of Events to display" required="true" default="0"
 	ftSeq="35" ftFieldset="Configuration"  ftWizardStep="General Details" 
-	ftHint="The number of Education to display. 0 to display all">
+	ftHint="The number of Events to display. 0 to display all">
 
 <cfproperty 
 	name="bPagination" type="boolean" ftLabel="Paginaton" required="false" default="false" 
@@ -41,11 +41,11 @@ object methods
 	<cfargument name="bMatchAllKeywords" type="boolean" required="false" default="false" />
 
 	<cfif NOT len(trim(arguments.category))>
-		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), orderby="startDate DESC", status="approved") />
+		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), orderby="startDate asc", status="approved") />
 	<cfelseif arguments.bMatchAllKeywords>
-		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), catEvent_eq=arguments.category, orderby="startDate DESC", status="approved") />
+		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), catEvent_eq=arguments.category, orderby="startDate asc", status="approved") />
 	<cfelse>
-		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), catEvent_in=arguments.category, orderby="startDate DESC", status="approved") />
+		<cfset var q = application.fapi.getContentObjects(typename="dmEvent", publishdate_lte=now(), expirydate_gte=now(), endDate_gte=now(), catEvent_in=arguments.category, orderby="startDate asc", status="approved") />
 	</cfif>
 
 	<cfreturn q />

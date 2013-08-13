@@ -39,42 +39,42 @@ type properties
     ftSeq="3" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="End Date" 
     ftType="datetime" ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" 
     ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false"
-    hint="The end date of the event">
+    hint="The end date of the event" ftWatch="startDate">
 
 <cfproperty name="location" type="string" required="no" default="" 
-    ftSeq="4" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Venue Location" 
+    ftSeq="5" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Venue Location" 
     ftType="longchar"
     fthint="Street address for the venue.">
 
 <cfproperty name="locationMap" type="longchar" required="no" default="" 
-    ftSeq="5" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Map"
+    ftSeq="6" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Map"
     ftType="longchar"
     fthint="Complete, long form, URL to a map of the location. ">
 
 <cfproperty name="note" type="string" required="no" default="" 
-    ftSeq="5" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Registration Note"
+    ftSeq="7" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Registration Note"
     fhint="For example; 7:30am for an 8:00am start.">
 
 <cfproperty name="displayMethod" type="string" required="yes" default="displayPageStandard" 
-    ftSeq="6" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Page Layout" 
+    ftSeq="8" ftWizardStep="General Details" ftFieldset="Event Overview" ftLabel="Page Layout" 
     ftType="webskin" 
     ftPrefix="displayPage"
     fthint="Choose a page layout.">
 
 <cfproperty name="catEvent" type="longchar" required="no" default="" 
-    ftSeq="7" ftWizardStep="General Details" ftFieldset="Categorisation" ftLabel="Event Category" 
+    ftSeq="9" ftWizardStep="General Details" ftFieldset="Categorisation" ftLabel="Event Category" 
     ftType="category" ftAlias="dmEvent" ftRenderType="dropDown" 
     ftSelectMultiple="false"
     hint="Event categorisation.">
 
 <cfproperty name="publishDate" type="date" required="no" default="" 
-    ftSeq="8" ftWizardStep="General Details" ftFieldset="Publishing Details" ftLabel="Publish Date" 
+    ftSeq="10" ftWizardStep="General Details" ftFieldset="Publishing Details" ftLabel="Publish Date" 
     ftType="datetime" ftDefaultType="Evaluate" ftDefault="now()" 
     ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="false"
     fthint="The date that the event is published and appears on the website.">
 
 <cfproperty name="expiryDate" type="date" required="no" default="" 
-    ftSeq="9" ftWizardStep="General Details" ftFieldset="Publishing Details" ftLabel="Expiry Date" 
+    ftSeq="11" ftWizardStep="General Details" ftFieldset="Publishing Details" ftLabel="Expiry Date" 
     ftType="datetime" ftDefaultType="Evaluate" ftDefault="DateAdd('d', 5, now())" 
     ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true"
     fthint="Optional. The date that the event expires and is removed from the web site.">
@@ -106,7 +106,7 @@ type properties
     hint="Main body of content.">
 
 <cfproperty name="cost" type="string" required="no" default="" 
-    ftSeq="32" ftWizardStep="Event Details" ftFieldset="Event Description" ftLabel="Cost"
+    ftSeq="35" ftWizardStep="Event Details" ftFieldset="Event Description" ftLabel="Cost"
     hint="Cost of event">
 
 <cfproperty name="teaserImage" type="uuid" required="no" default="" 
