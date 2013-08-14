@@ -7,6 +7,7 @@
 				<menuitem id="listdmevent" sequence="20" label="Events" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmEvent.cfm" relatedtype="dmevent" />
 				<menuitem id="listdmlink" sequence="30" label="Links" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmLink.cfm" relatedtype="dmlink" />
 				<menuitem id="listdmfact" sequence="40" label="Facts" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=dmFacts.cfm" relatedtype="dmfacts" />
+				<menuitem id="listfarimagegallery" sequence="50" label="Image Galleries" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=farImageGallery.cfm" relatedtype="farImageGallery" />
 			</menu>
 			<menu id="farcryfeedbackmenu" sequence="20" label="Feedback">
 				<menuitem id="listfarfeedback" sequence="10" label="Feedback" link="/admin/customadmin.cfm?plugin=farcrycms&amp;module=farFeedback.cfm" relatedtype="farfeedback" />
