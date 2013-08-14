@@ -33,7 +33,7 @@ type properties
 <cfproperty 
 	name="numNews" type="integer" ftType="integer" ftLabel="Number of News to display" required="true" default="0"
 	ftSeq="20" ftFieldset="Configuration"  ftWizardStep="General Details" 
-	ftHint="The number of Education to display. 0 to display all">
+	ftHint="The number of news items to display. 0 to display all">
 
 <cfproperty 
 	name="bPagination" type="boolean" ftLabel="Paginaton" required="false" default="false" 
