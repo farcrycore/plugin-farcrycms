@@ -18,7 +18,8 @@
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="News" 
 	hint="Report your up-to-the-minute happenings by creating News content. News can be published throughout your site using publishing rules." 
 	bSchedule="true" bFriendly="true" fualias="news"
-	bObjectBroker="true">
+	bObjectBroker="true"
+	icon="icon-file-text-alt">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
