@@ -73,10 +73,6 @@ type properties
 	ftAutoGenerateType="center" ftImageWidth="625" ftImageHeight="324" ftHint="This is main image on the page."
 	ftQuality="0.8" ftInterpolation="blackman">
 
-<cfproperty
-	name="youtubeURL" type="string" hint="URL for YouTube Video to be embed" required="false" default="" 
-	ftseq="33" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Video URL" />
-
 <cfproperty 
 	name="Teaser" type="longchar" hint="Teaser text." required="no" default="" 
 	ftseq="34" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Story Teaser" />
