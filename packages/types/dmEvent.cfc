@@ -18,7 +18,8 @@
 
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="Events" 
     hint="Calendar events happen at a given place and time. Events can be published in list and month calendar formats." 
-    bSchedule="true" bFriendly="true" bObjectBroker="true">
+    bSchedule="true" bFriendly="true" bObjectBroker="true"
+    icon="fa-calendar">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
@@ -123,9 +124,9 @@ type properties
     ftAllowUpload="false" ftQuality="0.8" ftInterpolation="blackman"
     ftHint="This is main image on the page.">
 
-<cfproperty name="teaser" type="longchar" required="no" default="" 
+<cfproperty name="teaser" type="string" dbPrecision="2000" required="no" default="" 
     ftSeq="43" ftWizardStep="Event Details" ftFieldset="Event Teaser" ftLabel="Teaser Text"
-    hint="Teaser text.">
+    fttype="longchar" ftlimit="500" />
 
 <cfproperty name="aObjectIDs" type="array" required="no" default="" 
     ftSeq="51" ftWizardStep="Event Details" ftFieldset="Related Content" ftLabel="Media Library" 

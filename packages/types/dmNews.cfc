@@ -16,10 +16,10 @@
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="News" 
-	hint="Report your up-to-the-minute happenings by creating News content. News can be published throughout your site using publishing rules." 
+	hint="Report your up-to-the-minute happenings by creating News content." 
 	bSchedule="true" bFriendly="true" fualias="news"
 	bObjectBroker="true"
-	icon="icon-file-text-alt">
+	icon="fa-file-text">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
@@ -74,8 +74,9 @@ type properties
 	ftQuality="0.8" ftInterpolation="blackman">
 
 <cfproperty 
-	name="Teaser" type="longchar" hint="Teaser text." required="no" default="" 
-	ftseq="34" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Story Teaser" />
+	name="Teaser" type="string" dbPrecision="2000" hint="Teaser text." required="no" default="" 
+	ftseq="34" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Story Teaser"
+	fttype="longchar" ftlimit="500" />
 
 <cfproperty 
 	name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default=""
