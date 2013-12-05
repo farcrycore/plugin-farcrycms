@@ -16,8 +16,8 @@
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="News Listing" 
-	hint="Make configurable dmnews listings." 
-	bSchedule="true" bFriendly="true" fualias="newslisting" bUseInTree="true"
+	hint="Create a page listing News items." 
+	bFriendly="true" fualias="newslisting" bUseInTree="true"
 	bObjectBroker="true">
 <!------------------------------------------------------------------------
 type properties
