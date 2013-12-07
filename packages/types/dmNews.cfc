@@ -15,7 +15,8 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<cfcomponent extends="farcry.core.packages.types.versions" displayname="News" 
+<cfcomponent extends="farcry.core.packages.types.versions" 
+	displayname="News" 
 	hint="Report your up-to-the-minute happenings by creating News content." 
 	bSchedule="true" bFriendly="true" fualias="news"
 	bObjectBroker="true"
@@ -31,11 +32,6 @@ type properties
 	name="source" type="string" hint="source of the information contained in the content" required="no" default="" 
 	ftseq="20" ftfieldset="News Story" ftlabel="Source"
 	fthint="Source of the content; author tagline, agency, department, etc" />
-	
-<cfproperty 
-	name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard"
-	ftseq="30" ftfieldset="News Story" ftlabel="Content Template" 
-	fttype="webskin" ftprefix="displayPage" />
 	
 <cfproperty 
 	name="teaserImage" type="uuid" hint="Teaser image to display." required="no" default="" 
@@ -81,10 +77,13 @@ type properties
 <cfproperty 
 	name="expiryDate" type="date" hint="The date that a news object is removed from the web site" required="no" default="" 
 	ftseq="110" ftfieldset="Publishing Options" ftlabel="Expiry Date" 
-	ftType="datetime" ftDefaultType="Evaluate" ftDefault="DateAdd('yyyy', 200, now())" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" ftToggleOffDateTime="true"
+	ftType="datetime" 
+	ftDefaultType="Evaluate" ftDefault="DateAdd('yyyy', 200, now())" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" 
+	ftToggleOffDateTime="true"
 	fthint="Expired news is not visible in listings but is not removed from the site." />
 
 <!--- system attribute --->
+<cfproperty name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard" />
 <cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
 
 
