@@ -15,19 +15,23 @@
 <h3>Embargoed News</h3>
 
 <table class="table table-striped">
+	<thead>
 	<tr>
 		<th>Publish</th>
 		<th>Title</th>
 	</tr>
+	</thead>
+	<tbody>
 </cfoutput>
 
 <cfoutput query="qNews">
 	<tr>
 		<td>#application.fapi.prettyDate(qNews.publishdate)#</td>
-		<td>#qNews.title#</td>
+		<td><skin:buildlink href="#application.url.webtop#/edittabOverview.cfm?objectid=#qNews.objectid#&typename=#qNews.typename#" bmodal="true" linktext="#qNews.title#" title="Editing: #qNews.title#" /></td>
 	</tr>
 </cfoutput>
 <cfoutput>
+	</tbody>
 </table>
 
 </cfoutput>
