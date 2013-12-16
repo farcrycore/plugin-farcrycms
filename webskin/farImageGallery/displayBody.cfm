@@ -1,39 +1,60 @@
 <cfsetting enablecfoutputonly="true" /> 
+<!--- @@displayname: FancyBox Image Gallery --->
 
-<!--- @@displayname: FarCry CMS Plugin standard body display --->
-<!--- @@author: Ken Boncheol Koo (ken@daemon.com.au)--->
-
+<!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
+<!--- 
+ // load JS/CSS assets 
+--------------------------------------------------------------------------------->
+<skin:loadJS id="jquery" />
+<skin:loadJS id="fancyboxJS" baseHref="/farcry/plugins/farcrycms/www/fancybox" lFiles="jquery.fancybox.pack.js" bcombine="false" />
+<skin:loadCSS id="fancyboxCSS" baseHref="/farcry/plugins/farcrycms/www/fancybox" lFiles="jquery.fancybox.css" media="screen" />
+
+<skin:onReady>
+	<cfoutput>
+		$j("a.fancybox").fancybox({
+			cyclic: true,
+			helpers:  {
+            	title : { type : 'inside' }
+            }
+		});
+	</cfoutput>
+</skin:onReady>
+
+<!--- 
+ // view: image gallery 
+--------------------------------------------------------------------------------->
 <cfoutput>
-
-	<h1>#stObj.title#</h1>
-
+	<div class="page-header">
+		<h2>#stObj.title#</h2>
+	</div><!-- /page-header -->
 	<cfif structKeyExists(stobj, "teaser") AND len(stobj.teaser)>
 		<p>#stobj.teaser#</p>
 	</cfif>
-<!--- 
-	<cfif structKeyExists(stobj, "body") AND len(stobj.body)>
-		<p>#stObj.body#</p>
-	</cfif> --->
-
-	<cfif arrayLen(stobj.aImage)>
-
-	<div class="gallery">
-
-             
-		<cfloop from="1" to="#arrayLen(stobj.aImage)#" index="i">
-
-
-
-		  <skin:view typename="farImageGallery" objectID="#stobj.aImage[i]#" webskin="displayImageTile" galleryID="#stobj.objectid#" rowNum="3"/>
-
-		</cfloop>
-		 </div><!-- /.gallery-inner -->
-	</cfif>
-
 </cfoutput>
 
+<cfif arrayLen(stobj.aImage)>
+	<cfoutput>
+		<div class="gallery">
+			<ul class="thumbnails">
+	</cfoutput>
+             
+	<cfloop from="1" to="#arrayLen(stobj.aImage)#" index="i">
+		<!--- get gallery image --->
+		<cfset stImage = application.fapi.getContentObject(typename="dmImage", objectid=stObj.aImage[i])>
 
-<cfsetting enablecfoutputonly="false" /> 
+		<cfoutput>
+			<li class="span2">
+				<a href="#stImage.sourceImage#" title="#stImage.title#" class="thumbnail fancybox" rel="gallery"><img src="#stImage.thumbnailImage#" alt="#stImage.title#" class="img-rounded"></a>
+			</li>
+		</cfoutput>
+	</cfloop>
+	
+	<cfoutput>
+			</ul>
+		</div><!-- /.gallery-inner -->
+	</cfoutput>
+</cfif>
 
+<cfsetting enablecfoutputonly="false" />

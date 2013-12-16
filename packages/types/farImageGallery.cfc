@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -17,49 +17,47 @@
 --->
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="Image Gallery" 
 	hint="Create Image Gallery content."
-	bSchedule="true" bFriendly="true"
-	bObjectBroker="true">
+	bSchedule="true" 
+	bFriendly="true" fualias="gallery"
+	bObjectBroker="true"
+	icon="fa fa-picture-o">
+
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
 <cfproperty 
 	name="title" type="string" hint="Image gallery title." required="no" default="" 
-	ftseq="1" ftfieldset="General Details" ftwizardStep="General Details" ftlabel="Title" ftvalidation="required" />
+	ftseq="10" ftfieldset="Gallery Details" ftlabel="Gallery Title" ftvalidation="required" />
 
 <cfproperty 
-	name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard"
-	ftseq="3" ftfieldset="General Details" ftwizardStep="General Details" ftlabel="Content Template" 
-	fttype="webskin" ftprefix="displayPage" />
-
-<cfproperty 
-	name="Teaser" type="longchar" hint="Teaser text." required="no" default="" 
-	ftseq="3" ftfieldset="Story Teaser" ftwizardStep="General Details" ftlabel="Story Teaser" />
-
-<cfproperty 
-	name="catImageGallery" type="longchar" hint="Image Gallery categorisation." required="no" default="" 
-	ftseq="4" ftfieldset="Categorisation" ftwizardStep="General Details" ftlabel="Image Gallery Category"
-	fttype="category" ftalias="farImageGallery" />
-
-<cfproperty 
-	name="Body" type="longchar" hint="Main body of content." required="no" default="" 
-	ftseq="21" ftfieldset="Image Gallery Story"ftwizardStep="General Details" ftlabel="Body Content"
-	ftType="RichText" 
-	ftImageArrayField="aObjectIDs" ftImageTypename="dmImage" ftImageField="StandardImage"
-	ftTemplateTypeList="dmImage,dmfile,dmflash,dmNavigation,dmHTML"
-	ftTemplateWebskinPrefixList="insertHTML" />
+	name="teaser" type="longchar" hint="Teaser text." required="no" default="" 
+	ftseq="20" ftfieldset="Gallery Details" ftlabel="Description"
+	ftlimit="512" />
 
 <cfproperty
-	name="SourceID" type="uuid" ftType="uuid" ftLabel="Cover Image" required="false" default="" 
-	ftSeq="30" ftfieldset="Media Module" ftwizardStep="General Details"
-    ftJoin="dmImage" />
+	name="imgCoverSourceID" type="uuid" required="false" default="" 
+	ftSeq="30" ftfieldset="Gallery Images" ftLabel="Cover Image Source" 
+	fthint="Choose an image from the library for the cover of the gallery."
+	ftType="UUID" ftJoin="dmImage" />
 
-<cfproperty 
-	name="aImage" type="array" ftType="array" ftLabel="Image Gallery" required="false" default="" 
-	ftseq="33" ftfieldset="Media Module" ftjoin="dmImage" ftwizardStep="General Details" />
+<cfproperty name="imgCover" type="string" required="false"
+	ftSeq="40" ftFieldset="Gallery Images" ftLabel="Gallery Cover"
+	fthint="Crop the cover image to suit your gallery."
+	ftType="image" ftDestination="/images/imagegallery/cover"
+	ftAutoGenerateType="center" ftImageWidth="300" ftImageHeight="200"
+	ftSourceField="imgCoverSourceID:sourceImage" ftCreateFromSourceDefault="true"
+	ftAllowUpload="true" ftQuality="0.8" ftInterpolation="blackman">
 
+<cfproperty name="aImage" type="array" required="false" default=""
+	ftseq="50" ftfieldset="Gallery Images" ftLabel="Image Gallery" 
+	ftType="array" ftjoin="dmImage" ftAllowBulkUpload="true" />
 
-<!------------------------------------------------------------------------
-object methods 
-------------------------------------------------------------------------->	
+<!--- 
+ // legacy properties: deprecated 
+--------------------------------------------------------------------------------->
+<cfproperty name="Body" type="longchar" hint="DEPRECATED. Main body of content." required="no" default="" />
+<cfproperty name="displayMethod" type="string" hint="DEPRECATED. Display method to render." required="yes" default="displayPageStandard" />
+<cfproperty name="catImageGallery" type="longchar" hint="DEPRECATED. Image Gallery categorisation." required="no" default="" />
+<cfproperty name="SourceID" type="uuid" required="false" default="" />
 
 </cfcomponent>

@@ -12,10 +12,10 @@
 	typename="farImageGallery"
 	permissionset="Image Gallery"
 	title="#application.rb.getResource('imageGalleryAdministration', 'Image Gallery Administration')#"
-	columnList="title,catImageGallery,datetimelastUpdated"
+	columnList="imgCover,title,teaser,datetimelastUpdated"
 	sortableColumns="title,datetimelastUpdated"
 	lFilterFields="title"
 	stFilterMetaData="#stFilterMetaData#"
-	sqlorderby="title desc" />
+	sqlorderby="datetimelastupdated desc" />
 
 <cfsetting enablecfoutputonly="false">
