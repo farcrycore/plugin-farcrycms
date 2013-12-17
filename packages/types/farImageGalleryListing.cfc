@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -16,27 +16,25 @@
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="Image Gallery Listing" 
-	hint="Create Image Gallery Listing Page." bUseInTree="true"
-	bSchedule="true" bFriendly="true"
-	bObjectBroker="true">
+	hint="Image Gallery Listing Page." bUseInTree="true"
+    bFriendly="true" fualias="gallery-list"
+	bObjectBroker="true"
+    icon="fa fa-picture-o">
+
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
-<cfproperty 
-	name="title" type="string" hint="Image gallery listing page title." required="no" default="" 
-	ftseq="1" ftfieldset="General Details" ftwizardStep="General Details" ftlabel="Title" ftvalidation="required" />
+<cfproperty name="title" type="string" hint="Image gallery listing page title." required="no" default="" 
+	ftseq="10" ftfieldset="General Details" ftlabel="Title" ftvalidation="required" />
 
 <cfproperty 
-	name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard"
-	ftseq="3" ftfieldset="General Details" ftwizardStep="General Details" ftlabel="Content Template" 
-	fttype="webskin" ftprefix="displayPage" />
+    name="teaser" type="longchar" hint="Teaser text." required="no" default="" 
+    ftseq="20" ftfieldset="General Details" ftlabel="Description"
+    ftlimit="512" />
 
-<cfproperty 
-	name="aImageGallery" type="array" ftType="array" ftLabel="Image Gallery" required="false" default="" 
-	ftseq="5" ftfieldset="General Details" ftjoin="farImageGallery" ftwizardStep="General Details">
-
-<!------------------------------------------------------------------------
-object methods 
-------------------------------------------------------------------------->	
+<!--- 
+ // deprecated properties 
+--------------------------------------------------------------------------------->
+<cfproperty name="displayMethod" type="string" hint="Display method to render." required="yes" default="displayPageStandard" />
 
 </cfcomponent>
