@@ -1,15 +1,19 @@
 <cfsetting enablecfoutputonly="true" /> 
+<!--- @@displayname: News Body --->
 
-<!--- @@displayname: FarCry CMS Plugin standard body display --->
-<!--- @@author: Matthew Bryant (mbryant@daemon.com.au)--->
-
+<!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
 
+<!--- 
+ // view 
+--------------------------------------------------------------------------------->
 <cfoutput>
-<h1>
-	<span class="date">#dateformat(stObj.publishDate, "dd mmm yyy")#</span>
-	#stObj.title#
-</h1>
+	<div class="page-header">
+		<skin:breadcrumb separator="/" objectid="#application.fapi.getNavID("dmNews")#" includeSelf="true" />
+		<h2><span class="date">#dateformat(stObj.publishDate, "dd mmm yyy")#</span>
+	#stObj.title#</h2>
+	</div><!-- /page-header -->
+
 #stObj.body#
 </cfoutput>
 
