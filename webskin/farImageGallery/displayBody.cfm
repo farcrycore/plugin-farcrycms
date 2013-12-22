@@ -27,6 +27,7 @@
 --------------------------------------------------------------------------------->
 <cfoutput>
 	<div class="page-header">
+		<skin:breadcrumb separator="/" objectid="#application.fapi.getNavID("farImageGallery")#" includeSelf="true" />
 		<h2>#stObj.title#</h2>
 	</div><!-- /page-header -->
 	<cfif structKeyExists(stobj, "teaser") AND len(stobj.teaser)>
