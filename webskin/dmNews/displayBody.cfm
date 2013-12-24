@@ -1,6 +1,6 @@
 <cfsetting enablecfoutputonly="true" /> 
 <!--- @@displayname: News Body --->
-<!--- @@postprocess: youtube(width=720,height=405);vimeo(width=720,height=405);twitter ---
+<!--- @@postprocess: youtube(width=720,height=405);vimeo(width=720,height=405);twitter --->
 
 <!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
