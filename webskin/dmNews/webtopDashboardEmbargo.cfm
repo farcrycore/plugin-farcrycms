@@ -1,9 +1,9 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@displayname: Dashboard Clock --->
+<!--- @@displayname: Embargoed News --->
 <!--- @@viewstack: fragment --->
 <!--- @@viewbinding: type --->
-<!--- @@cardClass: fc-dashboard-card-medium --->
-<!--- @@cardHeight: 400px --->
+<!--- @@cardClass: fc-dashboard-card-large --->
+<!--- @@cardHeight: 200px --->
 <!--- @@seq: 100 --->
 
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin">
