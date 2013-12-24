@@ -1,28 +1,27 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
+<!--- @@displayname: Fact Well --->
 
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+<!--- import tag libraries --->
+<cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
 
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
+<cfif len(stobj.link)>
+    <cfoutput>
+        <div class="well clearfix">
+            <a href="#stobj.link#"><img src="#getFileLocation(stobject=stobj, fieldname="imgThumb").path#" alt="#stObj.title#" class="img-circle pull-right">
+            <strong>#stObj.title#</strong></a><br>
+            #stobj.body#
+        </div>
+    </cfoutput>
 
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
---->
-
-<!--- @@displayname: Fact Teaser --->
-<!--- @@Description:  --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfoutput>
-	<h3>#stObj.title#</h3>
-	<div class="fc-richtext">#stobj.body#</div>
-</cfoutput>
+<cfelse>
+    <cfoutput>
+        <div class="well clearfix">
+            <img src="#getFileLocation(stobject=stobj, fieldname="imgThumb").path#" alt="#stObj.title#" class="img-circle pull-right">
+            <strong>#stObj.title#</strong><br>
+        	#stobj.body#
+        </div>
+    </cfoutput>
+</cfif>
 
 <cfsetting enablecfoutputonly="false" />

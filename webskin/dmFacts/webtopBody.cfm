@@ -11,9 +11,8 @@
 
 <ft:objectadmin 
 	typename="dmFacts"
-	title="#application.rb.getResource('factsAdministration', 'Facts Administration')#"
-	permissionset="fact"
-	columnList="title,link,catfacts,datetimelastUpdated"
+	title="Fun Facts"
+	columnList="imgthumb,title,link,catfacts,datetimelastUpdated"
 	sortableColumns="title,link,datetimelastUpdated"
 	lFilterFields="title,link"
 	stFilterMetaData="#stFilterMetaData#"

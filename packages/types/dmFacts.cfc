@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,26 +15,47 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
+<cfcomponent 
+    extends="farcry.core.packages.types.types" 
+    displayname="Fun Facts" 
+    hint="Facts are little snippets of information; factoids, quotes, testimonials, brand messages and more. Create a library of facts and have them publish randomly on your site tokeep things interesting." 
+    bSchedule="true" bObjectBroker="true"
+    icon="fa-smile-o">
 
-<!--- @@displayname: Fact Content Type --->
-<!--- @@Description: Records facts, testimonials and the like. --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent extends="farcry.core.packages.types.types" displayname="Fact" hint="Facts are little snippets of information; factoids, quotes, testimonials, brand messages and more. Create a library of facts and have them publish randomly on your site tokeep things interesting." bSchedule="true" bObjectBroker="true">
-<!------------------------------------------------------------------------
-type properties
-------------------------------------------------------------------------->
-<cfproperty ftseq="1" ftfieldset="Fact Details" name="title" type="string" hint="Meaningful reference title" required="no" default="" ftLabel="Title" ftvalidation="required" />
+    <cfproperty name="title" type="string" required="no" default="" 
+        ftSeq="10" ftFieldset="Fact Details" ftLabel="Title" 
+        ftValidation="required">
 
+    <cfproperty name="body" type="longchar" required="No" default="" 
+        ftSeq="20" ftFieldset="Fact Details" ftLabel="Content" 
+        ftType="longchar" ftlimit="500">
 
-<cfproperty ftseq="3" ftfieldset="Fact Details" name="link" type="string" hint="Link to a page internal or external" required="no" default="" fttype="url" ftLabel="Link" />
-<cfproperty ftseq="4" ftfieldset="Fact Details" name="body" type="longchar" hint="Content of the factoid." required="No" default="" ftLabel="Content" ftType="longchar" />
-<cfproperty ftseq="5" ftfieldset="Fact Details" name="imageID" type="uuid" hint="Image to display with factoid." required="no" default="" fttype="uuid" ftjoin="dmImage" ftlabel="Image" />
+    <cfproperty name="link" type="string" required="no" default="" 
+        ftSeq="30" ftFieldset="Fact Details" ftLabel="Link" 
+        ftType="url"
+        fthint="Optional. Link using absolute URL; eg. http://www.somewhere.com">
 
-<cfproperty ftseq="10" ftfieldset="Fact Details" name="displayMethod" type="string" hint="Display method to render." required="yes" ftDefault="displayTeaserStandard" fttype="webskin" ftprefix="display" ftlabel="Display Method" />
+    <cfproperty name="imageID" type="uuid" required="no" default="" 
+        ftSeq="40" ftFieldset="Fact Details" ftLabel="Source Image" 
+        ftType="uuid" ftJoin="dmImage">
 
-<cfproperty ftseq="30" ftfieldset="Categorisation" name="catFacts" type="longchar" hint="Fact categorisation." required="no" default="" fttype="category" ftalias="dmFacts" ftlabel="Category" />
+    <cfproperty name="imgThumb" type="string" required="false"
+        ftSeq="50" ftFieldset="Fact Details" ftLabel="Thumbnail Image"
+        ftType="image" ftDestination="/images/fact/thumb"
+        ftAutoGenerateType="center" ftImageWidth="100" ftImageHeight="100"
+        ftSourceField="imageID:sourceImage" ftCreateFromSourceDefault="true"
+        ftAllowUpload="true" ftQuality="0.8" ftInterpolation="blackman">
 
-<!--- system properties --->
-<cfproperty name="status" type="string" hint="Status of the node (draft, pending, approved)." required="yes" default="draft" />
+    <cfproperty name="catFacts" type="longchar" required="no" default="" 
+        ftSeq="60" ftFieldset="Categorisation" ftLabel="Category" 
+        ftType="category" ftAlias="dmFacts"
+        fthint="Optional. Category for filtering facts.">
 
+    <cfproperty name="status" type="string" required="yes" default="draft"
+        hint="Status of the node (draft, pending, approved).">
+
+<!--- 
+ // deprecated: legacy properties 
+--------------------------------------------------------------------------------->
+    <cfproperty name="displayMethod" type="string" required="no">
 </cfcomponent>
