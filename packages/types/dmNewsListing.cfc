@@ -18,7 +18,8 @@
 <cfcomponent extends="farcry.core.packages.types.versions" displayname="News Listing" 
 	hint="Create a page listing News items." 
 	bFriendly="true" fualias="newslisting" bUseInTree="true"
-	bObjectBroker="true">
+	bObjectBroker="true"
+	icon="fa-list">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
@@ -41,7 +42,7 @@ type properties
 	ftHint="Enable/Disable Pagination.">
 
 <cfproperty 
-	name="metadata" type="longchar" hint="A list of categories that the news content must match in order to be shown." required="false" default=""
+	name="catNews" type="longchar" hint="A list of categories that the news content must match in order to be shown." required="false" default=""
 	ftseq="30" ftfieldset="Categorisation" ftwizardStep="General Details" ftlabel="Selected News Categories"
 	fttype="category" ftalias="dmNews"  />
 
