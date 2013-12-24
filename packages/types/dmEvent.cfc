@@ -18,13 +18,13 @@
 
 <cfcomponent extends="farcry.core.packages.types.versions" 
     displayname="Events" 
-    hint="Calendar events happen at a given place and time. Events can be published in list and month calendar formats." 
-    bSchedule="true" bFriendly="true" bObjectBroker="true"
+    hint="List of events happen at a given place and time. Events can be published in list and month calendar formats." 
+    bSchedule="true" bFriendly="true" fualias="events"
+    bObjectBroker="true"
     icon="fa-calendar">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
-
 <cfproperty name="title" type="string" required="no" default="" 
     ftSeq="10" ftFieldset="Event Overview" ftLabel="Title" 
     ftValidation="required" />

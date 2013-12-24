@@ -1,41 +1,46 @@
 <cfcomponent displayname="Event Listing" extends="farcry.core.packages.types.versions"
-	hint="Display a list of Events."
-	bFriendly="true" fualias="events" bObjectBroker="true" bUseInTree="true">
+	hint="Display a calendar of Events."
+	bFriendly="true" fualias="events" 
+	bObjectBroker="true" bUseInTree="true"
+	icon="fa-calendar">
 <!------------------------------------------------------------------------
 type properties
 ------------------------------------------------------------------------->	
 <cfproperty 
-	name="title" type="string" hint="Event title." required="no" default="" 
-	ftseq="1" ftFieldset="General Details" ftwizardStep="General Details" ftlabel="Title" ftvalidation="required" />
+	name="title" type="string" hint="Calendar title." required="no" default="" 
+	ftseq="10" ftFieldset="General Details" ftlabel="Calendar Title" 
+	ftvalidation="required" />
 
 <cfproperty 
 	name="Teaser" type="longchar" hint="Teaser text." required="no" default="" 
-	ftseq="2" ftFieldset="General Details" ftwizardStep="General Details" ftlabel="Teaser" />
+	ftseq="20" ftFieldset="General Details" ftlabel="Teaser"
+	ftlimit="512" />
 
 <cfproperty 
-	name="numEvents" type="integer" ftType="integer" ftLabel="Number of Events to display" required="true" default="0"
-	ftSeq="35" ftFieldset="Configuration"  ftWizardStep="General Details" 
-	ftHint="The number of Events to display. 0 to display all">
+	name="numEvents" type="integer" required="true" default="0"
+	ftSeq="30" ftFieldset="Configuration" ftLabel="Number of Events"
+	ftHint="The number of Events to display. 0 to display all."
+	ftType="integer" >
 
 <cfproperty 
-	name="bPagination" type="boolean" ftLabel="Paginaton" required="false" default="false" 
-	ftSeq="37" ftFieldset="Configuration" ftWizardStep="General Details"
+	name="bPagination" type="boolean" required="false" default="false" 
+	ftSeq="40" ftFieldset="Configuration" ftLabel="Paginaton" 
 	ftHint="Enable/Disable Pagination.">
 
 <cfproperty 
-	name="metadata" type="longchar" hint="A list of categories that the event content must match in order to be shown." required="false" default=""
-	ftseq="30" ftfieldset="Categorisation" ftwizardStep="General Details" ftlabel="Selected Event Categories"
+	name="catCalendar" type="longchar" hint="Categories to filter events by." required="false" default=""
+	ftseq="50" ftfieldset="Categorisation" ftlabel="Filter for Categories"
 	fttype="category" ftalias="dmEvent"  />
 
 <cfproperty 
-	name="bMatchAllKeywords" type="boolean" hint="Does the content need to match ALL selected keywords?" required="false" default="0"
+	name="bMatchAllKeywords" type="boolean" hint="Match ALL selected keywords." required="false" default="0"
 	ftSeq="31" ftFieldset="Categorisation" ftLabel="Match all the selected categories?" 
-    ftType="boolean" ftHint="If this box is ticked, an article must be tagged with all of the selected categories in order to appear in this area." />
+    ftHint="If this box is ticked, an event must be tagged with all of the selected categories in order to appear in the calendar."
+    ftType="boolean" />
 
 <!------------------------------------------------------------------------
-object methods 
+type methods 
 ------------------------------------------------------------------------->	
-
 <cffunction name="getEvents" returntype="query" output="false" access="public" hint="Returns dmEvent base on category">
 	<cfargument name="category" type="string" required="false" default="" />
 	<cfargument name="bMatchAllKeywords" type="boolean" required="false" default="false" />
