@@ -1,1 +1,0 @@
-<cfif len(trim(stObj.text))><cfoutput>#stObj.text#</cfoutput></cfif>
