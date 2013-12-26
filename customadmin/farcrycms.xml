@@ -5,7 +5,6 @@
 			<menu id="farcrycmsmenu" sequence="10" label="Content Types">
 				<menuitem id="listdmnews" sequence="10" label="News" typename="dmnews" />
 				<menuitem id="listdmevent" sequence="20" label="Events" typename="dmevent" />
-				<menuitem id="listdmlink" sequence="30" label="Links" typename="dmlink" />
 				<menuitem id="listdmfact" sequence="40" label="Facts" typename="dmfacts" />
 				<menuitem id="listfarimagegallery" sequence="50" label="Image Galleries" typename="farImageGallery" />
 			</menu>
