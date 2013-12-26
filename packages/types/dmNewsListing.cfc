@@ -52,9 +52,8 @@ type properties
     ftType="boolean" ftHint="If this box is ticked, an article must be tagged with all of the selected categories in order to appear in this area." />
 
 <!------------------------------------------------------------------------
-object methods 
+type methods 
 ------------------------------------------------------------------------->	
-
 <cffunction name="getNews" returntype="query" output="false" access="public" hint="Returns dmNews base on category">
 	<cfargument name="category" type="string" required="false" default="" />
 	<cfargument name="bMatchAllKeywords" type="boolean" required="false" default="false" />
