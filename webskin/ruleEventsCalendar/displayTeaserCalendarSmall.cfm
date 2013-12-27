@@ -1,36 +1,20 @@
 <cfsetting enablecfoutputonly="yes">
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
-
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
---->
-<!--- 
-|| DESCRIPTION || 
-$Description: dmEvent -- calendar listing$
-$TODO: $
-
-|| DEVELOPER ||
-$Developer: Brendan Sisson (brendan@daemon.com.au) $
---->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@displayname: Small Calendar --->
-<!--- @@author: Brendan Sisson --->
 
+<!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/core/tags/extjs" prefix="extjs">
 
 <cfparam name="arguments.stParam" default="#structNew()#" />
+
+<cfif len(trim(stobj.intro))>
+	<cfoutput>#stobj.intro#</cfoutput>
+</cfif>
+
+<!--- define row for calendars --->
+<cfoutput>
+	<div class="row">
+</cfoutput>
 
 <!--- loop over number of months to display --->
 <cfloop from="0" to="#stobj.months-1#" index="displayMonth">
@@ -49,7 +33,8 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 	
 	<!--- show calendar --->
 	<cfoutput>
-	<table class="table1 calendar">
+	<div class="span3">
+	<table class="table calendar">
 		<thead>
 			<tr>
 				<th colspan="7">#monthasstring(month)#</th>
@@ -153,6 +138,11 @@ $Developer: Brendan Sisson (brendan@daemon.com.au) $
 		</cfloop>
 	<cfoutput>
 	</tbody></table>
+	</div><!-- /span -->
 	</cfoutput>
 </cfloop>
+
+<cfoutput>
+	</div><!-- /row -->
+</cfoutput>
 <cfsetting enablecfoutputonly="no">

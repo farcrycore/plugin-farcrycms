@@ -1,52 +1,15 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
+<cfsetting enablecfoutputonly="true">
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
+<!--- @@displayname: Large Calendar --->
 
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
---->
-<!--- 
-|| DESCRIPTION || 
-$Description: Calendar Template
-|| DEVELOPER ||
-$Developer: Gavin Stewart (gavin@daemon.com.au)$
---->
-<!--- @@displayname: Calendar --->
-<!--- @@author: Gavin Stewart (gavin@daemon.com.au)--->
-
- <cfsetting enablecfoutputonly="yes">
-
+<!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin">
-<cfimport taglib="/farcry/core/tags/extjs" prefix="extjs">
 
+<!--- environment variables --->
 <cfparam name="arguments.stParam" default="#structNew()#" />
-
-<cfset earliestyear = year(now())>
-
-<skin:htmlHead id="calendarchangedateJS">
-<cfoutput>
-<script language="javascript">
-	function changedate(){
-		var mymonth=document.calendarform.month.options[document.calendarform.month.selectedIndex].value;
-		var myyear=document.calendarform.year.options[document.calendarform.year.selectedIndex].value;
-		window.location="?objectid=#url.Objectid#&year="+myyear+"&month="+mymonth;
-	}
-</script>
-</cfoutput>
-</skin:htmlHead>
-
 <cfparam name="month" default="#Month(now())#">
 <cfparam name="year" default="#Year(now())#">
+<cfset earliestyear = year(now())>
 
 <!---Find the start day  the month--->
 <cfset start_day = DayOfWeek(createdate("#year#","#month#","1"))>
@@ -57,8 +20,29 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 <!---Find the end day of the month--->
 <cfset end_day = DayOfWeek(createdate("#year#","#month#","#total_days_in_month#"))>
 
+
+
+<!--- 
+ // view 
+--------------------------------------------------------------------------------->
+<skin:htmlHead id="calendarchangedateJS">
 <cfoutput>
-<table class="table1 calendar">
+<script language="javascript">
+	function changedate(){
+		var mymonth=document.calendarform.month.options[document.calendarform.month.selectedIndex].value;
+		var myyear=document.calendarform.year.options[document.calendarform.year.selectedIndex].value;
+		window.location="#application.fapi.fixURL(removevalues="+year,month")#&year="+myyear+"&month="+mymonth;
+	}
+</script>
+</cfoutput>
+</skin:htmlHead>
+
+<cfif len(trim(stobj.intro))>
+	<cfoutput>#stobj.intro#</cfoutput>
+</cfif>
+
+<cfoutput>
+<table class="table table-striped calendar">
 	<thead>
 		<tr>
 		
@@ -70,7 +54,7 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 			</cfloop>
 			</select>		
 			<select name="year" onChange="changedate()" size="1">
-				<cfloop from="#earliestyear#" to="#year(now())#" index="y">
+				<cfloop from="#earliestyear#" to="#year(now())+1#" index="y">
 					<option value="#y#" <cfif year is y> selected="selected"</cfif>>#y#</option>
 				</cfloop>
 			</select>
@@ -120,8 +104,9 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 								
 								<cfloop query="qDayEvents">									
 									<cfset eventDisplayed = 1>
-									<skin:view objectid="#qDayEvents.objectid#" typename="dmEvent" webskin="displayToolTip" r_html="eventTeaserHTML" />
-									<extjs:toolTip toolTip="#eventTeaserHTML#"><em><span class="title"><skin:buildLink objectid="#qDayEvents.objectid#">#qDayEvents.title#</skin:buildLink></span></em></extjs:toolTip>
+									<skin:view objectid="#qDayEvents.objectid#" typename="dmEvent" webskin="displayTeaserStandard" r_html="eventTeaserHTML" />
+									<skin:tooltip message="#trim(eventTeaserHTML)#" selector="##E#hash(qDayEvents.title)#" />
+									<skin:buildLink objectid="#qDayEvents.objectid#" id="E#hash(qDayEvents.title)#">#qDayEvents.title#</skin:buildLink>
 								</cfloop>
 								
 							</cfif>
@@ -143,7 +128,6 @@ $Developer: Gavin Stewart (gavin@daemon.com.au)$
 		</cfloop>
 	</tbody>
 </table>
-<p></p>
 </cfoutput>
 
-<cfsetting enablecfoutputonly="no">
+<cfsetting enablecfoutputonly="false">

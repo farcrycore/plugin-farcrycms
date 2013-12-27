@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,29 +15,35 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<!--- @@Description: 
-ruleEventsCalendar (FarCry Core)
-Publishing rule for showing Event content items in a month calendar view format. --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent displayname="Events: Calendar Rule" extends="farcry.core.packages.rules.rules" 
-	hint="Publishing rule for showing Event content items in a month calendar view format.">
+<cfcomponent 
+	extends="farcry.core.packages.rules.rules"
+	displayname="Event Calendar"
+	hint="Small and large calendar month views for events."
+	icon="fa-calendar">
 
-	<cfproperty ftSeq="1" ftFieldSet="Introduction" name="intro" type="string" hint="Intro text for the event listing" required="no" default="" ftType="longchar" ftLimit="255">
-	<cfproperty ftSeq="2" ftFieldSet="Introduction" name="months" type="numeric" hint="Number of months to show" required="yes" default="1">
-	<cfproperty ftSeq="3" ftFieldSet="Introduction" name="displayMethod" type="string" hint="Display method to render this event rule with." required="yes" default="displayTeaserCalendar" ftLabel="Display Method" ftType="webskin" ftPrefix="displayTeaserCalendar" ftTypename="ruleEventsCalendar">
-	<cfproperty ftSeq="11" ftFieldSet="Categories" name="bMatchAllKeywords" hint="Doest the content need to match ALL selected keywords" type="boolean" required="false" default="0">
-	<cfproperty ftSeq="12" ftFieldSet="Categories" name="metadata" type="longchar" hint="A list of category ObjectIDs that the news content is to be drawn from" required="false" default="" ftType="category">
+	<cfproperty name="intro" type="string" required="no" default="" 
+		ftSeq="10" ftFieldset="Calendar View" ftlabel="Introduction"
+		ftType="longchar" ftLimit="500"
+		fthint="Optional. Intro text for the event calendar.">
 
-	<cffunction name="getDefaultProperties" returntype="struct" access="public">
-		<cfscript>
-			stProps=structNew();
-			stProps.objectid = createUUID();
-			stProps.label = '';
-			stProps.displayMethod = 'displayteaserCalendar';
-			stProps.bMatchAllKeywords = 0;
-			stProps.metadata = '';
-		</cfscript>	
-		<cfreturn stProps>
-	</cffunction>  
+	<cfproperty name="displayMethod" type="string" required="yes" default="displayTeaserCalendar" 
+		ftSeq="20" ftFieldset="Calendar View" ftLabel="Display Template" 
+		ftType="webskin" 
+		ftPrefix="displayTeaserCalendar"
+		fthint="Choice of multiple small months or a single large month calendar view.">
+
+	<cfproperty name="months" type="numeric" required="yes" default="3" 
+		ftSeq="30" ftFieldset="Calendar View" ftlabel="Months"
+		fttype="integer" 
+		fthint="Number of months to show on small calendar.">
+
+	<cfproperty name="metadata" type="longchar" required="false" default="" 
+		ftSeq="40" ftFieldset="Calendar View" ftlabel="Filter Categories"
+		ftType="category"
+		fthint="Optional. Filter events to specific categories.">
+
+	<cfproperty name="bMatchAllKeywords" type="boolean" required="false" default="0" 
+		ftSeq="50" ftFieldset="Calendar View" ftlabel="All Keywords?"
+		fthint="Check if events must match ALL selected keywords.">
 
 </cfcomponent>
