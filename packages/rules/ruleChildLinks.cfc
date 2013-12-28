@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,24 +15,22 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-
-<!--- @@displayname: Display Title for the Template --->
-<!--- @@Description: List teasers for the current navigation folders children.  Children types are restricted to dmHTML, dmLink and dmInclude content types. --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent displayname="Utility: Child Links Rule" extends="farcry.core.packages.rules.rules" 
-	hint="List teaser displays for the current navigation folders children.  
-		Children content types are restricted to HTML, Link and Include. 
-		This publishing rule is commonly used on section landing pages to 
-		build a summary for the pages in the section.">
+<cfcomponent 
+	extends="farcry.core.packages.rules.rules" 
+	displayname="Child Links" 
+	hint="List teaser displays for the children of the current menu item."
+	icon="fa-folder-open-o">
 
 <cfproperty 
 	name="intro" hint="Intro text to child link listing; can be any relevant HTML code and content." type="string" required="false" default="" 
 	ftSeq="1" ftFieldset="General Details" ftLabel="Introduction"
-	ftType="longchar" />
+	ftType="longchar" ftlimit="512" 
+	fthint="Optional. Introduction text appearing before the child teasers." />
 	
 <cfproperty 
 	name="displayMethod" type="string" hint="Teaser display method to render children links." required="yes" default="displayTeaserStandard" 
-	ftSeq="2" ftFieldset="General Details" ftLabel="Display Method" 
-	ftType="webskin" ftTypename="dmHTML,dmInclude,dmLink" ftPrefix="displayTeaser" />
+	ftSeq="2" ftFieldset="General Details" ftLabel="Display Template" 
+	ftType="webskin" ftTypename="dmHTML" ftPrefix="displayTeaser" 
+	fthint="Note: if an underlying content item does not have this teaser display available it will not be shown." />
 	
 </cfcomponent>

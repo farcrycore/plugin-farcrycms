@@ -1,37 +1,19 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
+<!--- @@displayname: Display Child Links --->
 
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
---->
-<!--- @@displayname: Display page child links --->
-
+<!--- import tag libraries --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
-
-<cfset oNav = CreateObject("component", application.stcoapi.dmNavigation.packagepath) /> 
-
 
 <!--- assumes existance of request.navid  --->
 <cfparam name="request.navid">
 
-
 <!--- get the children of this object --->
-<cfset qGetChildren = application.factory.oTree.getChildren(objectid=request.navid) />
+<cfset oNav = application.fapi.getContentType(typename="dmNavigation") /> 
+<cfset qGetChildren = oNav.getChildren(objectid=request.navid)>
 
 <!--- if the intro text exists - append to aInvocations to be output as HTML --->
-<cfif len(stObj.intro) GT 0>
+<cfif len(stObj.intro)>
 	<cfoutput>#stObj.intro#</cfoutput>
 </cfif>
 
@@ -75,12 +57,12 @@
 									SELECT objectID,status from #application.dbowner##stObjTemp.typename# where versionID = '#stObjTemp.objectID#' 
 								</cfquery>
 						
-								<cfif qHasDraft.recordcount gt 0>
+								<cfif qHasDraft.recordcount>
 									<cfset stObjTemp = application.fapi.getContentObject(objectid=qHasDraft.objectid) />
 								</cfif>
 							</cfif>
 
-							<skin:view objectid="#stObjTemp.objectid#" webskin="#stObj.displaymethod#" alternatehtml="<!-- #stObj.displaymethod# does not exist for #stObjTemp.typename# -->" />
+							<skin:view objectid="#stObjTemp.objectid#" typename="#stObjTemp.typename#" webskin="#stObj.displaymethod#" alternatehtml="<!-- #stObj.displaymethod# does not exist for #stObjTemp.typename# -->" />
 
 							<cfbreak>
 						</cfif>
