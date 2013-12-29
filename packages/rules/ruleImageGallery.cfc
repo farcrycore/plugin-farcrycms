@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,11 +15,22 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<cfcomponent displayname="Images: Image Gallery" extends="farcry.core.packages.rules.rules" hint="Displays an image gallery of selected images">
+<cfcomponent 
+    extends="farcry.core.packages.rules.rules"
+    displayname="Image Gallery" 
+    hint="Impromptu image gallery of media library images matching a specific category."
+    icon="fa-picture-o">
 
+    <cfproperty name="catImageGallery" type="longchar" default="" 
+        ftSeq="10" ftFieldset="Image Gallery" ftLabel="Categories" 
+        ftType="category" ftalias="dmImage" 
+        ftRenderType="dropDown" ftDropdownFirstItem="All Images" ftSelectMultiple="false"
+        fthint="Optional. Category of images to display. No selection will show all images.">
 
-	<cfproperty ftSeq="1" ftFieldset="Images" name="aImages" type="array" default="" hint="The list of images to be displayed in the gallery" ftLabel="Images" ftJoin="dmImage" />
-	<cfproperty ftSeq="2" ftFieldset="Images" name="catImageGallery" type="longchar" default="" hint="A list of category ObjectIDs that the content is to be drawn from" ftLabel="Categories" ftType="category" />
-	<cfproperty ftSeq="10" ftFieldset="Display" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="20" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
+    <cfproperty name="numItems" type="numeric" required="true" default="20" 
+        ftSeq="20" ftFieldset="Image Gallery" ftLabel="Images to Display" 
+        ftType="numeric" 
+        ftIncludeDecimal="false" ftValidation="validate-digits"
+        fthint="Total number of items to display in gallery.">
 	
 </cfcomponent>
