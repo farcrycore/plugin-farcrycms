@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,38 +15,56 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-
-<!--- 
-|| DESCRIPTION || 
-$Description: 
-News rule publishes news content items in date order, with 
-most recently published first.  News content is only visible 
-if it is a) approved content; b) time is past the publish date; 
-c) time is before the expriy date, and; d) it matches the nominated 
-categories.
-$
-
-|| DEVELOPER ||
-$Developer: Geoff Bowers (modius@daemon.com.au) $
---->
-<cfcomponent displayname="News: Listing Rule" extends="farcry.core.packages.rules.rules" 
+<cfcomponent 
+	extends="farcry.core.packages.rules.rules" 
+	displayname="News Listing" 
 	hint="News rule publishes news content items in date order, with 
 		most recently published first.  News content is only visible 
 		if it is a) approved content; b) time is past the publish date; 
 		c) time is before the expriy date, and; d) it matches the nominated 
-		categories." bObjectBroker="true">
+		categories." 
+	bObjectBroker="true"
+	icon="fa-file-text">
 
-	<cfproperty ftSeq="1" ftFieldset="General" name="intro" type="longchar" hint="Intro text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftLabel="Intro Text" ftHint="This content will appear above the news listing." />
-	<cfproperty ftSeq="2" ftFieldset="General" name="displayMethod" type="string" hint="Display teaser method to render individual content items." required="true" default="displayTeaserStandard" ftType="webskin" fttypename="dmNews" ftprefix="displayTeaser" ftLabel="Display Method" ftHint="This determines how each of your news results will render." />
-	<cfproperty ftSeq="3" ftFieldset="General" name="suffix" type="longchar" hint="Suffix text for the news listing.  Can be any combination of content and HTML markup." required="false" default="" ftLabel="Suffix Text" ftHint="This content will appear below the news listsing." />
+	<cfproperty name="intro" type="longchar" required="false" default="" 
+		ftSeq="10" ftFieldset="General" ftLabel="Intro Text"
+		fthint="Optional. Intro text for the news listing.  Can be any combination of content and HTML markup.">
 
-	<cfproperty ftSeq="10" ftFieldset="Results" name="numItems" type="numeric" hint="The number of items to display per page." required="true" default="5" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## items per page" />
-	<cfproperty ftSeq="11" ftFieldset="Results" name="numPages" type="numeric" hint="The number of pages (default 10)" required="true" default="10" ftType="numeric" ftIncludeDecimal="false" ftvalidation="validate-digits" ftLabel="## of pages" />
+	<cfproperty name="displayMethod" type="string" required="true" default="displayTeaserStandard" 
+		ftSeq="20" ftFieldset="General" ftLabel="Display Template" 
+		ftType="webskin" 
+		ftTypename="dmNews" ftPrefix="displayTeaser"
+		ftHint="This determines how each of your news items will display.">
 
-	<cfproperty ftSeq="12" ftFieldset="Results" name="bArchive" type="boolean" hint="Displays with a paginated display." required="true" default="0" ftType="boolean" ftLabel="Paginate?" ftHint="Ticking this box will automatically add navigation and allow the client to view more news items.  Leaving the box unticked will only show the first group of news items." />
-	
-	<cfproperty ftseq="20" ftfieldset="Categorisation" name="metadata" type="longchar" hint="A list of categories that the news content must match in order to be shown." required="false" default="" fttype="category" ftalias="dmnews" ftlabel="Selected News Categories" />
-	
-	<cfproperty ftSeq="21" ftFieldset="Categorisation" name="bMatchAllKeywords" type="boolean" hint="Does the content need to match ALL selected keywords?" required="false" default="0" ftType="boolean" ftLabel="Match all the selected categories?" ftHint="If this box is ticked, an article must be tagged with all of the selected categories in order to appear in this area." />
+	<cfproperty name="suffix" type="longchar" required="false" default="" 
+		ftSeq="30" ftFieldset="General" ftLabel="Suffix Text"
+		fthint="Optional. Suffix text for the news listing.  Can be any combination of content and HTML markup.">
+
+	<cfproperty name="numItems" type="numeric" required="true" default="5" 
+		ftSeq="40" ftFieldset="Results" ftLabel="## items per page" 
+		ftType="numeric" 
+		ftIncludeDecimal="false" ftValidation="validate-digits"
+		fthint="The number of items to display per page.">
+
+	<cfproperty name="bArchive" type="boolean" required="true" default="0" 
+		ftSeq="50" ftFieldset="Results" ftLabel="Paginated Archive?" 
+		ftType="boolean"
+		ftHint="Create a paginated archive of News pages.">
+
+	<cfproperty name="numPages" type="numeric" required="true" default="10" 
+		ftSeq="60" ftFieldset="Results" ftLabel="## of pages" 
+		ftType="numeric" 
+		ftIncludeDecimal="false" ftValidation="validate-digits"
+		fthint="The number of pages in the paginated archive.">
+
+	<cfproperty name="metadata" type="longchar" required="false" default="" 
+		ftSeq="70" ftFieldset="Categorisation" ftLabel="Selected News Categories" 
+		ftType="category" ftAlias="dmnews"
+		fthint="A list of categories that the news content must match in order to be shown.">
+
+	<cfproperty name="bMatchAllKeywords" type="boolean" required="false" default="0" 
+		ftSeq="80" ftFieldset="Categorisation" ftLabel="Match all the selected categories?" 
+		ftType="boolean"
+		ftHint="If this box is ticked, an article must be tagged with all of the selected categories in order to appear.">
 
 </cfcomponent>
