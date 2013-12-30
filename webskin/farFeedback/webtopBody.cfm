@@ -13,7 +13,6 @@
 
 <ft:objectadmin 
 	typename="farFeedback"
-	permissionset="news"
 	title="Manage Feedback"
 	columnList="subject,emailfrom,name,datetimecreated"
 	sortableColumns="subject,emailfrom,name,datetimecreated"

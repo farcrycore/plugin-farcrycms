@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,9 +15,34 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<cfcomponent displayname="Feedback: Feedback Form" hint="Allows website users to send feedback" extends="farcry.core.packages.rules.rules" output="false">
-	<cfproperty ftSeq="1" ftFieldset="" name="title" type="string" default="" hint="Title of form" ftLabel="Title" ftType="string" ftValidation="required" />
-	<cfproperty ftSeq="2" ftFieldset="" name="emailto" type="longchar" default="" hint="List of email addresses that feedback should be sent to" ftLabel="Send feedback to" ftType="string" ftValidation="required" />
-	<cfproperty ftSeq="3" ftFieldset="" name="success" type="longchar" default="Thank you for your feedback." hint="Response message when feedback has been sent" ftLabel="Success message" ftValidation="required" />
-	
+<cfcomponent 
+    extends="farcry.core.packages.rules.rules"
+    displayname="Feedback Form" 
+    hint="Allows website users to send feedback" output="false"
+    icon="fa-envelope-o">
+
+    <cfproperty name="title" type="string" default="" required="true"
+        ftSeq="1" ftFieldset="General Details" ftLabel="Form Title" 
+        ftType="string" 
+        ftValidation="required"
+        fthint="Title of the form. Appears above the form as a heading.">
+
+    <cfproperty name="emailto" type="longchar" default="" required="true"
+        ftSeq="2" ftFieldset="General Details" ftLabel="Feedback Address" 
+        ftType="string" 
+        ftValidation="required"
+        fthint="List of email addresses that feedback should be sent to.">
+
+    <cfproperty name="successTitle" type="string" default="Thank you for your feedback." 
+        ftSeq="3" ftFieldset="Response" ftLabel="Response Title"
+        fttype="string" 
+        ftValidation="required"
+        fthint="Response message when feedback has been sent.">
+
+    <cfproperty name="successResponse" type="longchar" default="We have sent you a confirmation of your feedback via email. We will respond to your feedback shortly. Enjoy the site!" 
+        ftSeq="3" ftFieldset="Response" ftLabel="Response Message"
+        fttype="richtext" 
+        ftValidation="required"
+        fthint="Response message when feedback has been sent.">
+
 </cfcomponent>

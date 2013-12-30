@@ -1,32 +1,20 @@
 <cfsetting enablecfoutputonly="true" />
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
-<!--- @@License:
-    This file is part of FarCry CMS Plugin.
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
+<!--- @@displayname: Feedback Form --->
 
-    FarCry CMS Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    FarCry CMS Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
---->
-<!--- @@displayname: Show feedback form --->
-
+<!--- import tag libraries --->
 <cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
-<ft:processform action="Send">
+<!--- 
+ // process feedback form 
+--------------------------------------------------------------------------------->
+<ft:processform action="Send Feedback">
 	<ft:processformobjects typename="farFeedback">
 		<cfif isvalid("email",stProperties.emailfrom)>
-			<cfset oFeedback = createobject("component",application.stCOAPI["farFeedback"].packagepath) />
+			<cfset oFeedback = application.fapi.getContentType(typename="farFeedback") />
 			
 			<cfset stProperties.emailto = stObj.emailto />
-			<cfset stProperties.subject = "Feedback email from: #stObj.title#" />
+			<cfset stProperties.subject = "Feedback: #stObj.title# (#stProperties.name#)" />
 			
 			<cfset oFeedback.sendFeedback(stObject=stProperties) />
 			
@@ -38,22 +26,31 @@
 	</ft:processformobjects>
 </ft:processform>
 
+<!--- 
+ // view: show feedback form 
+--------------------------------------------------------------------------------->
 <cfset stPropMetadata = structnew() />
 <cfset stPropMetadata.emailfrom.ftLabel = "Email" />
 
 <ft:form>
-	<cfoutput><h2>#stObj.title#</h2></cfoutput>
+	<cfoutput><h3>#stObj.title#</h3></cfoutput>
 	
 	<cfif structkeyexists(variables,"feedbacksent") and variables.feedbacksent>
-		<cfoutput><p class="success">#stObj.success#</p></cfoutput>
+		<cfoutput>
+		<div class="alert alert-success">
+  		<button type="button" class="close" data-dismiss="alert">&times;</button>
+  		<h4>#stObj.successTitle#</h4>
+  		#stObj.successResponse#
+		</div>
+		</cfoutput>
 	</cfif>
 	
 	<ft:object typename="farFeedback" lFields="name,emailfrom,comments" stPropMetadata="#stPropMetadata#" IncludeFieldSet="false" />
 	<cfoutput><br/></cfoutput>
 	
-	<ft:farcrybuttonpanel>
-		<ft:farcrybutton value="Send" />
-	</ft:farcrybuttonpanel>
+	<ft:buttonpanel>
+		<ft:button value="Send Feedback" primaryAction="true" icon="fa-envelope" class="input-xlarge" />
+	</ft:buttonpanel>
 </ft:form>
 
 <cfsetting enablecfoutputonly="false" />
