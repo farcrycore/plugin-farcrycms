@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -16,19 +16,11 @@
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
 <cfcomponent extends="farcry.core.webtop.install.manifest" name="manifest">
-
-	<!--- IMPORT TAG LIBRARIES --->
-	<cfimport taglib="/farcry/core/packages/fourq/tags/" prefix="q4">
-	
 	
 	<cfset this.name = "FarCry CMS" />
 	<cfset this.description = "FarCry is more than an enterprise-class application. FarCry CMS is an ""out of the box"" open source solution, a fully extensible application framework, and a commercially supported services model." />
 	<cfset this.lRequiredPlugins = "" />
-    <cfset addSupportedCore(majorVersion="5", minorVersion="0", patchVersion="0") />
-    
-    <cfset addSupportedCore(majorVersion="6", minorVersion="2", patchVersion="0") />
-	<cfset addSupportedCore(majorVersion="6", minorVersion="2", patchVersion="1") />
-	
+	<cfset addSupportedCore(majorVersion="7", minorVersion="0", patchVersion="0") />	
 
 </cfcomponent>
 
