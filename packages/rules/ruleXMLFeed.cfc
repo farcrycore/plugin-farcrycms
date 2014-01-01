@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,22 +15,31 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
-<!--- 
-|| DESCRIPTION || 
-$Description: Publishing rule to pull, parse and display external RSS feeds.  Is dependent on the rss.cfc component. $
-$TODO: add application scope cacheing to query$
+<cfcomponent 
+    extends="farcry.core.packages.rules.rules"
+    displayname="RSS Feed" 
+    hint="Import a third-party RSS feed and display."
+    bobjectbroker="true">
 
-|| DEVELOPER ||
-$Developer: Geoff Bowers (modius@daemon.com.au) $
---->
-<!--- <cfsetting enablecfoutputonly="Yes"> --->
-<cfcomponent displayname="Utility: XML Feed Publishing Rule" extends="farcry.core.packages.rules.rules" hint="Displays an XML feed within a container">
+    <cfproperty name="feedName" type="string" default="" 
+        ftSeq="1" ftFieldset="" ftLabel="Feed name" 
+        ftType="string"
+        fthint="Admin only. A useful name for this feed; will not be displayed to users.">
 
-	<!--- rule object properties --->
-	<cfproperty ftSeq="1" ftFieldset="" name="feedName" type="string" default="" hint="A useful name for this feed" ftLabel="Feed name" ftType="string" />
-	<cfproperty ftSeq="2" ftFieldset="" name="XMLFeedURL" type="string" default="" hint="The location of the feed (URL)" ftLabel="Feed URL" ftType="string" />
-	<cfproperty ftSeq="3" ftFieldset="" name="intro" type="string" default="" hint="An introduction to this feed" ftLabel="Introduction" ftType="longchar" />
-	<cfproperty ftSeq="4" ftFieldset="" name="maxRecords" type="numeric" default="20" hint="The maximum number of records to return to the user" ftLabel="Max. records" ftType="integer" />
+    <cfproperty name="XMLFeedURL" type="string" default="" 
+        ftSeq="2" ftFieldset="" ftLabel="Feed URL" 
+        ftType="string"
+        fthint="Feed URL; for example, http://www.fullasagoog.com/rss.cfm">
+
+    <cfproperty name="intro" type="string" default="" 
+        ftSeq="3" ftFieldset="" ftLabel="Introduction" 
+        ftType="longchar" ftlimit="512"
+        fthint="Optional. Introduction text for the feed.">
+
+    <cfproperty name="maxRecords" type="numeric" default="15" 
+        ftSeq="4" ftFieldset="" ftLabel="Max. records" 
+        ftType="integer"
+        fthint="The maximum number of records to return to the user">
 	
 </cfcomponent>
 
