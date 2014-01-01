@@ -4,7 +4,7 @@
 <!--- @@viewbinding: type --->
 <!--- @@cardClass: fc-dashboard-card-large --->
 <!--- @@cardHeight: 200px --->
-<!--- @@seq: 100 --->
+<!--- @@seq: 110 --->
 
 <cfimport taglib="/farcry/core/tags/webskin/" prefix="skin">
 
@@ -12,7 +12,7 @@
 
 <cfoutput>
 <i class="fa fa-question-circle fa-lg pull-right" title="Content that is approved but has a future publish date."></i>
-<h3>Embargoed News</h3>
+<h3>Embargoed News <small><a href="?id=content.farcrycmssubsection.farcrycmsmenu.listdmnews">All News</a></small></h3>
 
 <table class="table table-striped">
 	<thead>

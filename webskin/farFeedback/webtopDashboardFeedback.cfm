@@ -4,7 +4,7 @@
 <!--- @@viewbinding: type --->
 <!--- @@cardClass: fc-dashboard-card-large --->
 <!--- @@cardHeight: 200px --->
-<!--- @@seq: 110 --->
+<!--- @@seq: 100 --->
 
 <!--- import tag libraries --->
 <cfimport taglib="/farcry/core/tags/webskin" prefix="skin" />
@@ -15,7 +15,7 @@
 <div style="padding: 0 6px;">
 
 	<i class="fa fa-question-circle fa-lg pull-right" style="margin-top:6px" title="Feedback since your last login."></i>
-	<h3>Feedback Since Last Login <small>#application.fapi.prettyDate(session.dmprofile.lastlogin)#</small></h3>
+	<h3>Feedback Since Last Login <small>#application.fapi.prettyDate(session.dmprofile.lastlogin)# | <a href="?id=content.farcrycmssubsection.farcryfeedbackmenu.listfarfeedback">All Feedback</a></small></h3>
 
 	<cfif qFeedback.recordcount>
 		<table class="table table-striped">
