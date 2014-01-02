@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,18 +15,21 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
+<cfcomponent 
+    extends="farcry.core.packages.rules.rules" 
+    displayname="Rich Text Block" 
+	hint="Display a rich text block; does not allow embeds or media."
+    icon="fa-font">
 
-<!--- @@displayname: Utility: Rich Text Block --->
-<!--- @@Description: Publishing rule for rendering a block of user definable text/markup in the container. --->
-<!--- @@Developer: Geoff Bowers (modius@daemon.com.au) --->
-<cfcomponent displayname="Utility: Rich Text Block" extends="farcry.core.packages.rules.rules" 
-	hint="Publishing rule for rendering a block of user definable text/markup in the container.">
+    <cfproperty name="title" type="string" required="no" default="" 
+        ftSeq="10" ftFieldset="Rich Text Rule" ftLabel="Admin Title" 
+        ftvalidation="required"
+        fthint="Admin title only. Will not be shown to users.">
 
-	<!--- rule object properties --->
-	<cfproperty ftseq="1" ftfieldset="Text Rule" name="title" type="string" hint="Title for text rule; not displayed in the container." required="no" default="" ftlabel="Admin Title"
-				fthelptitle="Admin Title"
-				fthelpsection="The title for this rule is for administrative purposes only.  Please include a title in the HTML of the following field if you want a title displayed as part of the output for this rule." />
-	<cfproperty ftseq="2" ftfieldset="Text Rule Content" name="text" type="longchar" hint="Text to display.  Can be any combination of content and HTML markup." required="yes" default="" fttype="richtext" ftlabel="Free Text" />
-	
+    <cfproperty name="text" type="longchar" required="yes" default="" 
+        ftSeq="20" ftFieldset="Rich Text Rule" ftLabel="Rich Text" 
+        ftType="richtext"
+        hint="Text to display.  Can be any combination of content and HTML markup.">
+
 </cfcomponent>
 
