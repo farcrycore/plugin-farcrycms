@@ -14,6 +14,7 @@
 <ft:objectadmin 
 	typename="farFeedback"
 	title="Manage Feedback"
+	bEditCol="false"
 	columnList="subject,emailfrom,name,datetimecreated"
 	sortableColumns="subject,emailfrom,name,datetimecreated"
 	lFilterFields="subject,emailfrom,name"
