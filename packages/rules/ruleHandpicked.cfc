@@ -1,4 +1,4 @@
-<!--- @@Copyright: Daemon Pty Limited 2002-2008, http://www.daemon.com.au --->
+<!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@License:
     This file is part of FarCry CMS Plugin.
 
@@ -15,26 +15,25 @@
     You should have received a copy of the GNU Lesser General Public License
     along with FarCry CMS Plugin.  If not, see <http://www.gnu.org/licenses/>.
 --->
+<cfcomponent 
+	extends="farcry.core.packages.rules.rules" 
+	displayname="Handpicked Content" 
+	hint="Hand-pick and display individual content items."
+	icon="fa-hand-o-up">
 
+	<cfproperty name="intro" type="longchar" 
+		ftSeq="10" ftFieldset="Intro" ftLabel="Introduction"
+		fthint="Intro text placed in front of the handpicked rule results.  Can be any relevant content and HTML markup.">
+
+	<cfproperty name="aObjects" type="array" 
+		ftSeq="20" ftFieldset="Selected Objects" ftLabel="Select Objects" 
+		ftJoin="dmEvent,dmFacts,dmFile,dmImage,dmInclude,dmNews,dmHTML"
+		ftAllowCreate="false" ftAllowEdit="true"
+		arrayProps="webskin:string">
 
 <!--- 
-|| DESCRIPTION || 
-$Description: 
-Hand-pick and display individual content items with a specified displayTeaser* handler. 
-Restricted to those content types listed in the ftJoin attribute of aObjects.
-$
-
-|| DEVELOPER ||
-$Developer: Mat Bryant (m.bryant@daemon.com.au) $
---->
-<cfcomponent displayname="Utility: Handpicked Rule" extends="farcry.core.packages.rules.rules" 
-	hint="Hand-pick and display individual content items with a specified displayTeaser* handler.">
-
-	<cfproperty ftSeq="1" ftFieldSet="Intro" name="intro" type="longchar" hint="Intro text placed in front of the handpicked rule results.  Can be any relevant content and HTML markup." ftLabel="Introduction" />
-	<cfproperty ftSeq="2" ftFieldSet="Selected Objects" name="aObjects" type="array" ftJoin="dmEvent,dmFacts,dmFlash,dmFile,dmImage,dmInclude,dmLink,dmNews,dmHTML" arrayProps="webskin:string" ftLabel="Select Objects" />
-
-
-
+ // rule methods 
+--------------------------------------------------------------------------------->
 	<cffunction name="ftEditAObjects" access="public" output="false" returntype="string" hint="This is going to called from ft:object and will always be passed 'typename,stobj,stMetadata,fieldname'.">
 		<cfargument name="typename" required="true" type="string" hint="The name of the type that this field is part of.">
 		<cfargument name="stObject" required="true" type="struct" hint="The object of the record that this field is part of.">
