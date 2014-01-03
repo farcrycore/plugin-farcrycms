@@ -19,7 +19,8 @@
     extends="farcry.core.packages.rules.rules"
     displayname="RSS Feed" 
     hint="Import a third-party RSS feed and display."
-    bobjectbroker="true">
+    bobjectbroker="true"
+    icon="fa-rss-square">
 
     <cfproperty name="feedName" type="string" default="" 
         ftSeq="1" ftFieldset="" ftLabel="Feed name" 
