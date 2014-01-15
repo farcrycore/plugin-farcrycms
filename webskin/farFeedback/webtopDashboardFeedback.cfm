@@ -29,7 +29,7 @@
 				<cfloop query="qFeedback">
 					<tr>
 						<td><i class="fa #application.fapi.getContentTypeMetadata(typename="#qFeedback.typename#", md="icon", default="fa-file-text")# fa-lg" title="#application.fapi.getContentTypeMetadata(typename="#qFeedback.typename#", md="displayname", default="Unknown")#"></i></td>
-						<td><skin:buildlink href="#application.url.webtop#/edittabOverview.cfm?objectid=#qFeedback.objectid#&typename=#qFeedback.typename#" linktext="#qFeedback.subject#" title="Editing: #qFeedback.subject#" bmodal="true" /></td>
+						<td><skin:buildLink href="#application.url.webtop#/edittabOverview.cfm?objectid=#qFeedback.objectid#&typename=#qFeedback.typename#" linktext="#qFeedback.subject#" title="Editing: #qFeedback.subject#" bmodal="true" /></td>
 						<td nowrap="true">#application.fapi.prettyDate(qFeedback.datetimecreated)#</td>
 					</tr>
 				</cfloop>

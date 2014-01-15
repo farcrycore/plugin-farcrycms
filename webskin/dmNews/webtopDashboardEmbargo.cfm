@@ -27,7 +27,7 @@
 <cfoutput query="qNews">
 	<tr>
 		<td>#application.fapi.prettyDate(qNews.publishdate)#</td>
-		<td><skin:buildlink href="#application.url.webtop#/edittabOverview.cfm?objectid=#qNews.objectid#&typename=#qNews.typename#" bmodal="true" linktext="#qNews.title#" title="Editing: #qNews.title#" /></td>
+		<td><skin:buildLink href="#application.url.webtop#/edittabOverview.cfm?objectid=#qNews.objectid#&typename=#qNews.typename#" bmodal="true" linktext="#qNews.title#" title="Editing: #qNews.title#" /></td>
 	</tr>
 </cfoutput>
 <cfoutput>
