@@ -48,13 +48,13 @@ type properties
 	ftseq="60" ftfieldset="News Story" ftlabel="News Content"
 	ftType="RichText" 
 	ftImageArrayField="aObjectIDs" ftImageTypename="dmImage" ftImageField="StandardImage"
-	ftTemplateTypeList="dmImage,dmfile"
+	ftTemplateTypeList="dmImage,dmFile"
 	ftTemplateWebskinPrefixList="insertHTML" />
 
 <cfproperty 
 	name="aObjectIds" type="array" hint="Mixed media content for this content." required="no" default=""
 	ftseq="70" ftfieldset="Related Content" ftlabel="Media Library" 
-	ftJoin="dmImage,dmfile" 
+	ftJoin="dmImage,dmFile" 
 	bSyncStatus="true" ftJoinAllowDuplicates="false" ftallowedit="true" ftAllowBulkUpload="true" />
 	
 <cfproperty 

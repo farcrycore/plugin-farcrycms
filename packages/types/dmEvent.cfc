@@ -67,7 +67,7 @@ type properties
 
 <cfproperty name="aObjectIDs" type="array" required="no" default="" 
     ftSeq="90" ftFieldset="Event Description" ftLabel="Media Library" 
-    ftJoin="dmImage,dmfile" ftAllowBulkUpload="true" ftAllowEdit="true"
+    ftJoin="dmImage,dmFile" ftAllowBulkUpload="true" ftAllowEdit="true"
     bSyncStatus="true"
     fthint="Upload files and images for the event." />
 
