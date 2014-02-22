@@ -55,7 +55,8 @@
 		<cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 		<cfimport taglib="/farcry/core/tags/grid" prefix="grid" />
 		
-		<skin:loadJS id="jquery-ui" />
+		<skin:loadJS id="fc-jquery" />
+		<skin:loadJS id="fc-jquery-ui" />
 		<skin:loadCSS id="jquery-ui" />
 		
 		<cfset joinItems = arguments.stObject[arguments.stMetadata.name] />
@@ -96,10 +97,10 @@
 					<cfset itemlist = listappend(itemlist,thisobject) />
 					
 					<cfoutput>
-					<li id="join-item-#arguments.stMetadata.name#-#thisobject#" class="sort #iif(not i mod 2,de('oddrow'),de('evenrow'))#" serialize="#thisobject#" style="clear:both;border:1px solid ##ebebeb;padding:5px;zoom:1;">
+					<li id="join-item-#arguments.stMetadata.name#-#thisobject#" class="sort #iif(not i mod 2,de('oddrow'),de('evenrow'))#" serialize="#thisobject#" style="border:1px solid ##ebebeb;padding:5px;zoom:1;">
 						<table style="width:100%;">
 							<tr>
-								<td class="" style="cursor:move;padding:3px;"><span class="ui-icon ui-icon-arrow-2-n-s"></span></td>
+								<td class="" style="cursor:move;padding:3px;"><i class="fa fa-sort"></i></td>
 								<td class="" style="cursor:move;width:100%;padding:3px;">#htmlLabel#</td>
 								<td class="" style="padding:3px;">
 									<select name="#arguments.fieldname##thisobject#webskin" style="width:170px;">
@@ -112,9 +113,9 @@
 									<ft:button
 										Type="button" 
 										renderType="button"
-										class="ui-state-default ui-corner-all"
+										class="btn"
 										value="Remove" 
-										text="remove" 
+										text="Remove" 
 										confirmText="Are you sure you want to remove this item? Doing so will only unlink this content item. The content will remain in the database." 
 										onClick="fcForm.detachLibraryItem('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#','#thisobject#');" />
 							 	</td>
@@ -129,39 +130,25 @@
 			
 			<cfoutput><input type="hidden" id="#arguments.fieldname#" name="#arguments.fieldname#" value="#itemlist#" /></cfoutput>
 			
-			<ft:buttonPanel style="">
+			<ft:buttonPanel style="border:none; text-align:left;">
 			<cfoutput>
 				
-				<ft:button	Type="button" 
-							renderType="button"
-							class="ui-state-default ui-corner-all"
-							value="select" 
-							onClick="fcForm.openLibrarySelect('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#');" />
+				<a class="btn" onClick="fcForm.openLibrarySelect('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#');"><i class="fa fa-search"></i> Select</a>
 				
-				<cfif arraylen(joinItems)>
-					
-					<ft:button	Type="button" 
-								renderType="button"
-								class="ui-state-default ui-corner-all"
-								value="Remove All" 
-								text="remove all" 
-								confirmText="Are you sure you want to remove all the attached items?"
-								onClick="fcForm.detachAllLibraryItems('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#','#itemList#');" />
-					
+				<cfif listLen(arguments.stMetadata.ftJoin) GT 1>
+					<div class="btn-group">
+						<a class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i> Create &nbsp;&nbsp;<i class="fa fa-caret-down" style="margin-right:-4px;"></i></a>
+						<ul class="dropdown-menu">
+							<cfloop list="#arguments.stMetadata.ftJoin#" index="i">
+								<li value="#trim(i)#"><a onclick="$j('###arguments.fieldname#-add-type').val('#trim(i)#'); fcForm.openLibraryAdd('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#');">#application.fapi.getContentTypeMetadata(i, 'displayname', i)#</a></li>
+							</cfloop>
+						</ul>
+					</div>
+				<cfelse>
+					<a class="btn" onclick="fcForm.openLibraryAdd('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#');"><i class="fa fa-plus"></i> Create</a>
 				</cfif>
-					
-				<select id="#arguments.fieldname#-add-type">
-					<option value="">- Create New -</option>
-					<cfloop list="#arguments.stMetadata.ftJoin#" index="i">
-						<option value="#trim(i)#">#application.fapi.getContentTypeMetadata(i, 'displayname', i)#</option>
-					</cfloop>
-				</select>
-				<skin:onReady>
-					$j('###arguments.fieldname#-add-type').change(function() {
-						fcForm.openLibraryAdd('#stObject.typename#','#stObject.objectid#','#arguments.stMetadata.name#','#arguments.fieldname#');
-					});
-				</skin:onReady>
-					
+				<input type="hidden" id="#arguments.fieldname#-add-type" value="#arguments.stMetadata.ftJoin#" />
+
 			</cfoutput>
 			</ft:buttonPanel>
 			
