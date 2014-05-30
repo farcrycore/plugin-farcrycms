@@ -34,6 +34,6 @@
 	properties="#stChannel#"
 	xmlvar="rssXML">
 
-<cfcontent reset="true"><cfoutput>#rssXML#</cfoutput>
+<cfcontent reset="true" type="application/rss+xml"><cfoutput>#rssXML#</cfoutput>
 
 <cfsetting enablecfoutputonly="false">
