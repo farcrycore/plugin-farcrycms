@@ -25,7 +25,7 @@
 
 <skin:pagination 
 	query="qNews" recordsPerPage="3"
-	paginationID="" linksWebskin="displayLinksBootstrap"  top="false" bottom="true"
+	paginationID=""  top="false" bottom="true"
 	r_stObject="stNews">
 	<skin:view objectID="#stNews.objectID#" typename="dmNews" template="displayTeaserStandard" />
 </skin:pagination>
