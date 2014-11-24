@@ -61,7 +61,7 @@ type properties
 <cfproperty 
 	name="teaserImage" type="UUID" hint="Teaser image to display." required="no" default="" 
 	ftseq="31" ftfieldset="Story Teaser" ftwizardStep="News Body" ftlabel="Teaser Image" 
-	fttype="uuid" ftjoin="dmImage" 
+	fttype="uuid" ftjoin="dmImage" ftAllowEdit="true"
 	fthelptitle="Teaser Requirements"
 	fthelpsection="Teaser images can only be selected from the pool of associated media images. You must add to the media library before selecting." />
 
