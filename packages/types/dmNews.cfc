@@ -78,7 +78,7 @@ type properties
 	name="expiryDate" type="date" hint="The date that a news object is removed from the web site" required="no" default="" 
 	ftseq="110" ftfieldset="Publishing Options" ftlabel="Expiry Date" 
 	ftType="datetime" 
-	ftDefaultType="Evaluate" ftDefault="DateAdd('yyyy', 200, now())" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" 
+	ftDefaultType="Evaluate" ftDefault="" ftDateFormatMask="dd mmm yyyy" ftTimeFormatMask="hh:mm tt" 
 	ftToggleOffDateTime="true"
 	fthint="Expired news is not visible in listings but is not removed from the site." />
 
