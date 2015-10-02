@@ -25,7 +25,7 @@
 
 <skin:pagination 
 	query="qEvents" recordsPerPage="3"
-	paginationID="" linksWebskin="displayLinksBootstrap"  top="false" bottom="true"
+	paginationID="" top="false" bottom="true"
 	r_stObject="stEvent">
 	<skin:view objectID="#stEvent.objectID#" typename="dmEvent" template="displayTeaserStandard" />
 </skin:pagination>
