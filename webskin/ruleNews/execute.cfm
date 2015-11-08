@@ -11,7 +11,7 @@
 
 <!--- If paginated archive: Get Maximum Rows in New Table --->
 <cfif stObj.bArchive>
-	<cfquery datasource="#arguments.dsn#" name="qCount">
+	<cfquery datasource="#application.dsn#" name="qCount">
 		SELECT count(objectID) as total
 		FROM #application.dbowner#dmNews
 	</cfquery>
