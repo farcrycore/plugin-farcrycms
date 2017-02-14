@@ -3,9 +3,11 @@
 <!--- @@displayname: Email Response --->
 <!--- @@description: Sends a response to the user leaving feedback --->
 
+<cfparam name="fromEmail" default="#application.fapi.getConfig("general","adminemail")#" />
+
 <cfmail 
     subject="Thankyou for your feedback" 
-    from="#stObj.emailto#" 
+    from="#fromEmail#" 
     to="#stObj.emailfrom#" 
     type="html"><cfoutput>
 	<p>Hello #stObj.name#</p>

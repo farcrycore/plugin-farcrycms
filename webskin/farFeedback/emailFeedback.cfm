@@ -6,10 +6,12 @@
 <!--- import tag library --->
 <cfimport taglib="/farcry/core/tags/formtools" prefix="ft" />
 
+<cfparam name="fromEmail" default="#application.fapi.getConfig("general","adminemail")#" />
+
 <cfset stObj.objectid = createuuid() />
 <cfmail 
     subject="#stObj.subject#" 
-    from="#stObj.emailfrom#" 
+    from="#fromEmail#" 
     to="#stObj.emailto#" 
     type="html">
 	<ft:object stObject="#stObj#" format="display" lFields="name,emailfrom,comments" />
