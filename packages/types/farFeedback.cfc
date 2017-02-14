@@ -64,8 +64,9 @@
 		</cfif>
 		
 		<cftry>
-			<skin:view stObject="#arguments.stObject#" webskin="emailFeedback" />
-			<skin:view stObject="#arguments.stObject#" webskin="emailResponse" />
+
+			<skin:view stObject="#arguments.stObject#" webskin="displayEmailFeedback" />
+			<skin:view stObject="#arguments.stObject#" webskin="displayEmailResponse" />
 			
 			<cfreturn true />
 			

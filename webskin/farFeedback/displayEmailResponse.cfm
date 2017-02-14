@@ -2,6 +2,7 @@
 <!--- @@Copyright: Daemon Pty Limited 2002-2013, http://www.daemon.com.au --->
 <!--- @@displayname: Email Response --->
 <!--- @@description: Sends a response to the user leaving feedback --->
+<!--- @@cacheStatus: -1 --->
 
 <cfparam name="fromEmail" default="#application.fapi.getConfig("general","adminemail")#" />
 
